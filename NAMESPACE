@@ -2,6 +2,7 @@
 
 importFrom(dplyr,filter_at)
 importFrom(dplyr,mutate)
+importFrom(dplyr,mutate_all)
 importFrom(dplyr,mutate_at)
 importFrom(dplyr,rename_all)
 importFrom(dplyr,select)
