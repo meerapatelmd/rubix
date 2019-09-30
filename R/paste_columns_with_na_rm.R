@@ -2,6 +2,9 @@
 #' @param .data dataframe
 #' @param new_col_name name of the new column
 #' @param ... columns to be pasted together
+#' @importFrom dplyr mutate_at
+#' @importFrom dplyr mutate
+#' @export
 
 paste_columns_with_na_rm <-
         function(.data, new_col_name, ..., collapse = " ", sep = "") {

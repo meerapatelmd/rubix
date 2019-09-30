@@ -3,6 +3,7 @@
 #' @param exclusion_vector character vector of values to be excluded
 #' @importFrom magrittr %>%
 #' @importFrom dplyr filter_at
+#' @export
 
 filter_out_vector <-
         function(dataframe, filter_col, exclusion_vector) {

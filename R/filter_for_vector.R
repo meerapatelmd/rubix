@@ -3,6 +3,7 @@
 #' @param inclusion_vector character vector of values to be included
 #' @importFrom magrittr %>%
 #' @importFrom dplyr filter_at
+#' @export
 
 filter_in_vector <-
         function(dataframe, filter_col, inclusion_vector) {

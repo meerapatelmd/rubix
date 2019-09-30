@@ -6,7 +6,7 @@
 #' @importFrom dplyr arrange
 #' @importFrom dplyr filter
 #' @export
-#'
+
 filter_most_recent_obs_by_group <-
         function (dataframe, group_by_col, index_date_col) {
                 group_by_col   <- enquo(group_by_col)

@@ -1,6 +1,5 @@
-
+#' Substitute all true NA values in a dataframe as blank
 #' @export
-#'
 mutate_all_na_to_blank <-
         function(dataframe) {
                 x <- dataframe

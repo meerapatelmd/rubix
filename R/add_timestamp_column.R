@@ -3,7 +3,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
-#'
+#' @export
 
 add_timestamp_column <-
   function(dataframe, new_col_name = "TIMESTAMP") {

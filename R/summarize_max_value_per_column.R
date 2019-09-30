@@ -1,10 +1,9 @@
 #' Summarizes each column with max value
-#'
 #' @param ... column names for vectors of any data class
 #' @param na.rm TRUE if true NA are to be removed. Default is TRUE.
 #' @importFrom dplyr mutate_at
-#' @importFrom dplyr summarize_at
-#'
+#' @importFrom dplyr summarise_at
+#' @export
 summarize_max_value_per_column <-
         function(.data, ..., na.rm = TRUE) {
                 max_value_vars <- enquos(...)
