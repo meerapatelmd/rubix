@@ -3,7 +3,7 @@
 export(add_primary_key)
 export(add_timestamp_column)
 export(call_mr_clean)
-export(filter_in_vector)
+export(filter_for_vector)
 export(filter_most_recent_obs_by_group)
 export(filter_out_vector)
 export(left_join_with_list_names)
