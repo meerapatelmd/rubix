@@ -35,7 +35,8 @@ append_dataframe_if_new_obs <-
                                 dplyr::mutate(!!new_obs_variable := new_obs_variable_value) %>%
                                 somersaulteR::call_mr_clean()
 
-                        x <- dplyr::bind_rows(dataframe, x)
+                        x <- dplyr::bind_rows(dataframe %>%
+                                                      somersaulteR::call_mr_clean, x)
 
                         return(x)
                 } else {
