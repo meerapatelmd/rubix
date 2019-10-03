@@ -6,7 +6,7 @@
 
 mutate_new_cols_if_not_exist_by_robj_name <-
         function(dataframe, robj_pattern) {
-                df_name <- deparse(substitute(dataframe))
+                x <- dataframe
 
                 new_columns <- objects(pattern = robj_pattern,
                                        envir = globalenv())
@@ -19,13 +19,14 @@ mutate_new_cols_if_not_exist_by_robj_name <-
 
                                         column_name <- enquo(column_name)
 
-                                        x <-
-                                                dataframe %>%
+                                        x <- x %>%
                                                 dplyr::mutate(!!column_name := "")
 
-                                        assign(df_name, x, envir = globalenv())
                                 }
                         }
+                        return(x)
+                } else {
+                        return(x)
                 }
 
         }

@@ -10,7 +10,7 @@
 
 append_dataframe_if_new_obs <-
         function(dataframe, id_variable, new_obs_variable, timestamp_col_name) {
-                id_variable_value <- get(id_variable, envir = globalenv())
+                id_variable_value      <- get(id_variable, envir = globalenv())
                 new_obs_variable_value <- get(new_obs_variable, envir = globalenv())
 
                 id_variable <- enquo(id_variable)
@@ -37,7 +37,9 @@ append_dataframe_if_new_obs <-
 
                         x <- dplyr::bind_rows(dataframe, x)
 
-                        assign(dataframe_name, x, envir = globalenv())
+                        return(x)
+                } else {
+                        return(dataframe)
                 }
 
 

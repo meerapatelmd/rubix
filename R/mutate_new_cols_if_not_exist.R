@@ -8,16 +8,18 @@
 mutate_new_cols_if_not_exist <-
         function(dataframe, column_name, value = "") {
                 if (!(column_name %in% colnames(dataframe))) {
-                        
+
                         df_name <- deparse(substitute(dataframe))
-                        
+
                         column_name <- enquo(column_name)
-                        
+
                         x <-
                                 dataframe %>%
                                 dplyr::mutate(!!column_name := "")
-                        
-                        assign(df_name, x, envir = globalenv())
+
+                        return(x)
+                } else {
+                        return(dataframe)
                 }
-                
+
         }
