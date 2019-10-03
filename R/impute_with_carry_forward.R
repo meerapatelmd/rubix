@@ -1,0 +1,13 @@
+#' Imputes true NA values in given columns with previous value (starting at position 2)
+#' @param ... columns to be imputed
+#' @importFrom dplyr mutate_at
+#' @importFrom caterpillaR carry_forward
+#' @export
+#'
+impute_with_carry_forward <-
+        function(dataframe, ...) {
+                impute_vars <- enquos(...)
+
+                dataframe %>%
+                        dplyr::mutate_at(vars(!!!impute_vars), funs(caterpillaR::carry_forward(.)))
+        }
