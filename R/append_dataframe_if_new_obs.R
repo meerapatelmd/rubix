@@ -36,7 +36,7 @@ append_dataframe_if_new_obs <-
                                 somersaulteR::call_mr_clean()
 
                         x <- dplyr::bind_rows(dataframe %>%
-                                                      somersaulteR::call_mr_clean, x)
+                                                      somersaulteR::call_mr_clean(), x)
 
                         return(x)
                 } else {
