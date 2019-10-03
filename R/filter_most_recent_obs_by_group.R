@@ -5,6 +5,7 @@
 #' @importFrom dplyr mutate_at
 #' @importFrom dplyr arrange
 #' @importFrom dplyr filter
+#' @importFrom lubridate ymd_hms
 #' @export
 
 filter_most_recent_obs_by_group <-
@@ -14,7 +15,7 @@ filter_most_recent_obs_by_group <-
 
                 dataframe %>%
                         dplyr::group_by(!!group_by_col) %>%
-                        dplyr::mutate_at(!!index_date_col := ymd(as.character(!!index_date_col))) %>%
-                        dplyr::arrange(desc(index_date_col)) %>%
+                        dplyr::mutate_at(vars(!!index_date_col), funs(lubridate::ymd_hms(.))) %>%
+                        dplyr::arrange(desc(!!index_date_col)) %>%
                         dplyr::filter(row_number() == 1)
         }
