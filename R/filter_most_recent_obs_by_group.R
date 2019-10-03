@@ -14,8 +14,10 @@ filter_most_recent_obs_by_group <-
                 index_date_col <- enquo(index_date_col)
 
                 dataframe %>%
+                        dplyr::ungroup() %>%
                         dplyr::group_by(!!group_by_col) %>%
                         dplyr::mutate_at(vars(!!index_date_col), funs(lubridate::ymd_hms(.))) %>%
                         dplyr::arrange(desc(!!index_date_col)) %>%
-                        dplyr::filter(row_number() == 1)
+                        dplyr::filter(row_number() == 1) %>%
+                        dplyr::ungroup()
         }
