@@ -9,5 +9,5 @@ impute_with_carry_forward <-
                 impute_vars <- enquos(...)
 
                 dataframe %>%
-                        dplyr::mutate_at(vars(!!!impute_vars), funs(caterpillaR::carry_forward(.)))
+                        dplyr::mutate_at(vars(!!!impute_vars), list(~ caterpillaR::carry_forward(.)))
         }
