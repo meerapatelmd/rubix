@@ -6,12 +6,9 @@
 
 mask_column_prefixes <-
         function(dataframe) {
-                x <- dataframe
                 dataframe_name <- stringr::str_remove(deparse(substitute(dataframe)), "[$]{1}.*$")
-                dataframe_prefix <- paste0("^", dataframe_name, "_")
+                dataframe_prefix <- paste0(dataframe_name, "_")
 
-                x <-
-                x %>%
-                        dplyr::rename_all(str_remove_all(., pattern = dataframe_prefix))
-                return(x)
+                dataframe %>%
+                        dplyr::rename_all(str_remove_all, dataframe_prefix)
         }
