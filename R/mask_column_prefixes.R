@@ -7,7 +7,7 @@
 mask_column_prefixes <-
         function(dataframe) {
                 dataframe_name <- stringr::str_remove(deparse(substitute(dataframe)), "[$]{1}.*$")
-                dataframe_prefix <- paste0(dataframe_name, "_")
+                dataframe_prefix <- paste0(dataframe_name, "[_]{1}")
 
                 dataframe %>%
                         dplyr::rename_all(str_remove_all, dataframe_prefix)
