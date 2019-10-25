@@ -6,10 +6,14 @@
 
 standardize_column_names <-
         function(dataframe) {
+                x <-
                         dataframe %>%
                                 dplyr::rename_all(trimws, "both") %>%
                                 dplyr::rename_all(toupper) %>%
                                 dplyr::rename_all(str_replace_all, "[[:punct:]]{1,}", "_") %>%
                                 dplyr::rename_all(str_remove_all, "[_]{1}$") %>%
                                 dplyr::rename_all(str_replace_all, " {1,}", "_")
+                colnames(x) <- gsub("[_]{2,}", "_", colnames(x))
+
+                return(x)
         }
