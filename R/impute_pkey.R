@@ -6,8 +6,8 @@
 #'
 impute_pkey <-
         function(dataframe, pkey_column) {
-                impute_vars <- enquo(pkey_column)
+                pkey_column <- enquo(pkey_column)
 
                 dataframe %>%
-                        dplyr::mutate_at(vars(!!impute_vars), list(~ caterpillaR::carry_forward_and_add_one(.)))
+                        dplyr::mutate_at(vars(!!pkey_column), list(~ caterpillaR::carry_forward_and_add_one(.)))
         }
