@@ -4,7 +4,8 @@
 \alias{add_primary_key}
 \title{Adds primary key to dataframe in position 1}
 \usage{
-add_primary_key(dataframe, pkey_column_name)
+add_primary_key(dataframe, pkey_column_name, starting_number = NULL,
+  prefix = NULL)
 }
 \arguments{
 \item{pkey_column_name}{name of pkey column}
