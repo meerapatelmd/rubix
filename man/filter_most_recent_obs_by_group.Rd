@@ -2,15 +2,16 @@
 % Please edit documentation in R/filter_most_recent_obs_by_group.R
 \name{filter_most_recent_obs_by_group}
 \alias{filter_most_recent_obs_by_group}
-\title{Filters most recent values in dataframe}
+\title{Filters most recent values in dataframe based on timestamp or date data}
 \usage{
-filter_most_recent_obs_by_group(dataframe, group_by_col, index_date_col)
+filter_most_recent_obs_by_group(dataframe, ..., index_time_col,
+  time_format = c("date", "timestamp"))
 }
 \arguments{
-\item{group_by_col}{grouping variable}
+\item{...}{grouping variables}
 
-\item{index_date_col}{variable that will be used to filter by time}
+\item{index_time_col}{variable that will be used to filter by time or datettime}
 }
 \description{
-Filters most recent values in dataframe
+Filters most recent values in dataframe based on timestamp or date data
 }
