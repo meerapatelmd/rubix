@@ -4,7 +4,7 @@
 #' @export
 
 
-standardize_column_names <-
+cleanup_colnames <-
         function(dataframe) {
                 x <-
                         dataframe %>%

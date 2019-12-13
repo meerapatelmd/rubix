@@ -2,10 +2,11 @@
 #' @param n number of observations
 #' @param ... additional arguments for dplyr::sample_n function
 #' @importFrom dplyr sample_n
+#' @importFrom dplyr distinct
 #' @export
 
 sample_n_or_bust <-
   function(dataframe, n, ...) {
     dplyr::sample_n(tbl = tbl, size = n, replace = TRUE, ...) %>%
-                        distinct()
+                        dplyr::distinct()
   }

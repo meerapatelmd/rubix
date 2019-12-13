@@ -2,7 +2,7 @@
 #' @importFrom dplyr setdiff
 #' @export
 
-nrow_diff <-
+setdiff_nrow <-
         function(x, y) {
                 nrow(dplyr::setdiff(x, y))
         }

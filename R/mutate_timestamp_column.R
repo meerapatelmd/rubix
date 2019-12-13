@@ -5,7 +5,7 @@
 #' @importFrom dplyr select
 #' @export
 
-add_timestamp_column <-
+mutate_timestamp_column <-
   function(dataframe, new_col_name = "TIMESTAMP") {
       new_col_name <- enquo(new_col_name)
 

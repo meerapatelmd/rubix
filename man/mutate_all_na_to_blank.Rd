@@ -4,7 +4,7 @@
 \alias{mutate_all_na_to_blank}
 \title{Substitute all true NA values in a dataframe as blank}
 \usage{
-mutate_all_na_to_blank(dataframe)
+mutate_all_na_to_blank(dataframe, include_na_as_string = TRUE)
 }
 \description{
 Substitute all true NA values in a dataframe as blank
