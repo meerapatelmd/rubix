@@ -4,12 +4,8 @@
 \alias{filter_most_recent_obs_by_group}
 \title{Filters most recent values in dataframe based on timestamp or date data}
 \usage{
-filter_most_recent_obs_by_group(
-  dataframe,
-  ...,
-  index_time_col,
-  time_format = c("date", "timestamp")
-)
+filter_most_recent_obs_by_group(dataframe, ..., index_time_col,
+  time_format = c("date", "timestamp"))
 }
 \arguments{
 \item{...}{grouping variables}

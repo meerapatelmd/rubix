@@ -4,13 +4,8 @@
 \alias{mutate_primary_key}
 \title{Adds primary key to dataframe in position 1}
 \usage{
-mutate_primary_key(
-  dataframe,
-  pkey_column_name,
-  starting_number = NULL,
-  width_left_pad_with_zero = NULL,
-  prefix = NULL
-)
+mutate_primary_key(dataframe, pkey_column_name, starting_number = NULL,
+  width_left_pad_with_zero = NULL, prefix = NULL)
 }
 \arguments{
 \item{pkey_column_name}{name of pkey column}
