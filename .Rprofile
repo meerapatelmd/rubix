@@ -9,11 +9,13 @@
                 cat("\n")
                 commit_message <- readline("What is the commit message? ")
                 cat("\n")
-                description <- readline("What is the description? ")
-                if (description == "") {
-                        description <- NULL
+                if (commit_message != "") {
+                        description <- readline("What is the description? ")
+                        if (description == "") {
+                                description <- NULL
+                        }
                 }
-                
+
                 if (commit_message != "") {
                         mirCat::git_add_commit_all_this_repo(commit_message = commit_message,
                                                              description = description)
