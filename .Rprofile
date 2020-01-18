@@ -17,10 +17,10 @@
                 if (commit_message != "") {
                         mirCat::git_add_commit_all_this_repo(commit_message = commit_message,
                                                              description = description)
-                }
-                
-                ans <- readline("Push to origin master now? Y/n: ")
-                if ((substr(ans, 1, 1) == "Y")) {
-                        mirCat::git_push_this_repo()
+                        
+                        ans <- readline("Push to origin master now? Y/n: ")
+                        if ((substr(ans, 1, 1) == "Y")) {
+                                mirCat::git_push_this_repo()
+                        }
                 }
         }
