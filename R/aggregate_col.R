@@ -12,7 +12,7 @@ aggregate_col <-
                  col,
                  collapse) {
                 
-                        stats::aggregate(col ~ .,
+                        stats::aggregate(eval(col) ~ .,
                                   data = data,
                                   paste,
                                   collapse = collapse)
