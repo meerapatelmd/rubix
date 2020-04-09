@@ -12,9 +12,7 @@ aggregate_col <-
                  col,
                  collapse) {
                 
-                        col <- rlang::enquo(col)
-                        
-                        stats::aggregate(!!col ~ .,
+                        stats::aggregate(col ~ .,
                                   data = data,
                                   paste,
                                   collapse = collapse)
