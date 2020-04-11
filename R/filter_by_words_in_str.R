@@ -4,13 +4,14 @@
 
 filter_by_words_in_str <-
         function(string, split, dataframe, col) {
+                col <- dplyr::enquo(col)
                 Args <- strsplit(string, split = split) %>% unlist()
                 
                 while (length(Args) > 0) {
                         if (nrow(dataframe) > 0) {
                                 dataframe <-
                                         dataframe %>%
-                                        filter_at_grepl(col = col, Args[1])
+                                        filter_at_grepl(col = !!col, Args[1])
                                 
                                 Args <- Args[-1]
                         } else {
