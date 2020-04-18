@@ -3,9 +3,9 @@
 #' @param vector vector of any length with names
 #' @importFrom dplyr tibble
 #' @return dataframe
-#' @example 
-x <- c("a", "b", "c")
-vector_as_dataframe(x) 
+#' @examples
+#'  x <- c("a", "b", "c")
+#'  vector_as_dataframe(x) 
 #' @export
 
 vector_as_dataframe <-
