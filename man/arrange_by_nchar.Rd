@@ -2,10 +2,19 @@
 % Please edit documentation in R/arrange_by_nchar.R
 \name{arrange_by_nchar}
 \alias{arrange_by_nchar}
-\title{Arrange dataframe based on nchar of a given column}
+\title{Arrange dataframe based on nchar
+Order a dataframe based on the number of characters in the column provided as an argument.}
 \usage{
 arrange_by_nchar(dataframe, nchar_col, desc = FALSE)
 }
+\arguments{
+\item{dataframe}{input dataframe}
+
+\item{nchar_col}{column where number of characters will determine the order}
+
+\item{desc}{Should the output be in descending or ascending order?}
+}
 \description{
-Arrange dataframe based on nchar of a given column
+Arrange dataframe based on nchar
+Order a dataframe based on the number of characters in the column provided as an argument.
 }

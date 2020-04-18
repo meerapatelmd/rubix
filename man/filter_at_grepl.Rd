@@ -2,10 +2,27 @@
 % Please edit documentation in R/filter_at_grepl.R
 \name{filter_at_grepl}
 \alias{filter_at_grepl}
-\title{Filter at a variable that contains a phrase}
+\title{Filter at a variable that contains or doesn't contain a phrase}
 \usage{
-filter_at_grepl(dataframe, col, grepl_phrase)
+filter_at_grepl(
+  dataframe,
+  col,
+  grepl_phrase,
+  evaluates_to = TRUE,
+  ignore.case = TRUE
+)
+}
+\arguments{
+\item{dataframe}{input dataframe}
+
+\item{col}{column to filter}
+
+\item{grepl_phrase}{phrase that is being filtered for}
+
+\item{evaluates_to}{whether the filter is for a grepl evaluation of TRUE or FALSE. Defaults to TRUE.}
+
+\item{ignore.case}{boolean the ignore.case argument of grepl function}
 }
 \description{
-Filter at a variable that contains a phrase
+Filter at a variable that contains or doesn't contain a phrase
 }

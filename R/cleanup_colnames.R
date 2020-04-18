@@ -1,8 +1,8 @@
-#' Standardize column names
-#' @description This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals)
+#' Standardize Column Names
+#' This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals)
+#' @inheritParams call_mr_clean
 #' @importFrom  dplyr rename_all
 #' @export
-
 
 cleanup_colnames <-
         function(dataframe) {
