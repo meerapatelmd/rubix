@@ -4,7 +4,7 @@
 #' @importFrom secretary typewrite
 #' @export
 
-filter_by_words_in_str <-
+filter_by_words_in_str_before_zero <-
         function(string, split, dataframe, col) {
                 col <- dplyr::enquo(col)
                 Args <- strsplit(string, split = split) %>% unlist()

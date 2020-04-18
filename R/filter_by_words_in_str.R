@@ -1,9 +1,9 @@
 #' Loop a filter over words in a string
 #' This function splits a string based on the provide split argument, and recursively filters a dataframe for those words at a given column.
-#' @param string
-#' @param split
-#' @param dataframe
-#' @param col
+#' @param string string of words or other tokens to loop the filter over
+#' @param split split argument for the strsplit function applied to the string parameter
+#' @param dataframe input data
+#' @param col column to filter against
 #' @importFrom secretary typewrite
 #' @importFrom dplyr enquo
 #' @export
