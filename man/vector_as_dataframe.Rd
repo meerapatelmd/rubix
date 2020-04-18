@@ -3,7 +3,7 @@
 \name{vector_as_dataframe}
 \alias{vector_as_dataframe}
 \title{Convert a vector to a dataframe
-This function takes a vector and}
+This function takes a vector and returns a dataframe with one row of values provided by the vector. Column names are those of the vector or the generic names in cases of unnamed vectors.}
 \usage{
 vector_as_dataframe(vector)
 }
@@ -15,7 +15,7 @@ dataframe
 }
 \description{
 Convert a vector to a dataframe
-This function takes a vector and
+This function takes a vector and returns a dataframe with one row of values provided by the vector. Column names are those of the vector or the generic names in cases of unnamed vectors.
 }
 \examples{
  x <- c("a", "b", "c")
