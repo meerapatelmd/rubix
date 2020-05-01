@@ -19,7 +19,7 @@ filter_at_grepl <-
                 
                 col <- dplyr::enquo(col)
                 
-                if (evalutes_to == TRUE) {
+                if (evaluates_to == TRUE) {
                         return(
                                 dataframe %>%
                                         dplyr::filter_at(dplyr::vars(!!col),
