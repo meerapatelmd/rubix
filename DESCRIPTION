@@ -19,6 +19,6 @@ Imports:
     secretary,
     stringr
 Remotes:
-    patelm9/centipede
+    patelm9/centipede,
     patelm9/secretary
     
