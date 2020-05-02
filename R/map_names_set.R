@@ -3,6 +3,8 @@
 #' @param x input
 #' @param .f function in purrr::map
 #' @param ... additional parameters for the purrr::map function
+#' @importFrom purrr set_names
+#' @importFrom purrr map
 #' @export
 
 map_names_set <-
