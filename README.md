@@ -1,6 +1,12 @@
 2020-04-27 16:23:51 	File Created
 
 # Typewrite Messages
+Timestamp:	2020-05-10 16:56:00
+Local R Script:	~/GitHub/Public-Packages/rubix/R/rename_all_with_replace.R
+Typewrite Message:	No deleted files in this repo.
+Timestamp:	2020-05-10 16:07:04
+Local R Script:	~/GitHub/Public-Packages/rubix/R/slice_first_row.R
+Typewrite Message:	No deleted files in this repo.
 Timestamp:	2020-05-10 16:05:58
 Local R Script:	~/GitHub/Public-Packages/rubix/R/summarize_grouped_n.R
 Typewrite Message:	No deleted files in this repo.
