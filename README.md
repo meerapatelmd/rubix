@@ -1,6 +1,12 @@
 2020-04-27 16:23:51 	File Created
 
 # Typewrite Messages
+Timestamp:	2020-05-10 16:05:58
+Local R Script:	~/GitHub/Public-Packages/rubix/R/summarize_grouped_n.R
+Typewrite Message:	No deleted files in this repo.
+Timestamp:	2020-05-10 16:00:00
+Local R Script:	
+Typewrite Message:	No deleted files in this repo.
 Timestamp:	2020-05-07 11:19:44
 Local R Script:	~/GitHub/Public-Packages/rubix/R/mutate_as_ymd.R
 Typewrite Message:	No deleted files in this repo.
