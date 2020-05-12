@@ -6,8 +6,9 @@ bind_rows_rm <-
         function(..., .id = NULL) {
                 output <- dplyr::bind_rows(..., .id = .id)
                 
-                rm(..., envir = globalenv())
-                
+                Args <- list(...)
+                Args %>%
+                        purrr::map(rm, envir = globalenv())
                 return(output)
         }
 
