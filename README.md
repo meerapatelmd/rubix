@@ -1,6 +1,12 @@
 2020-04-27 16:23:51 	File Created
 
 # Typewrite Messages
+Timestamp:	2020-05-12 13:50:56
+Local R Script:	~/GitHub/Public-Packages/rubix/R/bind_rows_rm.R
+Typewrite Message:	No deleted files in this repo.
+Timestamp:	2020-05-12 12:22:29
+Local R Script:	~/GitHub/Public-Packages/rubix/R/pivot_count.R
+Typewrite Message:	No deleted files in this repo.
 Timestamp:	2020-05-10 16:56:00
 Local R Script:	~/GitHub/Public-Packages/rubix/R/rename_all_with_replace.R
 Typewrite Message:	No deleted files in this repo.

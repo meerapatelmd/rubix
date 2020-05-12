@@ -2,6 +2,7 @@
 
 export(arrange_as_integer)
 export(arrange_by_nchar)
+export(bind_rows_rm)
 export(blank_tibble)
 export(call_mr_clean)
 export(cleanup_colnames)
