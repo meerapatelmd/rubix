@@ -1,6 +1,20 @@
 2020-04-27 16:23:51 	File Created
 
 # Typewrite Messages
+Timestamp:	2020-05-12 14:04:02
+Local R Script:	~/GitHub/Public-Packages/rubix/R/bind_rows_rm.R
+Typewrite Message:	No deleted files in this repo.
+Timestamp:	2020-05-12 14:04:02
+Local R Script:	~/GitHub/Public-Packages/rubix/R/bind_rows_rm.R
+Typewrite Message:	No untracked files in this repo.
+
+Timestamp:	2020-05-12 13:54:05
+Local R Script:	~/GitHub/Public-Packages/rubix/R/bind_rows_rm.R
+Typewrite Message:	No deleted files in this repo.
+Timestamp:	2020-05-12 13:54:05
+Local R Script:	~/GitHub/Public-Packages/rubix/R/bind_rows_rm.R
+Typewrite Message:	No untracked files in this repo.
+
 Timestamp:	2020-05-12 13:50:56
 Local R Script:	~/GitHub/Public-Packages/rubix/R/bind_rows_rm.R
 Typewrite Message:	No deleted files in this repo.

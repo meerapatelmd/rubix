@@ -5,10 +5,8 @@
 bind_rows_rm <-
         function(..., .id = NULL) {
                 output <- dplyr::bind_rows(..., .id = .id)
-                
-                Args <- list(...)
-                Args %>%
-                        purrr::map(rm, envir = globalenv())
+
+                rm(list = deparse(substitute(...)), envir = globalenv())
+
                 return(output)
         }
-
