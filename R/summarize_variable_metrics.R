@@ -1,0 +1,49 @@
+#' Summarize a variable by distinct counts of values it has
+#' @param ... grouping vars. If missing, all variables will be counted
+#' @importFrom dplyr group_by
+#' @importFrom dplyr ungroup
+#' @importFrom dplyr enquos
+#' @importFrom dplyr summarize
+#' @importFrom dplyr arrange
+#' @importFrom dplyr desc
+#' @export
+
+
+summarize_variable_metrics <-
+        function(dataframe, ...) {
+
+                if (!missing(...)) {
+                        
+                                cols <- dplyr::enquos(...)
+                                
+                                output_1 <-
+                                        dataframe %>%
+                                                dplyr::summarize_at(vars(!!!cols), 
+                                                                    list(COUNT = function(x) length(x),
+                                                                         DISTINCT_COUNT = 
+                                                                                 function(x) length(unique(x))))
+                        
+                } else {
+                                output_1 <-
+                                dataframe %>%
+                                        dplyr::summarize_at(vars(everything()), 
+                                                            list(COUNT = function(x) length(x),
+                                                                 DISTINCT_COUNT = 
+                                                                         function(x) length(unique(x))))
+                                
+                        
+                }
+                
+                output_2 <- 
+                        output_1 %>%
+                        tidyr::pivot_longer(cols = everything(),
+                                            names_pattern = "(^.*?)[_](.*$)",
+                                            names_to = c("Variable", "Metric Type"),
+                                            values_to = "Metric") %>%
+                        tidyr::pivot_wider(id_cols = Variable,
+                                           names_from = `Metric Type`,
+                                           values_from = Metric)
+                                
+                
+                return(output_2)
+        }

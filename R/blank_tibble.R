@@ -1,15 +1,17 @@
 #' Create a empty dataframe with column names
 #' This function takes a character vector and creates a 0-row dataframe with the vector as column name.
 #' @param column_names vector of column names
-#' @importFrom dplyr tibble
 #' @importFrom dplyr slice
+#' @importFrom purrr reduce
 #' @export
 
 blank_tibble <-
         function(column_names) {
-                x <- rep("", length(column_names))
-                names(x) <- column_names
-                output <- vector_as_dataframe(vector = x) %>%
-                                        dplyr::slice(-1)
+                output <-
+                column_names %>%
+                        purrr::map(function(x) vector_to_tibble(vector = "",
+                                                                new_col = !!x)) %>%
+                        purrr::reduce(cbind) %>%
+                        slice_off_first_row()
                 return(output)
         }
