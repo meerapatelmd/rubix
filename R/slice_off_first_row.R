@@ -7,3 +7,5 @@ slice_off_first_row <-
                 dataframe %>%
                         dplyr::slice(-1)
         }
+
+

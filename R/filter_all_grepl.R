@@ -10,25 +10,23 @@
 #' @param ignore.case boolean the ignore.case argument of grepl function
 #' @export
 
-filter_at_grepl <-
+filter_all_grepl_any <-
         function(dataframe,
-                 ...,
                  grepl_phrase,
                  evaluates_to = TRUE,
                  ignore.case = TRUE) {
                 
-                col <- dplyr::enquos(...)
                 
                 if (evaluates_to == TRUE) {
                         return(
                                 dataframe %>%
-                                        dplyr::filter_at(dplyr::vars(!!!col),
+                                        dplyr::filter_all(dplyr::vars(!!col),
                                                          dplyr::any_vars(grepl(grepl_phrase, ., ignore.case = ignore.case) == TRUE))
                         )
                 } else {
                         return(
                                 dataframe %>%
-                                        dplyr::filter_at(dplyr::vars(!!!col),
+                                        dplyr::filter_at(dplyr::vars(!!col),
                                                          dplyr::any_vars(grepl(grepl_phrase, ., ignore.case = ignore.case) == FALSE))
                         )
                 }

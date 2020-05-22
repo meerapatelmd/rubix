@@ -2,7 +2,7 @@
 #' @importFrom dplyr enquo
 #' @importFrom dplyr filter_at
 #' @importFrom dplyr vars
-#' @importFrom dplyr any_vars
+#' @importFrom dplyr all_vars
 #' @param dataframe input dataframe
 #' @param col column to filter
 #' @param grepl_phrase phrase that is being filtered for
@@ -10,7 +10,7 @@
 #' @param ignore.case boolean the ignore.case argument of grepl function
 #' @export
 
-filter_at_grepl <-
+filter_at_grepl_all <-
         function(dataframe,
                  ...,
                  grepl_phrase,
@@ -23,13 +23,13 @@ filter_at_grepl <-
                         return(
                                 dataframe %>%
                                         dplyr::filter_at(dplyr::vars(!!!col),
-                                                         dplyr::any_vars(grepl(grepl_phrase, ., ignore.case = ignore.case) == TRUE))
+                                                         dplyr::all_vars(grepl(grepl_phrase, ., ignore.case = ignore.case) == TRUE))
                         )
                 } else {
                         return(
                                 dataframe %>%
                                         dplyr::filter_at(dplyr::vars(!!!col),
-                                                         dplyr::any_vars(grepl(grepl_phrase, ., ignore.case = ignore.case) == FALSE))
+                                                         dplyr::all_vars(grepl(grepl_phrase, ., ignore.case = ignore.case) == FALSE))
                         )
                 }
         }
