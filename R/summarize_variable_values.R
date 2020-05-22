@@ -58,7 +58,7 @@ summarize_variable_values <-
                 output_2 <- 
                         output_1 %>%
                         tidyr::pivot_longer(cols = everything(),
-                                            names_pattern = "(^.*?)[_](.*$)",
+                                            names_pattern = "(^.*?)[_](VALUES)",
                                             names_to = c("Variable", "Metric Type"),
                                             values_to = "Metric") %>%
                         tidyr::pivot_wider(id_cols = Variable,
