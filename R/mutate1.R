@@ -6,10 +6,17 @@
 
 
 mutate1 <-
-        function(dataframe, column_name, value) {
-                column_name <- dplyr::enquo(column_name)
-                dataframe %>%
-                        dplyr::mutate(`:=`(!!column_name, value)) %>%
-                        dplyr::select(!!column_name, everything())
+        function(dataframe, ...) {
+                col <- list(...)
+                for (i in 1:length(col)) {
+                        dataframe <-
+                                dataframe %>%
+                                dplyr::mutate(`:=`(!!names(col)[i], col[[i]])) 
+                                
+                                
+                }
+
+                 dataframe %>%
+                         dplyr::select(!!names(col), everything())
         }
 

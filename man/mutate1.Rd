@@ -4,7 +4,7 @@
 \alias{mutate1}
 \title{Mutate a column to position 1}
 \usage{
-mutate1(dataframe, column_name, value)
+mutate1(dataframe, ...)
 }
 \description{
 Mutate a column to position 1
