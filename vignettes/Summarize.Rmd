@@ -39,9 +39,14 @@ rubix::summarize_variables(mtcars, mpg, cyl)
 
 
 ## Summarize Numeric Variables  
-Additional metrics can be derived from variables that contain numeric data. The `summarize_numeric_var()` function either takes the provided variables or selects for variables of numeric, integer, or double classes and calculates summary statistics with both na.rm = FALSE (all _NA suffixed outputs) and na.rm = TRUE parameters. 
-```{r}
-rubix::summar
+Additional metrics can be derived from variables that contain numeric data. The `summarize_numeric_var()` function either takes variables as arguments or selects for variables of numeric, integer, or double classes and calculates summary statistics with both na.rm = FALSE (all _NA suffixed outputs) and na.rm = TRUE parameters. 
+```{r summarize_numeric_var}
+rubix::summarize_numeric_vars(mtcars)
+```
+Like the sibling function, this function also may take specific variables as arguments. 
+
+```{r summarize_numeric_var2}
+rubix::summarize_numeric_vars(mtcars, disp)
 ```
 
 

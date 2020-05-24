@@ -46,7 +46,8 @@ summarize_numeric_vars <-
                                 
                                 output_1 <-
                                         .data %>% 
-                                                dplyr::summarize_at(vars(!!!cols), summary_functions)
+                                                dplyr::select(vars(!!!cols)) %>%
+                                                dplyr::summarize_all(summary_functions)
                         
                 } else {
                                 output_1 <-
