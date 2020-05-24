@@ -21,4 +21,7 @@ Imports:
 Remotes:
     patelm9/centipede,
     patelm9/secretary
-    
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
