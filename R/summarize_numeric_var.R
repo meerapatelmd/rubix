@@ -45,8 +45,8 @@ summarize_numeric_vars <-
                                 cols <- dplyr::enquos(...)
                                 
                                 output_1 <-
-                                        .data %>% 
-                                                dplyr::select(vars(!!!cols)) %>%
+                                        .data %>%
+                                                dplyr::select(!!!cols) %>%
                                                 dplyr::summarize_all(summary_functions)
                         
                 } else {
