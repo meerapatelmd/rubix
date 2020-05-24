@@ -44,6 +44,22 @@ summarize_numeric_vars <-
                         
                                 cols <- dplyr::enquos(...)
                                 
+                        
+                                .data_qa <-
+                                    .data %>%
+                                            dplyr::select(!!!cols)
+                                
+                                
+                                
+                                .data_qa <- sapply(.data_qa, is_integer_or_number, USE.NAMES = TRUE)
+                                .data_qa <- .data_qa[.data_qa == FALSE]
+                                
+                                if (length(.data_qa) > 0) {
+                                        stop(paste(names(.data_qa), collapse = ", "), ": not numeric, integer, or double.")
+                                }
+                               
+                                
+                                    
                                 output_1 <-
                                         .data %>%
                                                 dplyr::select(!!!cols) %>%

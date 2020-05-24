@@ -46,9 +46,15 @@ rubix::summarize_numeric_vars(mtcars)
 Like the sibling function, this function also may take specific variables as arguments. 
 
 ```{r summarize_numeric_var2}
-rubix::summarize_numeric_vars(mtcars, disp)
+rubix::summarize_numeric_vars(mtcars, cyl, disp)
 ```
 
+```{r}
+mtcars2 <- mtcars
+mtcars2$cyl <- as.character(mtcars2$cyl)
+
+rubix::summarize_numeric_vars(mtcars2, cyl, disp)
+```
 
 
 
