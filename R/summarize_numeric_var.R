@@ -7,7 +7,7 @@
 #' @importFrom dplyr mutate_all
 #' @export
 
-summarize_numerics <-
+summarize_numeric_vars <-
         function(.data, ...) {
                 
                 is_integer_or_number <-
