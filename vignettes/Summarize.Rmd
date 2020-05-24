@@ -10,6 +10,7 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  error = TRUE,
   comment = "#>"
 )
 ```
@@ -49,12 +50,19 @@ Like the sibling function, this function also may take specific variables as arg
 rubix::summarize_numeric_vars(mtcars, cyl, disp)
 ```
 
-```{r}
+However, if one of the arguments is not an integer, numeric, or double, an error will be thrown:
+
+```{r summarize_numeric_var2_error}
 mtcars2 <- mtcars
 mtcars2$cyl <- as.character(mtcars2$cyl)
-
 rubix::summarize_numeric_vars(mtcars2, cyl, disp)
 ```
 
+# Summarizing Variable Values  
+While `summarize_` functions for variables provides a comprehensive set of summary statistics and metadata, the `summarize_values()` function returns all counts for the unique values for each variable. 
+
+```{r}
+rubix::summarize_values(mtcars)
+```
 
 
