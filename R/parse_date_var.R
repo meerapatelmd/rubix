@@ -5,7 +5,12 @@
 #' @importFrom dplyr enquos
 #' @importFrom rlang as_name
 #' @import dplyr
-#' @import lubridate
+#' @importFrom lubridate ymd
+#' @importFrom lubridate mdy
+#' @importFrom lubridate ydm
+#' @importFrom lubridate myd
+#' @importFrom lubridate dmy 
+#' @importFrom lubridate dym
 #' @export
 
 parse_date_var <-
