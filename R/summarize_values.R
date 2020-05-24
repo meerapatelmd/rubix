@@ -9,6 +9,7 @@
 #' @importFrom dplyr desc
 #' @export
 
+
 summarize_values <-
         function(.data,
                  ...,
@@ -16,24 +17,30 @@ summarize_values <-
                 
                 if (!missing(...)) {
                                 
-                        output <-
                                 cols <- enquos(...)
                                 col_labels <- sapply(cols, rlang::as_name)
                                 cols %>%
-                                        purrr::map(function(x) .data %>%
-                                                                group_by(!!x) %>%
+                                        purrr::map(function(x) .data %>% 
+                                                                dplyr::select(!!x) %>% 
+                                                                dplyr::rename_all(stringr::str_replace_all, "^.*$", "Value") %>% 
+                                                                dplyr::group_by_all() %>%
                                                                 summarize(COUNT = n())) %>%
-                                        purrr::set_names(col_labels)
+                                        purrr::set_names(col_labels) %>%
+                                        dplyr::bind_rows(.id = "Variable")
                         
                 } else {
-                        output <- 
+                        
                                 cols <- colnames(.data)
                                 #print(cols)
                                 cols %>%
                                         purrr::map(function(x) .data %>%
-                                                                dplyr::select(!!x) %>%
-                                                           group_by_all() %>%
-                                                           summarize(COUNT = n())) %>%
-                                        purrr::set_names(cols)
+                                                                dplyr::select(!!x) %>% 
+                                                                dplyr::rename_all(stringr::str_replace_all, "^.*$", "Value") %>%
+                                                           dplyr::group_by_all() %>%
+                                                           dplyr::summarize(COUNT = n())) %>%
+                                        purrr::set_names(cols) %>%
+                                        dplyr::bind_rows(.id = "Variable")
                 }
+                
+
         }
