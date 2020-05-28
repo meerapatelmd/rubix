@@ -6,7 +6,7 @@
 #' @importFrom dplyr ungroup
 #' @export
 
-group_by_aggregate <- 
+group_by_unique_aggregate <- 
                 function(dataframe, 
                          ...,
                          agg.col,
@@ -19,7 +19,7 @@ group_by_aggregate <-
                                         
                                         dataframe %>%
                                                 dplyr::group_by(!!!group_by_cols) %>%
-                                                dplyr::summarize_at(vars(!!agg.col), function(x) paste(x, collapse = collapse)) %>%
+                                                dplyr::summarize_at(vars(!!agg.col), function(x) paste(unique(x), collapse = collapse)) %>%
                                                 dplyr::ungroup()
                 
                 
