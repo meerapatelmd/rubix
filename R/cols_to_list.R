@@ -35,7 +35,7 @@ cols_to_list <-
                                                 
                                                 dataframe <-
                                                         dataframe %>%
-                                                        dplyr::select(!!id_col, !!!cols)
+                                                        dplyr::select(!!id_column_name, !!!cols)
                                                 
                                                 column_names <- 
                                                         dataframe %>%
@@ -75,7 +75,7 @@ cols_to_list <-
                                                 output <- 
                                                         column_names %>%
                                                         purrr::map(function(x) dataframe %>%
-                                                                           dplyr::select(!!id_col, all_of(x)))
+                                                                           dplyr::select(!!id_column_name, all_of(x)))
                                                 
                                                
                                                 
