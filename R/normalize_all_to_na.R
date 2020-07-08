@@ -7,7 +7,7 @@
 
 
 normalize_all_to_na <- 
-        function(.data, blanks = TRUE, ...) {
+        function(.data, blanks = TRUE) {
                 .data <-
                 .data %>%
                         dplyr::mutate_all(stringr::str_replace_all, "^NA$", NA_character_) 
@@ -19,4 +19,6 @@ normalize_all_to_na <-
                                 dplyr::mutate_all(stringr::str_replace_all, "^$", NA_character_)
                         
                 }
+                
+                return(.data)
         }

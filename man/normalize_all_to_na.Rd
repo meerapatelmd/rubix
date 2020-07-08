@@ -4,7 +4,7 @@
 \alias{normalize_all_to_na}
 \title{Normalize a set of values to a true NA}
 \usage{
-normalize_all_to_na(.data, blanks = TRUE, ...)
+normalize_all_to_na(.data, blanks = TRUE)
 }
 \description{
 Normalize a set of values to a true NA
