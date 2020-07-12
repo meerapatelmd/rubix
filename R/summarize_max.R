@@ -4,7 +4,7 @@
 #' @importFrom dplyr mutate_at
 #' @importFrom dplyr summarise_at
 #' @export
-summarize_max_value_per_column <-
+summarize_max <-
         function(.data, ..., na.rm = TRUE) {
                 max_value_vars <- enquos(...)
 

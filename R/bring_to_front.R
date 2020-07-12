@@ -6,9 +6,9 @@
 
 
 bring_to_front <-
-        function(dataframe, ...) {
+        function(.data, ...) {
                 cols <- dplyr::enquos(...)
-                dataframe %>% 
+                .data %>% 
                         dplyr::select(!!!cols, dplyr::everything())
         }
 

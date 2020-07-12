@@ -4,7 +4,7 @@
 \alias{filter_first_row}
 \title{Filter for the first row}
 \usage{
-filter_first_row(dataframe)
+filter_first_row(.data, invert = FALSE)
 }
 \description{
 Filter for the first row

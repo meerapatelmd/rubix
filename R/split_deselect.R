@@ -4,10 +4,17 @@
 
 
 split_deselect <-
-        function(x, column_name, ...) {
-                output <- split(x, x[,column_name] %>% unlist(), ...)
+        function(x, column) {
+                
+                column <- enquo(column)
+                output <- 
+                        split_by(x = x,
+                                 column = !!column)
+                
                 output %>%
                         map_names_set(function(y) y  %>%
-                                                        dplyr::select(-all_of(column_name)))
+                                                        dplyr::select(-(!!column)))
+                
+                
         }
 

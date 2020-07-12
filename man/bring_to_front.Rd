@@ -4,7 +4,7 @@
 \alias{bring_to_front}
 \title{Bring columns to front}
 \usage{
-bring_to_front(dataframe, ...)
+bring_to_front(.data, ...)
 }
 \description{
 Bring columns to front

@@ -1,16 +1,17 @@
-#' Arrange a column of character data class as an integer
+#' Arrange a column any data class as an integer
 #' @import dplyr
 #' @export
 
 arrange_as_integer <-
-        function(dataframe, column, desc = FALSE) {
+        function(.data, column, desc = FALSE) {
                 column <- enquo(column)
+                
 
                 if (desc == FALSE) {
-                        dataframe %>%
+                        .data %>%
                                 dplyr::arrange(as.integer(!!column))
                 } else {
-                        dataframe %>%
+                        .data %>%
                                 dplyr::arrange(desc(as.integer(!!column)))
                 }
 

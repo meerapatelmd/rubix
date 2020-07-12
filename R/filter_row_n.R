@@ -1,20 +1,20 @@
-#' Filter for the first row
+#' Filter for a row n
 #' @importFrom dplyr filter
 #' @importFrom dplyr row_number
 #' @export
 
-filter_first_row <-
-        function(.data, invert = FALSE) {
+filter_row_n <-
+        function(.data, n, invert = FALSE) {
                 if (invert) {
                         
                         .data %>%
-                                dplyr::filter(dplyr::row_number() != 1)
+                                dplyr::filter(dplyr::row_number() != n)
                         
 
                 } else {
                         
                         .data %>%
-                                dplyr::filter(dplyr::row_number() == 1)
+                                dplyr::filter(dplyr::row_number() == n)
                         
                         
                 }

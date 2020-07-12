@@ -17,8 +17,9 @@ summarize_vars_grouped <-
                                 NA_COUNT = ~ length(.[is.na(.)]),
                                 NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
                                 BLANK_COUNT = ~ length(.[. %in% c("")]),
-                                DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"),
-                                DISTINCT_VALUES_EXPR = ~ cave::vector_to_string(.))
+                                DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|") #,
+                                #DISTINCT_VALUES_EXPR = ~ cave::vector_to_string(.)
+                                )
 
                 if (!missing(...)) {
                         

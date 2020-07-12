@@ -5,11 +5,9 @@
 \title{Arrange dataframe based on nchar
 Order a dataframe based on the number of characters in the column provided as an argument.}
 \usage{
-arrange_by_nchar(dataframe, nchar_col, desc = FALSE)
+arrange_by_nchar(.data, nchar_col, desc = FALSE)
 }
 \arguments{
-\item{dataframe}{input dataframe}
-
 \item{nchar_col}{column where number of characters will determine the order}
 
 \item{desc}{Should the output be in descending or ascending order?}

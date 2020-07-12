@@ -3,7 +3,7 @@
 #' @importFrom dplyr filter
 #' @export
 
-rm_row_by_number <-
+filter_out_row_number <-
         function(dataframe, row.number) {
                 dataframe %>%
                         dplyr::filter(row_number() != as.integer(row.number))
