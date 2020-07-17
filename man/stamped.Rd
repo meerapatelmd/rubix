@@ -4,8 +4,11 @@
 \alias{stamped}
 \title{Create Timestamp}
 \usage{
-stamped(string = FALSE)
+stamped(string = FALSE, add_sleep_time = NULL)
+}
+\arguments{
+\item{add_sleep_time}{number of seconds to add between iterations.}
 }
 \description{
-Adds a 1 sec delay in case an identifier is needed
+Adds a time delay in case an identifier is needed (do not want duplicate identifiers since multiple outputs can be created using the same exact date and time within a second)
 }

@@ -1,12 +1,18 @@
 #' Create Timestamp
-#' @description Adds a 1 sec delay in case an identifier is needed
+#' @description Adds a time delay in case an identifier is needed (do not want duplicate identifiers since multiple outputs can be created using the same exact date and time within a second)
+#' @param add_sleep_time number of seconds to add between iterations.
 #' @import stringr
 #' @export
 
 stamped <- 
-        function(string = FALSE) {
+        function(string = FALSE, add_sleep_time = NULL) {
+                
                  x <- as.character(Sys.time())
-                 Sys.sleep(1)
+                 
+                 if (!is.null(add_sleep_time)) {
+                         Sys.sleep(add_sleep_time)
+                 }
+                
                 if (string) {
                         stringr::str_remove_all(x,
                                                 pattern = "[[:punct:]]| ")
