@@ -12,6 +12,7 @@ blank_tibble <-
                         purrr::map(function(x) vector_to_tibble(vector = "",
                                                                 new_col = !!x)) %>%
                         purrr::reduce(cbind) %>%
-                        slice_off_first_row()
+                        slice_first_row()
+                        
                 return(output)
         }
