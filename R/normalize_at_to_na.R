@@ -7,17 +7,29 @@
 normalize_at_to_na <- 
         function(.data, at_col, blanks = TRUE) {
                 
+                str_replace_na_string <-
+                        function(vector) {
+                                vector[vector %in% c("NA")] <- NA
+                                return(vector)
+                        }
+                
+                str_replace_blank <-
+                        function(vector) {
+                                vector[vector %in% c("")] <- NA
+                                return(vector)
+                        }
+                
                 at_col <- enquo(at_col)
                 
                 .data <-
                 .data %>%
-                        dplyr::mutate_at(vars(!!at_col), stringr::str_replace_all, "^NA$", NA_character_) 
+                        dplyr::mutate_at(vars(!!at_col), str_replace_na_string) 
                 
                 if (blanks) {
                         
                         .data <- 
                                 .data %>%
-                                dplyr::mutate_at(vars(!!at_col), stringr::str_replace_all, "^$", NA_character_)
+                                dplyr::mutate_at(vars(!!at_col), str_replace_blank)
                         
                 }
                 
