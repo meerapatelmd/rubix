@@ -1,14 +1,14 @@
+#' Replace "" with <NA>
+#' @return A tibble
+#' @importFrom tibble as_tibble
+#' @export
 
-
-
-
-
-mutate_na_str_to_na <- 
+mutate_all_blank_to_na <- 
         function(.data) {
                 .data <-
                         .data %>%
                         tibble::as_tibble()
                 
-                .data[.data == "NA"] <- NA_character_
+                .data[.data == ""] <- NA_character_
                 return(.data)
         }
