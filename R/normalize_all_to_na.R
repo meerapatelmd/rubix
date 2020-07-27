@@ -9,11 +9,12 @@
 normalize_all_to_na <- 
         function(.data, blanks = TRUE) {
                 
-                .data[.data %in% c("NA")] <- NA
+                .data <- mutate_na_str_to_na(.data = .data)
 
                 if (blanks) {
                         
-                        .data[.data %in% c("")] <- NA
+                        .data <- 
+                                mutate_blank_to_na(.data = .data)
                         
                 }
                 
