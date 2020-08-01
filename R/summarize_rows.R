@@ -9,7 +9,7 @@
 #' @importFrom dplyr desc
 #' @export
 
-summarize_values <-
+summarize_rows <-
         function(dataframe,
                  ...,
                  desc = TRUE) {
