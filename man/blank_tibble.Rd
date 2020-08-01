@@ -2,8 +2,7 @@
 % Please edit documentation in R/blank_tibble.R
 \name{blank_tibble}
 \alias{blank_tibble}
-\title{Create a empty dataframe with column names
-This function takes a character vector and creates a 0-row dataframe with the vector as column name.}
+\title{Create a Blank Tibble}
 \usage{
 blank_tibble(column_names)
 }
@@ -11,6 +10,5 @@ blank_tibble(column_names)
 \item{column_names}{vector of column names}
 }
 \description{
-Create a empty dataframe with column names
-This function takes a character vector and creates a 0-row dataframe with the vector as column name.
+This function takes a character vector and creates a 0-row dataframe with the vector as the column name names.
 }

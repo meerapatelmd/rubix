@@ -1,5 +1,5 @@
-#' Create a empty dataframe with column names
-#' This function takes a character vector and creates a 0-row dataframe with the vector as column name.
+#' Create a Blank Tibble
+#' @description  This function takes a character vector and creates a 0-row dataframe with the vector as the column name names.  
 #' @param column_names vector of column names
 #' @importFrom dplyr slice
 #' @importFrom purrr reduce

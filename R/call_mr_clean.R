@@ -2,6 +2,7 @@
 #' Convert all columns to character class and trim all left and right white spaces.
 #' @param dataframe input dataframe
 #' @importFrom dplyr mutate_all
+#' @importFrom dplyr %>% 
 #' @export
 
 call_mr_clean <- function(dataframe) {

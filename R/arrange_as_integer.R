@@ -1,4 +1,5 @@
-#' Arrange a column any data class as an integer
+#' Arrange by Column as an Integer
+#' @description Perform an arrange function call on a dataframe with the values of the target column as an integer class.
 #' @import dplyr
 #' @export
 

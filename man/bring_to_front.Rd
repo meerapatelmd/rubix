@@ -2,10 +2,10 @@
 % Please edit documentation in R/bring_to_front.R
 \name{bring_to_front}
 \alias{bring_to_front}
-\title{Bring columns to front}
+\title{Bring Columns to the Front}
 \usage{
 bring_to_front(.data, ...)
 }
 \description{
-Bring columns to front
+Bring Columns to the Front
 }

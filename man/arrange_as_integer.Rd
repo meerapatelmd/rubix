@@ -2,10 +2,10 @@
 % Please edit documentation in R/arrange_as_integer.R
 \name{arrange_as_integer}
 \alias{arrange_as_integer}
-\title{Arrange a column any data class as an integer}
+\title{Arrange by Column as an Integer}
 \usage{
 arrange_as_integer(.data, column, desc = FALSE)
 }
 \description{
-Arrange a column any data class as an integer
+Perform an arrange function call on a dataframe with the values of the target column as an integer class.
 }
