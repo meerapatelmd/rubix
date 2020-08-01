@@ -4,7 +4,8 @@
 
 arrange_as_integer <-
         function(.data, column, desc = FALSE) {
-                column <- enquo(column)
+                
+                column <- dplyr::enquo(column)
                 
 
                 if (desc == FALSE) {

@@ -8,6 +8,7 @@
 
 cleanup_listnames <-
         function(list) {
+                .Deprecated()
                 names(list) <-
                         names(list) %>%
                                 purrr::map(centipede::trimws, "both") %>%

@@ -6,6 +6,7 @@
 
 cleanup_colnames <-
         function(dataframe) {
+                .Deprecated()
                 x <-
                         dataframe %>%
                                 dplyr::rename_all(trimws, "both") %>%

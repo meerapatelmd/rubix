@@ -3,7 +3,7 @@
 #' @importFrom purrr map2
 #' @export
 
-release_df <-
+release <-
         function(dataframe) {
                 
                 .Deprecated()
