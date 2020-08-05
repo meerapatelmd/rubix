@@ -3,7 +3,7 @@
 #' @importFrom stringr str_replace_all
 #' @export
 
-mutate_all_rm_multibyte_chars <-
+rm_multibyte_chars <-
     function(dataframe) {
         return(
             dataframe %>%

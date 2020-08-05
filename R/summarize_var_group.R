@@ -7,7 +7,7 @@
 #' @importFrom dplyr mutate_all
 #' @export
 
-summarize_vars_grouped <-
+summarize_var_group <-
         function(.data, ...) {
                 
                 summary_functions <-
