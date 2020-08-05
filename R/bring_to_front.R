@@ -1,5 +1,5 @@
 #' Bring Columns to the Front
-#' @dataframe Bring a vector of columns to the front of a dataframe. 
+#' @description  Bring a vector of columns to the front of a dataframe. 
 #' @importFrom magrittr %>% 
 #' @importFrom dplyr enquos
 #' @importFrom dplyr select
