@@ -7,5 +7,5 @@
 filterByList(.data, ...)
 }
 \description{
-Filter By a List and Other Filters
+A List object with name as filter fields and values can be used by splicing it with !!! when included as an argument.
 }
