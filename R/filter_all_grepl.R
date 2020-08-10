@@ -10,7 +10,7 @@
 #' @param ignore.case boolean the ignore.case argument of grepl function
 #' @export
 
-filter_all_grepl_any <-
+filter_all_grepl <-
         function(dataframe,
                  grepl_phrase,
                  evaluates_to = TRUE,
