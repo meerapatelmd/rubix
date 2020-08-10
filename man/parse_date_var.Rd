@@ -15,3 +15,9 @@ list of dataframes for each parsed date variable along with the parsed result re
 \description{
 This function takes a character variable of dates in various formats and parses it using a battery of parsing functions.
 }
+\seealso{
+\code{\link[rlang]{as_name}}
+ \code{\link[purrr]{map}},\code{\link[purrr]{set_names}},\code{\link[purrr]{map2}}
+ \code{\link[dplyr]{select}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{bind}}
+ \code{\link[lubridate]{ymd}}
+}

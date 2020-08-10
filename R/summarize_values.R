@@ -1,13 +1,17 @@
 #' Summarize the counts of values in columns
 #' @description To group by more than 1 variable can be summarized using summarize_grouped_vars().
 #' @param ... grouping vars. If missing, groups and summarizes based on all columns.
-#' @importFrom dplyr group_by
-#' @importFrom dplyr ungroup
-#' @importFrom dplyr enquos
-#' @importFrom dplyr summarize
-#' @importFrom dplyr arrange
-#' @importFrom dplyr desc
-#' @export
+#' @seealso 
+#'  \code{\link[rlang]{as_name}}
+#'  \code{\link[purrr]{map}},\code{\link[purrr]{set_names}}
+#'  \code{\link[dplyr]{select}},\code{\link[dplyr]{select_all}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{bind}},\code{\link[dplyr]{summarise}}
+#'  \code{\link[stringr]{str_replace}}
+#' @rdname summarize_values
+#' @export 
+#' @importFrom rlang as_name
+#' @importFrom purrr map set_names
+#' @importFrom dplyr select rename_all group_by_all bind_rows summarize %>% 
+#' @importFrom stringr str_replace_all
 
 
 summarize_values <-

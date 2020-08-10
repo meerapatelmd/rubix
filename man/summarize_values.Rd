@@ -12,3 +12,9 @@ summarize_values(.data, ..., desc = TRUE)
 \description{
 To group by more than 1 variable can be summarized using summarize_grouped_vars().
 }
+\seealso{
+\code{\link[rlang]{as_name}}
+ \code{\link[purrr]{map}},\code{\link[purrr]{set_names}}
+ \code{\link[dplyr]{select}},\code{\link[dplyr]{select_all}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{bind}},\code{\link[dplyr]{summarise}}
+ \code{\link[stringr]{str_replace}}
+}
