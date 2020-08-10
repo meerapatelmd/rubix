@@ -22,6 +22,7 @@ filter_all_grepl_all <-
                         )
                 } else {
                         return(
+                                dataframe %>% 
                                 dplyr::filter_all(all_vars(grepl(grepl_phrase, ., ignore.case = ignore.case) == FALSE))
                         )
                 }

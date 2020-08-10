@@ -7,5 +7,5 @@
 bring_to_front(.data, ...)
 }
 \description{
-Bring Columns to the Front
+Bring a vector of columns to the front of a dataframe.
 }
