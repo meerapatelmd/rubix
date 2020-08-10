@@ -1,0 +1,68 @@
+---
+title: "Summarize Variables"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Summarize Variables}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  error = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rubix)
+library(cave)
+data("mtcars")
+```
+
+# Introduction  
+`Summarize_` wrappers to the dplyr functions of the same name were developed to quickly QA the depth and breadth of data in a given dataframe. The most comprehensive function in this family of functions are the summarize_variables function, where counts are returned as well as a string of column names that can be easily converted back into a vector using the `string_to_vector()` function in the cave R package. 
+
+```{r summarize_variables function}
+rubix::summarize_variables(mtcars)
+```
+
+Summary functions include:  
+1. Total and distinct counts  
+2. Counts for NA (ie. <NA>), NA strings (ie "NA"), and blank values that when combined, can provide an overview of missingness in the dataframe  
+3. Unique values found within the particular variable in both a pipe-separated string as well as a R expression that can be evaluated back into a vector using the `string_to_vector()` function in the cave R package.  
+
+The scope of the summary may also be limited by variable: 
+```{r}
+rubix::summarize_variables(mtcars, mpg, cyl)
+```
+
+
+## Summarize Numeric Variables  
+Additional metrics can be derived from variables that contain numeric data. The `summarize_numeric_var()` function either takes variables as arguments or selects for variables of numeric, integer, or double classes and calculates summary statistics with both na.rm = FALSE (all _NA suffixed outputs) and na.rm = TRUE parameters. 
+```{r summarize_numeric_var}
+rubix::summarize_numeric_vars(mtcars)
+```
+Like the sibling function, this function also may take specific variables as arguments. 
+
+```{r summarize_numeric_var2}
+rubix::summarize_numeric_vars(mtcars, cyl, disp)
+```
+
+However, if one of the arguments is not an integer, numeric, or double, an error will be thrown:
+
+```{r summarize_numeric_var2_error}
+mtcars2 <- mtcars
+mtcars2$cyl <- as.character(mtcars2$cyl)
+rubix::summarize_numeric_vars(mtcars2, cyl, disp)
+```
+
+# Summarizing Variable Values  
+While `summarize_` functions for variables provides a comprehensive set of summary statistics and metadata, the `summarize_values()` function returns all counts for the unique values for each variable. 
+
+```{r}
+rubix::summarize_values(mtcars)
+```
+
+
