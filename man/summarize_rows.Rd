@@ -12,3 +12,7 @@ summarize_rows(dataframe, ..., desc = TRUE)
 \description{
 To group by more than 1 variable can be summarized using summarize_grouped_vars().
 }
+\seealso{
+\code{\link[cave]{vector_to_string}}
+ \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{summarise}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{desc}},\code{\link[dplyr]{group_by_all}}
+}

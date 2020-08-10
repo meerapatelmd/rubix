@@ -1,13 +1,13 @@
 #' Summarize the counts of values in columns
 #' @description To group by more than 1 variable can be summarized using summarize_grouped_vars().
 #' @param ... grouping vars. If missing, groups and summarizes based on all columns.
-#' @importFrom dplyr group_by
-#' @importFrom dplyr ungroup
-#' @importFrom dplyr enquos
-#' @importFrom dplyr summarize
-#' @importFrom dplyr arrange
-#' @importFrom dplyr desc
-#' @export
+#' @seealso 
+#'  \code{\link[cave]{vector_to_string}}
+#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{summarise}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{desc}},\code{\link[dplyr]{group_by_all}}
+#' @rdname summarize_rows
+#' @export 
+#' @importFrom cave vector_to_string
+#' @importFrom dplyr enquos group_by summarize arrange ungroup desc group_by_at group_by_all %>% 
 
 summarize_rows <-
         function(dataframe,

@@ -12,3 +12,8 @@ summarize_variables(.data, ...)
 \description{
 Summarize a variable by the standard summary functions
 }
+\seealso{
+\code{\link[cave]{vector_to_string}}
+ \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{mutate_all}}
+ \code{\link[tidyr]{pivot_longer}},\code{\link[tidyr]{pivot_wider}}
+}
