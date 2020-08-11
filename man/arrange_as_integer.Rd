@@ -2,10 +2,33 @@
 % Please edit documentation in R/arrange_as_integer.R
 \name{arrange_as_integer}
 \alias{arrange_as_integer}
-\title{Arrange by Column as an Integer}
+\title{Arrange by a Given Column as Integer}
 \usage{
 arrange_as_integer(.data, column, desc = FALSE)
 }
+\arguments{
+\item{.data}{PARAM_DESCRIPTION}
+
+\item{column}{PARAM_DESCRIPTION}
+
+\item{desc}{PARAM_DESCRIPTION, Default: FALSE}
+}
+\value{
+OUTPUT_DESCRIPTION
+}
 \description{
 Perform an arrange function call on a dataframe with the values of the target column as an integer class.
+}
+\details{
+DETAILS
+}
+\examples{
+\dontrun{
+if(interactive()){
+ #EXAMPLE1
+ }
+}
+}
+\seealso{
+\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{arrange}}
 }

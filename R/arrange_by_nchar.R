@@ -1,13 +1,14 @@
-#' Arrange by Character Number 
-#' @description  Order a dataframe based on the number of characters in the column provided as an argument.
-#' @param nchar_col column where number of characters will determine the order
-#' @param desc Should the output be in descending or ascending order?
-#' @importFrom dplyr mutate
-#' @importFrom dplyr arrange
-#' @importFrom dplyr select
-#' @importFrom dplyr enquo
-#' @importFrom magrittr %>% 
-#' @export
+#' @title 
+#' Arrange a Column by Character Number 
+#' @description 
+#' Order a dataframe based on the number of characters in the column provided as an argument.
+#' @param nchar_col     column where number of characters will determine the order
+#' @param desc          Should the output be in descending or ascending order?
+#' @seealso 
+#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{select}}
+#' @rdname arrange_by_nchar
+#' @export 
+#' @importFrom dplyr enquo mutate arrange select %>%
 
 arrange_by_nchar <-
         function(.data, nchar_col, desc = FALSE) {

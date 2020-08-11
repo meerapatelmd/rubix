@@ -2,7 +2,7 @@
 % Please edit documentation in R/arrange_by_nchar.R
 \name{arrange_by_nchar}
 \alias{arrange_by_nchar}
-\title{Arrange by Character Number}
+\title{Arrange a Column by Character Number}
 \usage{
 arrange_by_nchar(.data, nchar_col, desc = FALSE)
 }
@@ -13,4 +13,7 @@ arrange_by_nchar(.data, nchar_col, desc = FALSE)
 }
 \description{
 Order a dataframe based on the number of characters in the column provided as an argument.
+}
+\seealso{
+\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{select}}
 }

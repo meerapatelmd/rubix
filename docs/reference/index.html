@@ -8,6 +8,13 @@
 
 <title>Function reference • rubix</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -40,6 +47,7 @@
 
 
 <meta property="og:title" content="Function reference" />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -221,15 +229,33 @@ This function takes a dataframe and changes column names in the following order:
       </tr><tr>
         
         <td>
+          <p><code><a href="filterByList.html">filterByList()</a></code> </p>
+        </td>
+        <td><p>Filter By a List and Other Filters</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filterList.html">filterList()</a></code> </p>
+        </td>
+        <td><p>Filter by a list or vector</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filter_all_grepl.html">filter_all_grepl()</a></code> </p>
+        </td>
+        <td><p>Filter at a variable that contains or doesn't contain a phrase</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="filter_all_grepl_all.html">filter_all_grepl_all()</a></code> </p>
         </td>
         <td><p>Filter all the variables for all matches to the grepl phrase</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="filter_all_grepl_any.html">filter_all_grepl_any()</a></code> <code><a href="filter_all_grepl_any.html">filter_all_grepl_any()</a></code> </p>
+          <p><code><a href="filter_all_grepl_any.html">filter_all_grepl_any()</a></code> </p>
         </td>
-        <td><p>Filter at a variable that contains or doesn't contain a phrase</p></td>
+        <td><p>Filter all the variables for any matches to the grepl phrase</p></td>
       </tr><tr>
         
         <td>
@@ -381,12 +407,6 @@ Convert all columns to character class and trim all left and right white spaces.
       </tr><tr>
         
         <td>
-          <p><code><a href="mutate_all_rm_multibyte_chars.html">mutate_all_rm_multibyte_chars()</a></code> </p>
-        </td>
-        <td><p>Remove all multibyte characters in the dataframe</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="mutate_as_mdy.html">mutate_as_mdy()</a></code> </p>
         </td>
         <td><p>Mutate given cols into a mdy date</p></td>
@@ -531,6 +551,12 @@ Convert all columns to character class and trim all left and right white spaces.
       </tr><tr>
         
         <td>
+          <p><code><a href="rm_multibyte_chars.html">rm_multibyte_chars()</a></code> </p>
+        </td>
+        <td><p>Remove all multibyte characters in the dataframe</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="sample_n_or_bust.html">sample_n_or_bust()</a></code> </p>
         </td>
         <td><p>Sample a dataframe for n obs and returns full dataframe if n &gt; nrow</p></td>
@@ -615,13 +641,13 @@ Convert all columns to character class and trim all left and right white spaces.
       </tr><tr>
         
         <td>
-          <p><code><a href="summarize_variables.html">summarize_variables()</a></code> </p>
+          <p><code><a href="summarize_var_group.html">summarize_var_group()</a></code> </p>
         </td>
         <td><p>Summarize a variable by the standard summary functions</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="summarize_vars_grouped.html">summarize_vars_grouped()</a></code> </p>
+          <p><code><a href="summarize_variables.html">summarize_variables()</a></code> </p>
         </td>
         <td><p>Summarize a variable by the standard summary functions</p></td>
       </tr><tr>

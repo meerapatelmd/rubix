@@ -2,7 +2,7 @@
 % Please edit documentation in R/summarize_variables.R
 \name{summarize_variables}
 \alias{summarize_variables}
-\title{Summarize a variable by the standard summary functions}
+\title{Summarize a Variable}
 \usage{
 summarize_variables(.data, ...)
 }
@@ -10,7 +10,7 @@ summarize_variables(.data, ...)
 \item{...}{grouping vars. If missing, all variables will be summarized.}
 }
 \description{
-Summarize a variable by the standard summary functions
+Summarize a Variable
 }
 \seealso{
 \code{\link[cave]{vector_to_string}}

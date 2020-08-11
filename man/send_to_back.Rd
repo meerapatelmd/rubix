@@ -4,7 +4,7 @@
 \alias{send_to_back}
 \title{Send columns to back}
 \usage{
-send_to_back(dataframe, ...)
+send_to_back(.data, ...)
 }
 \description{
 Send columns to back

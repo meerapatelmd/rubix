@@ -2,10 +2,22 @@
 % Please edit documentation in R/vector_to_tibble.R
 \name{vector_to_tibble}
 \alias{vector_to_tibble}
-\title{Take a single vector of values and convert it to a dataframe}
+\title{Convert a Vector to a Tibble}
 \usage{
 vector_to_tibble(vector, new_col)
 }
+\arguments{
+\item{vector}{Vector that will become the column in the tibble}
+
+\item{new_col}{Name of the new column}
+}
+\value{
+A tibble with 1 column with `new_col` as the name.
+}
 \description{
-This function was written in cases were a list of vectors needed to be aggregated either by bind_cols and bind_rows of the dplyr package.
+Convert a Vector to a Tibble
+}
+\seealso{
+\code{\link[dplyr]{tidyeval-compat}}
+ \code{\link[tibble]{tibble}}
 }

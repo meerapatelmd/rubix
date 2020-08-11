@@ -6,6 +6,27 @@
 \usage{
 bring_to_front(.data, ...)
 }
+\arguments{
+\item{.data}{PARAM_DESCRIPTION}
+
+\item{...}{PARAM_DESCRIPTION}
+}
+\value{
+OUTPUT_DESCRIPTION
+}
 \description{
 Bring a vector of columns to the front of a dataframe.
+}
+\details{
+DETAILS
+}
+\examples{
+\dontrun{
+if(interactive()){
+ #EXAMPLE1
+ }
+}
+}
+\seealso{
+\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{reexports}}
 }
