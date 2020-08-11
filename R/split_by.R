@@ -6,8 +6,11 @@
 
 split_by <-
         function(x, column) {
+                
                 column <- dplyr::enquo(column)
-                split(x, x %>%
+                
+                split(x, 
+                      x %>%
                               dplyr::select(!!column) %>%
                               unlist() %>%
                               unique())

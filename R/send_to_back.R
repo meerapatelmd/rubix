@@ -5,15 +5,18 @@
 #' @export
 
 send_to_back <-
-        function(dataframe, ...) {
+        function(.data, ...) {
                 
                 cols <- dplyr::enquos(...)
                 
+                .data_back <-
+                .data %>% 
+                        dplyr::select(!!!cols)
                 
-                cbind(
-                        dataframe %>%
-                                dplyr::select(-(!!!cols)),
-                        dataframe %>%
-                                dplyr::select(!!!cols)
-                )
+                .data_front <- 
+                        .data %>% 
+                        dplyr::select(-all_of(colnames(.data_back)))
+                
+                .data_front %>%
+                        dplyr::bind_cols(.data_back)
         }

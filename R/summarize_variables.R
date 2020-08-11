@@ -1,4 +1,4 @@
-#' Summarize a variable by the standard summary functions
+#' Summarize a Variable
 #' @param ... grouping vars. If missing, all variables will be summarized.
 #' @seealso 
 #'  \code{\link[cave]{vector_to_string}}
