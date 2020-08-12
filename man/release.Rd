@@ -9,3 +9,7 @@ release(dataframe)
 \description{
 Release all the columns in a dataframe into vectors of the same name
 }
+\seealso{
+\code{\link[dplyr]{select}}
+ \code{\link[purrr]{map2}}
+}

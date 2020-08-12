@@ -1,12 +1,16 @@
+#' @title
 #' Release all the columns in a dataframe into vectors of the same name
-#' @importFrom dplyr select
+#' @seealso 
+#'  \code{\link[dplyr]{select}}
+#'  \code{\link[purrr]{map2}}
+#' @rdname release
+#' @export 
+#' @importFrom dplyr select %>%
 #' @importFrom purrr map2
-#' @export
 
 release <-
         function(dataframe) {
                 
-                .Deprecated()
                 column_names <- colnames(dataframe)
                 
                 output1 <-
