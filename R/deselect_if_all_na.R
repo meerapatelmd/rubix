@@ -1,10 +1,14 @@
+#' @title
 #' Deselect columns that are all NA
-#' @importFrom dplyr select_if
-#' @export
+#' @seealso 
+#'  \code{\link[dplyr]{select_all}}
+#' @rdname deselect_if_all_na
+#' @export 
+#' @importFrom dplyr select_if %>%
 
 
 deselect_if_all_na <-
-        function(dataframe) {
+        function(.data) {
                 
                 all_is_na <- 
                         function(vector) {
@@ -16,6 +20,6 @@ deselect_if_all_na <-
                                 return(!(all_is_na(vector)))
                         }
                 
-                dataframe %>%
+                .data %>%
                         dplyr::select_if(all_is_not_na)
         }

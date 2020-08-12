@@ -14,3 +14,6 @@ summarize_max(.data, ..., na.rm = TRUE)
 \description{
 Summarizes each column with max value
 }
+\seealso{
+\code{\link[dplyr]{tidyeval-compat}}
+}

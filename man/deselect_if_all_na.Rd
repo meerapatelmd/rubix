@@ -4,8 +4,11 @@
 \alias{deselect_if_all_na}
 \title{Deselect columns that are all NA}
 \usage{
-deselect_if_all_na(dataframe)
+deselect_if_all_na(.data)
 }
 \description{
 Deselect columns that are all NA
+}
+\seealso{
+\code{\link[dplyr]{select_all}}
 }

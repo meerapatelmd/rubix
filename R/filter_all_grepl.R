@@ -1,14 +1,15 @@
+#' @title 
 #' Filter at a variable that contains or doesn't contain a phrase
-#' @importFrom dplyr enquo
-#' @importFrom dplyr filter_at
-#' @importFrom dplyr vars
-#' @importFrom dplyr any_vars
 #' @param dataframe input dataframe
 #' @param col column to filter
 #' @param grepl_phrase phrase that is being filtered for
 #' @param evaluates_to whether the filter is for a grepl evaluation of TRUE or FALSE. Defaults to TRUE.
 #' @param ignore.case boolean the ignore.case argument of grepl function
-#' @export
+#' @seealso 
+#'  \code{\link[dplyr]{filter_all}},\code{\link[dplyr]{vars}},\code{\link[dplyr]{all_vars}}
+#' @rdname filter_all_grepl
+#' @export 
+#' @importFrom dplyr filter_all vars any_vars filter_at %>%
 
 filter_all_grepl <-
         function(dataframe,

@@ -1,6 +1,10 @@
+#' @title
 #' Rename all columns with a prefix
-#' @importFrom dplyr rename_all
-#' @export
+#' @seealso 
+#'  \code{\link[dplyr]{select_all}}
+#' @rdname rename_all_prefix
+#' @export 
+#' @importFrom dplyr rename_all %>%
 
 
 rename_all_prefix <-

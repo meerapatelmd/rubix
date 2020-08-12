@@ -9,3 +9,6 @@ rename_all_prefix(dataframe, prefix)
 \description{
 Rename all columns with a prefix
 }
+\seealso{
+\code{\link[dplyr]{select_all}}
+}

@@ -4,7 +4,7 @@
 \alias{format_colnames}
 \title{Format Column Names}
 \usage{
-format_colnames(dataframe)
+format_colnames(.data)
 }
 \description{
 Format is defined as 
@@ -12,4 +12,7 @@ Format is defined as
 2) trailing or leading whitespace removed, 
 3) all punctuation or spaces of any length replaced with a single underscore, 
 4) any trailing underscores are removed, which represent terminal punctuation in the column name
+}
+\seealso{
+\code{\link[dplyr]{select_all}}
 }

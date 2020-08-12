@@ -12,3 +12,6 @@ stamped(string = FALSE, add_sleep_time = NULL)
 \description{
 Adds a time delay in case an identifier is needed (do not want duplicate identifiers since multiple outputs can be created using the same exact date and time within a second)
 }
+\seealso{
+\code{\link[stringr]{str_remove}}
+}

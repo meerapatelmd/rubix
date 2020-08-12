@@ -1,11 +1,13 @@
+#' @title
 #' Summarize a variable by the standard summary functions
 #' @param ... grouping vars. If missing, all variables will be summarized.
-#' @import tidyr 
-#' @importFrom dplyr enquos
-#' @importFrom dplyr summarize_all
-#' @importFrom dplyr summarize_at
-#' @importFrom dplyr mutate_all
-#' @export
+#' @seealso 
+#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{select_all}},\code{\link[dplyr]{mutate_all}}
+#'  \code{\link[tidyr]{pivot_longer}},\code{\link[tidyr]{pivot_wider}}
+#' @rdname summarize_numeric_vars
+#' @export 
+#' @importFrom dplyr enquos select summarize_all select_if mutate_all %>%
+#' @importFrom tidyr pivot_longer pivot_wider
 
 summarize_numeric_vars <-
         function(.data, ...) {

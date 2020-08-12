@@ -1,6 +1,10 @@
+#' @title
 #' Deselect columns that are all NA
-#' @importFrom dplyr select_if
-#' @export
+#' @seealso 
+#'  \code{\link[dplyr]{select_all}}
+#' @rdname deselect_if_all_same
+#' @export 
+#' @importFrom dplyr select_if %>%
 
 
 deselect_if_all_same <-

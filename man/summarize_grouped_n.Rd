@@ -9,3 +9,6 @@ summarize_grouped_n(dataframe, ..., desc = FALSE)
 \description{
 Summarize groups by count
 }
+\seealso{
+\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{summarise}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{desc}}
+}

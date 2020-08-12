@@ -1,11 +1,14 @@
+#' @title
 #' Select cols and convert them to a list
 #' @description This function takes a dataframe and breaks it down into a list by column. The columns can be explicitly provided or if ... is empty, the entire dataframe will be broken down. 
 #' @param id_column_name optional string of the column designated as the identifier that should remain in the output. 
-#' @param named the returned list is named with the column name
-#' @importFrom dplyr enquos
-#' @importFrom dplyr select
+#' @seealso 
+#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}}
+#'  \code{\link[purrr]{map}}
+#' @rdname cols_to_list
+#' @export 
+#' @importFrom dplyr enquos select enquo %>%
 #' @importFrom purrr map
-#' @export
 
 cols_to_list <- 
         function(dataframe, ..., id_column_name = NULL, named = TRUE) {

@@ -1,10 +1,10 @@
+#' @title 
 #' Aggregate Function
-#' @importFrom dplyr enquos
-#' @importFrom dplyr enquo
-#' @importFrom dplyr group_by
-#' @importFrom dplyr summarize_at
-#' @importFrom dplyr ungroup
-#' @export
+#' @seealso 
+#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{summarise_all}}
+#' @rdname group_by_aggregate
+#' @export 
+#' @importFrom dplyr enquos enquo group_by summarize_at ungroup %>%
 
 group_by_aggregate <- 
                 function(dataframe, 

@@ -2,12 +2,15 @@
 % Please edit documentation in R/format_names.R
 \name{format_names}
 \alias{format_names}
-\title{Standardize List Names
-This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals)}
+\title{Standardize List Names}
 \usage{
 format_names(list)
 }
 \description{
-Standardize List Names
 This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals)
+}
+\seealso{
+\code{\link[purrr]{map}}
+ \code{\link[centipede]{trimws}}
+ \code{\link[stringr]{str_replace}},\code{\link[stringr]{str_remove}}
 }

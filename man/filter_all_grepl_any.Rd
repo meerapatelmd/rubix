@@ -23,3 +23,6 @@ filter_all_grepl_any(
 \description{
 This function will return any TRUE findings of the indicated grepl phrase
 }
+\seealso{
+\code{\link[dplyr]{filter_all}}
+}

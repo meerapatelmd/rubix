@@ -1,8 +1,13 @@
+#' @title
 #' Create Timestamp
-#' @description Adds a time delay in case an identifier is needed (do not want duplicate identifiers since multiple outputs can be created using the same exact date and time within a second)
+#' @description 
+#' Adds a time delay in case an identifier is needed (do not want duplicate identifiers since multiple outputs can be created using the same exact date and time within a second)
 #' @param add_sleep_time number of seconds to add between iterations.
-#' @import stringr
-#' @export
+#' @seealso 
+#'  \code{\link[stringr]{str_remove}}
+#' @rdname stamped
+#' @export 
+#' @importFrom stringr str_remove_all
 
 stamped <- 
         function(string = FALSE, add_sleep_time = NULL) {

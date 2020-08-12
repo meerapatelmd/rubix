@@ -9,3 +9,6 @@ select_distinct(dataframe, ...)
 \description{
 Selects columns and get the distinct values back
 }
+\seealso{
+\code{\link[dplyr]{select}},\code{\link[dplyr]{distinct}}
+}

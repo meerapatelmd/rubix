@@ -9,3 +9,6 @@ deselect_if_all_same(dataframe)
 \description{
 Deselect columns that are all NA
 }
+\seealso{
+\code{\link[dplyr]{select_all}}
+}

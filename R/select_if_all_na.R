@@ -1,6 +1,10 @@
+#' @title
 #' Select columns that are all NA
-#' @importFrom dplyr select_if
-#' @export
+#' @seealso 
+#'  \code{\link[dplyr]{select_all}}
+#' @rdname select_if_all_na
+#' @export 
+#' @importFrom dplyr select_if %>%
 
 
 select_if_all_na <-
@@ -10,11 +14,7 @@ select_if_all_na <-
                         function(vector) {
                                 return(all(is.na(vector)))
                         }
-                
-                # all_is_not_na <-
-                #         function(vector) {
-                #                 return(!(all_is_na(vector)))
-                #         }
+
                 
                 dataframe %>%
                         dplyr::select_if(all_is_na)

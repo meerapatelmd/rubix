@@ -4,10 +4,10 @@
 \alias{filter_for_date}
 \title{Filters a dataframe for a date in YYYY-mm-dd format in a timestamp column}
 \usage{
-filter_for_date(dataframe, timestamp_col, date)
+filter_for_date(.data, timestamp_col, date)
 }
 \arguments{
-\item{dataframe}{dataframe with timestamp column}
+\item{.data}{.data with timestamp column}
 
 \item{timestamp_col}{column where timestamp has date and/or datetime data that is in the format YYYY-mm-dd}
 
@@ -18,4 +18,7 @@ dataframe filtered for the date
 }
 \description{
 Filters a dataframe for a date in YYYY-mm-dd format in a timestamp column
+}
+\seealso{
+\code{\link[dplyr]{filter_all}},\code{\link[dplyr]{all_vars}}
 }

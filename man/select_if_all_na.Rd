@@ -9,3 +9,6 @@ select_if_all_na(dataframe)
 \description{
 Select columns that are all NA
 }
+\seealso{
+\code{\link[dplyr]{select_all}}
+}

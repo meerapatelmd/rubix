@@ -25,3 +25,6 @@ filter_all_grepl(
 \description{
 Filter at a variable that contains or doesn't contain a phrase
 }
+\seealso{
+\code{\link[dplyr]{filter_all}},\code{\link[dplyr]{vars}},\code{\link[dplyr]{all_vars}}
+}

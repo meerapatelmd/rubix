@@ -14,7 +14,7 @@
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{reexports}}
 #' @rdname bring_to_front
 #' @export 
-#' @importFrom dplyr enquos select everything
+#' @importFrom dplyr enquos select everything %>%
 
 
 bring_to_front <-

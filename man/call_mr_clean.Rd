@@ -2,8 +2,7 @@
 % Please edit documentation in R/call_mr_clean.R
 \name{call_mr_clean}
 \alias{call_mr_clean}
-\title{General Dataframe Cleanup
-Convert all columns to character class and trim all left and right white spaces.}
+\title{General Dataframe Cleanup}
 \usage{
 call_mr_clean(dataframe)
 }
@@ -11,6 +10,5 @@ call_mr_clean(dataframe)
 \item{dataframe}{input dataframe}
 }
 \description{
-General Dataframe Cleanup
 Convert all columns to character class and trim all left and right white spaces.
 }

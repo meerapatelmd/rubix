@@ -12,3 +12,6 @@ coalesce_at(.data, at_var, ..., remove = FALSE)
 \description{
 This is 2 of 2 coalesce functions.
 }
+\seealso{
+\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{mutate_all}},\code{\link[dplyr]{select}},\code{\link[dplyr]{mutate}}
+}

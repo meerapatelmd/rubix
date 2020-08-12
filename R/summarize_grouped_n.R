@@ -1,11 +1,10 @@
+#' @title 
 #' Summarize groups by count
-#' @importFrom dplyr group_by
-#' @importFrom dplyr ungroup
-#' @importFrom dplyr enquos
-#' @importFrom dplyr summarize
-#' @importFrom dplyr arrange
-#' @importFrom dplyr desc
-#' @export
+#' @seealso 
+#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{summarise}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{desc}}
+#' @rdname summarize_grouped_n
+#' @export 
+#' @importFrom dplyr enquos group_by summarize arrange ungroup desc %>%
 
 
 summarize_grouped_n <-

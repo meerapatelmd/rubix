@@ -9,3 +9,6 @@ group_by_aggregate(dataframe, ..., agg.col, collapse = "|")
 \description{
 Aggregate Function
 }
+\seealso{
+\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{summarise_all}}
+}
