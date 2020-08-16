@@ -308,7 +308,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1>Introduction</h1>
 <p><code>Summarize_</code> wrappers to the dplyr functions of the same name were developed to quickly QA the depth and breadth of data in a given dataframe. The most comprehensive function in this family of functions are the summarize_variables function, where counts are returned as well as a string of column names that can be easily converted back into a vector using the <code>string_to_vector()</code> function in the cave R package.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">rubix<span class="op">::</span><span class="kw">summarize_variables</span>(mtcars)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; # A tibble: 11 x 8</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; # A tibble: 11 x 7</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;    Variable COUNT DISTINCT_COUNT NA_COUNT NA_STR_COUNT BLANK_COUNT</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;      </span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  1 mpg      32    25             0        0            0          </span></a>
@@ -322,19 +322,19 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  9 am       32    2              0        0            0          </span></a>
 <a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 10 gear     32    3              0        0            0          </span></a>
 <a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; 11 carb     32    6              0        0            0          </span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; # … with 2 more variables: DISTINCT_VALUES &lt;chr&gt;, DISTINCT_VALUES_EXPR &lt;chr&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; # … with 1 more variable: DISTINCT_VALUES &lt;chr&gt;</span></a></code></pre></div>
 <p>Summary functions include:<br />
 1. Total and distinct counts<br />
 2. Counts for NA (ie. <NA>), NA strings (ie “NA”), and blank values that when combined, can provide an overview of missingness in the dataframe<br />
 3. Unique values found within the particular variable in both a pipe-separated string as well as a R expression that can be evaluated back into a vector using the <code>string_to_vector()</code> function in the cave R package.</p>
 <p>The scope of the summary may also be limited by variable:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">rubix<span class="op">::</span><span class="kw">summarize_variables</span>(mtcars, mpg, cyl)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2 x 8</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2 x 7</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;   Variable COUNT DISTINCT_COUNT NA_COUNT NA_STR_COUNT BLANK_COUNT</span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;      </span></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 1 mpg      32    25             0        0            0          </span></a>
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 2 cyl      32    3              0        0            0          </span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; # … with 2 more variables: DISTINCT_VALUES &lt;chr&gt;, DISTINCT_VALUES_EXPR &lt;chr&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; # … with 1 more variable: DISTINCT_VALUES &lt;chr&gt;</span></a></code></pre></div>
 <div id="summarize-numeric-variables" class="section level2">
 <h2>Summarize Numeric Variables</h2>
 <p>Additional metrics can be derived from variables that contain numeric data. The <code>summarize_numeric_var()</code> function either takes variables as arguments or selects for variables of numeric, integer, or double classes and calculates summary statistics with both na.rm = FALSE (all _NA suffixed outputs) and na.rm = TRUE parameters.</p>

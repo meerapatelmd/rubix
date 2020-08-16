@@ -8,6 +8,7 @@ split_deselect <-
         function(x, column) {
                 
                 column <- dplyr::enquo(column)
+                
                 output <- 
                         split_by(x = x,
                                  column = !!column)

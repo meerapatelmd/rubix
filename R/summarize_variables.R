@@ -11,7 +11,10 @@
 #' @importFrom tidyr pivot_longer pivot_wider
 
 summarize_variables <-
-        function(.data, ...) {
+        function(.data, ..., incl_expr = FALSE) {
+                
+                
+                if (incl_expr) {
                 
                 summary_functions <-
                         list(
@@ -22,6 +25,16 @@ summarize_variables <-
                                 BLANK_COUNT = ~ length(.[. %in% c("")]),
                                 DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"),
                                 DISTINCT_VALUES_EXPR = ~ cave::vector_to_string(unique(.)))
+                } else {
+                        summary_functions <-
+                                list(
+                                        COUNT = ~ length(.),
+                                        DISTINCT_COUNT = ~ length(unique(.)),
+                                        NA_COUNT = ~ length(.[is.na(.)]),
+                                        NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
+                                        BLANK_COUNT = ~ length(.[. %in% c("")]),
+                                        DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"))
+                }
 
                 if (!missing(...)) {
                         
