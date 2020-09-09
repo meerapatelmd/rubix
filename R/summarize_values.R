@@ -65,6 +65,14 @@ summarize_values <-
                                 #         dplyr::summarize_at(vars(!!summary_var),
                                 #                             ~length(.)) %>%
                                 #         dplyr::ungroup()
+                                #         
+                                
+                                binaryLogic <- 
+                                        function(x) {
+                                                if (x > 0) {
+                                                        1
+                                                }
+                                        }
                                 
                                 .data %>%
                                         dplyr::mutate_at(vars(all_of(inverse_col_labels)), as.character) %>% 
@@ -76,7 +84,8 @@ summarize_values <-
                                         dplyr::summarise_at(vars(!!values_to),
                                                            summaryFunLibrary$categorical) %>%
                                         dplyr::mutate(NET_COUNT = COUNT-(NA_COUNT+NA_STR_COUNT+BLANK_COUNT),
-                                                      NET_DISTINCT_COUNT = DISTINCT_COUNT-(NA_COUNT+NA_STR_COUNT+BLANK_COUNT)) %>%
+                                                      NET_DISTINCT_COUNT = DISTINCT_COUNT-(binaryLogic(NA_COUNT)+
+                                                                                          binaryLogic(NA_STR_COUNT)+ binaryLogic(BLANK_COUNT))) %>%
                                         dplyr::rename(!!values_to := DISTINCT_VALUES) %>%
                                         dplyr::select(!!!cols,
                                                       !!names_to,
