@@ -11,7 +11,7 @@
 #' @importFrom tidyr pivot_longer pivot_wider
 
 summarize_variables <-
-        function(.data, ..., incl_expr = FALSE) {
+        function(.data, ...) {
                 
                 
                 if (incl_expr) {
@@ -36,22 +36,11 @@ summarize_variables <-
                                         DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"))
                 }
 
-                if (!missing(...)) {
-                        
-                                cols <- dplyr::enquos(...)
-                                
-                                output_1 <-
-                                        .data %>%
-                                                dplyr::summarize_at(vars(!!!cols), 
-                                                                    summary_functions)
-                        
-                } else {
-                                output_1 <-
-                                .data %>%
-                                        dplyr::summarize_all(summary_functions)
+                output_1 <-
+                .data %>%
+                        dplyr::summarize_all(summary_functions)
                                 
                         
-                }
                 
                 output_2 <- 
                         output_1   %>%

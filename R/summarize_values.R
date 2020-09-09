@@ -18,6 +18,7 @@
 #' @importFrom rlang as_name
 #' @importFrom dplyr mutate_at group_by_at summarise_at mutate rename select everything
 #' @importFrom tidyr pivot_longer
+#' @importFrom centipede no_na
 #' @importFrom magrittr %>%
 
 summarize_values <-
@@ -42,7 +43,8 @@ summarize_values <-
                                                 DISTINCT_LENGTH = ~length(unique(.)),
                                                 NA_LENGTH = ~length(.[is.na(.)]), 
                                                 BLANK_LENGTH = ~length(.[. %in%  c("")]), 
-                                                DISTINCT_VALUES_AS_CHAR = ~paste(sort(unique(as.character(.))), collapse = "|")
+                                                DISTINCT_STR = ~paste(sort(unique(as.character(.))), collapse = "|"),
+                                                DISTINCT_STR_NA = ~paste(sort(unique(as.character(.)) %>% centipede::no_na()), collapse = "|")
                                         ),
                                         categorical = list(
                                                 COUNT = ~length(.), 
@@ -50,7 +52,8 @@ summarize_values <-
                                                 NA_COUNT = ~length(.[is.na(.)]), 
                                                 NA_STR_COUNT = ~length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]), 
                                                 BLANK_COUNT = ~length(.[. %in%  c("")]), 
-                                                DISTINCT_VALUES = ~paste(unique(as.character(.)), collapse = "|")
+                                                DISTINCT_VALUES = ~paste(sort(unique(as.character(.))), collapse = "|"),
+                                                DISTINCT_VALUES_NA = ~paste(sort(unique(as.character(.)) %>% centipede::no_na()), collapse = "|")
                                         )
                                         )
                                 
