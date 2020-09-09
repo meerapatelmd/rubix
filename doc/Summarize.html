@@ -14,13 +14,29 @@
 
 <title>Summarize Variables</title>
 
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -30,14 +46,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -46,9 +64,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -301,90 +319,91 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(rubix)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(cave)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">data</span>(<span class="st">&quot;mtcars&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(rubix)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(cave)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span></code></pre></div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p><code>Summarize_</code> wrappers to the dplyr functions of the same name were developed to quickly QA the depth and breadth of data in a given dataframe. The most comprehensive function in this family of functions are the summarize_variables function, where counts are returned as well as a string of column names that can be easily converted back into a vector using the <code>string_to_vector()</code> function in the cave R package.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">rubix<span class="op">::</span><span class="kw">summarize_variables</span>(mtcars)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; # A tibble: 11 x 7</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;    Variable COUNT DISTINCT_COUNT NA_COUNT NA_STR_COUNT BLANK_COUNT</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  1 mpg      32    25             0        0            0          </span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  2 cyl      32    3              0        0            0          </span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;  3 disp     32    27             0        0            0          </span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  4 hp       32    22             0        0            0          </span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  5 drat     32    22             0        0            0          </span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  6 wt       32    29             0        0            0          </span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  7 qsec     32    30             0        0            0          </span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  8 vs       32    2              0        0            0          </span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  9 am       32    2              0        0            0          </span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 10 gear     32    3              0        0            0          </span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; 11 carb     32    6              0        0            0          </span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; # … with 1 more variable: DISTINCT_VALUES &lt;chr&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>rubix<span class="op">::</span><span class="kw">summarize_variables</span>(mtcars)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#&gt; # A tibble: 11 x 7</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt;    Variable COUNT DISTINCT_COUNT NA_COUNT NA_STR_COUNT BLANK_COUNT</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;      </span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt;  1 mpg      32    25             0        0            0          </span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt;  2 cyl      32    3              0        0            0          </span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;  3 disp     32    27             0        0            0          </span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt;  4 hp       32    22             0        0            0          </span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt;  5 drat     32    22             0        0            0          </span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt;  6 wt       32    29             0        0            0          </span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt;  7 qsec     32    30             0        0            0          </span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt;  8 vs       32    2              0        0            0          </span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt;  9 am       32    2              0        0            0          </span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt; 10 gear     32    3              0        0            0          </span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; 11 carb     32    6              0        0            0          </span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; # … with 1 more variable: DISTINCT_VALUES &lt;chr&gt;</span></span></code></pre></div>
 <p>Summary functions include:<br />
 1. Total and distinct counts<br />
 2. Counts for NA (ie. <NA>), NA strings (ie “NA”), and blank values that when combined, can provide an overview of missingness in the dataframe<br />
 3. Unique values found within the particular variable in both a pipe-separated string as well as a R expression that can be evaluated back into a vector using the <code>string_to_vector()</code> function in the cave R package.</p>
 <p>The scope of the summary may also be limited by variable:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">rubix<span class="op">::</span><span class="kw">summarize_variables</span>(mtcars, mpg, cyl)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2 x 7</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;   Variable COUNT DISTINCT_COUNT NA_COUNT NA_STR_COUNT BLANK_COUNT</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 1 mpg      32    25             0        0            0          </span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 2 cyl      32    3              0        0            0          </span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; # … with 1 more variable: DISTINCT_VALUES &lt;chr&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>rubix<span class="op">::</span><span class="kw">summarize_variables</span>(mtcars, mpg, cyl)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt; # A tibble: 2 x 7</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt;   Variable COUNT DISTINCT_COUNT NA_COUNT NA_STR_COUNT BLANK_COUNT</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;      </span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; 1 mpg      32    25             0        0            0          </span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; 2 cyl      32    3              0        0            0          </span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt; # … with 1 more variable: DISTINCT_VALUES &lt;chr&gt;</span></span></code></pre></div>
 <div id="summarize-numeric-variables" class="section level2">
 <h2>Summarize Numeric Variables</h2>
 <p>Additional metrics can be derived from variables that contain numeric data. The <code>summarize_numeric_var()</code> function either takes variables as arguments or selects for variables of numeric, integer, or double classes and calculates summary statistics with both na.rm = FALSE (all _NA suffixed outputs) and na.rm = TRUE parameters.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">rubix<span class="op">::</span><span class="kw">summarize_numeric_vars</span>(mtcars)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; # A tibble: 11 x 11</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;    Variable MEAN  MEAN_NA MEDIAN MEDIAN_NA SD    SD_NA MAX   MAX_NA MIN   MIN_NA</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; </span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;  1 mpg      20.0… 20.090… 19.2   19.2      6.02… 6.02… 33.9  33.9   10.4  10.4  </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  2 cyl      6.18… 6.1875  6      6         1.78… 1.78… 8     8      4     4     </span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;  3 disp     230.… 230.72… 196.3  196.3     123.… 123.… 472   472    71.1  71.1  </span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;  4 hp       146.… 146.68… 123    123       68.5… 68.5… 335   335    52    52    </span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;  5 drat     3.59… 3.5965… 3.695  3.695     0.53… 0.53… 4.93  4.93   2.76  2.76  </span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;  6 wt       3.21… 3.21725 3.325  3.325     0.97… 0.97… 5.424 5.424  1.513 1.513 </span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  7 qsec     17.8… 17.848… 17.71  17.71     1.78… 1.78… 22.9  22.9   14.5  14.5  </span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  8 vs       0.43… 0.4375  0      0         0.50… 0.50… 1     1      0     0     </span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  9 am       0.40… 0.40625 0      0         0.49… 0.49… 1     1      0     0     </span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 10 gear     3.68… 3.6875  4      4         0.73… 0.73… 5     5      3     3     </span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; 11 carb     2.81… 2.8125  2      2         1.61… 1.61… 8     8      1     1</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>rubix<span class="op">::</span><span class="kw">summarize_numeric_vars</span>(mtcars)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt; # A tibble: 11 x 11</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt;    Variable MEAN  MEAN_NA MEDIAN MEDIAN_NA SD    SD_NA MAX   MAX_NA MIN   MIN_NA</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; </span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;  1 mpg      20.0… 20.090… 19.2   19.2      6.02… 6.02… 33.9  33.9   10.4  10.4  </span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;  2 cyl      6.18… 6.1875  6      6         1.78… 1.78… 8     8      4     4     </span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;  3 disp     230.… 230.72… 196.3  196.3     123.… 123.… 472   472    71.1  71.1  </span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;  4 hp       146.… 146.68… 123    123       68.5… 68.5… 335   335    52    52    </span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  5 drat     3.59… 3.5965… 3.695  3.695     0.53… 0.53… 4.93  4.93   2.76  2.76  </span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;  6 wt       3.21… 3.21725 3.325  3.325     0.97… 0.97… 5.424 5.424  1.513 1.513 </span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;  7 qsec     17.8… 17.848… 17.71  17.71     1.78… 1.78… 22.9  22.9   14.5  14.5  </span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  8 vs       0.43… 0.4375  0      0         0.50… 0.50… 1     1      0     0     </span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt;  9 am       0.40… 0.40625 0      0         0.49… 0.49… 1     1      0     0     </span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt; 10 gear     3.68… 3.6875  4      4         0.73… 0.73… 5     5      3     3     </span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt; 11 carb     2.81… 2.8125  2      2         1.61… 1.61… 8     8      1     1</span></span></code></pre></div>
 <p>Like the sibling function, this function also may take specific variables as arguments.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">rubix<span class="op">::</span><span class="kw">summarize_numeric_vars</span>(mtcars, cyl, disp)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2 x 11</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;   Variable MEAN   MEAN_NA MEDIAN MEDIAN_NA SD    SD_NA MAX   MAX_NA MIN   MIN_NA</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; </span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; 1 cyl      6.1875 6.1875  6      6         1.78… 1.78… 8     8      4     4     </span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 2 disp     230.7… 230.72… 196.3  196.3     123.… 123.… 472   472    71.1  71.1</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>rubix<span class="op">::</span><span class="kw">summarize_numeric_vars</span>(mtcars, cyl, disp)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt; # A tibble: 2 x 11</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;   Variable MEAN   MEAN_NA MEDIAN MEDIAN_NA SD    SD_NA MAX   MAX_NA MIN   MIN_NA</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; </span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt; 1 cyl      6.1875 6.1875  6      6         1.78… 1.78… 8     8      4     4     </span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt; 2 disp     230.7… 230.72… 196.3  196.3     123.… 123.… 472   472    71.1  71.1</span></span></code></pre></div>
 <p>However, if one of the arguments is not an integer, numeric, or double, an error will be thrown:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">mtcars2 &lt;-<span class="st"> </span>mtcars</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">mtcars2<span class="op">$</span>cyl &lt;-<span class="st"> </span><span class="kw">as.character</span>(mtcars2<span class="op">$</span>cyl)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">rubix<span class="op">::</span><span class="kw">summarize_numeric_vars</span>(mtcars2, cyl, disp)</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; Error in rubix::summarize_numeric_vars(mtcars2, cyl, disp): cyl: not numeric, integer, or double.</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>mtcars2 &lt;-<span class="st"> </span>mtcars</span>
+<span id="cb6-2"><a href="#cb6-2"></a>mtcars2<span class="op">$</span>cyl &lt;-<span class="st"> </span><span class="kw">as.character</span>(mtcars2<span class="op">$</span>cyl)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>rubix<span class="op">::</span><span class="kw">summarize_numeric_vars</span>(mtcars2, cyl, disp)</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt; Error in rubix::summarize_numeric_vars(mtcars2, cyl, disp): cyl: not numeric, integer, or double.</span></span></code></pre></div>
 </div>
 </div>
 <div id="summarizing-variable-values" class="section level1">
 <h1>Summarizing Variable Values</h1>
 <p>While <code>summarize_</code> functions for variables provides a comprehensive set of summary statistics and metadata, the <code>summarize_values()</code> function returns all counts for the unique values for each variable.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">rubix<span class="op">::</span><span class="kw">summarize_values</span>(mtcars)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; # A tibble: 171 x 3</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt;    Variable Value COUNT</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;  1 mpg       10.4     2</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;  2 mpg       13.3     1</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;  3 mpg       14.3     1</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;  4 mpg       14.7     1</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;  5 mpg       15       1</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;  6 mpg       15.2     2</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt;  7 mpg       15.5     1</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt;  8 mpg       15.8     1</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt;  9 mpg       16.4     1</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt; 10 mpg       17.3     1</span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt; # … with 161 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>rubix<span class="op">::</span><span class="kw">summarize_values</span>(mtcars)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; # A tibble: 11 x 9</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;    name  value NET_COUNT NET_DISTINCT_CO… COUNT DISTINCT_COUNT NA_COUNT</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;            &lt;int&gt; &lt;int&gt;          &lt;int&gt;    &lt;int&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  1 am    1|0          32                2    32              2        0</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  2 carb  4|1|…        32                6    32              6        0</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  3 cyl   6|4|8        32                3    32              3        0</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  4 disp  160|…        32               27    32             27        0</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  5 drat  3.9|…        32               22    32             22        0</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  6 gear  4|3|5        32                3    32              3        0</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  7 hp    110|…        32               22    32             22        0</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  8 mpg   21|2…        32               25    32             25        0</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt;  9 qsec  16.4…        32               30    32             30        0</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; 10 vs    0|1          32                2    32              2        0</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co">#&gt; 11 wt    2.62…        32               29    32             29        0</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="co">#&gt; # … with 2 more variables: NA_STR_COUNT &lt;int&gt;, BLANK_COUNT &lt;int&gt;</span></span></code></pre></div>
 </div>
 
 
