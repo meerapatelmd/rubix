@@ -42,7 +42,7 @@ summarize_values <-
                                                 DISTINCT_LENGTH = ~length(unique(.)),
                                                 NA_LENGTH = ~length(.[is.na(.)]), 
                                                 BLANK_LENGTH = ~length(.[. %in%  c("")]), 
-                                                DISTINCT_VALUES_AS_CHAR = ~paste(unique(as.character(.)), collapse = "|")
+                                                DISTINCT_VALUES_AS_CHAR = ~paste(sort(unique(as.character(.))), collapse = "|")
                                         ),
                                         categorical = list(
                                                 COUNT = ~length(.), 
