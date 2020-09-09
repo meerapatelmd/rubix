@@ -389,22 +389,20 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1>Summarizing Variable Values</h1>
 <p>While <code>summarize_</code> functions for variables provides a comprehensive set of summary statistics and metadata, the <code>summarize_values()</code> function returns all counts for the unique values for each variable.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>rubix<span class="op">::</span><span class="kw">summarize_values</span>(mtcars)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; Warning: Problem with `mutate()` input `NET_DISTINCT_COUNT`.</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt; ℹ the condition has length &gt; 1 and only the first element will be used</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt; ℹ Input `NET_DISTINCT_COUNT` is `-...`.</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt; Warning in if (x &gt; 0) {: the condition has length &gt; 1 and only the first element</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt; will be used</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt; Warning: Problem with `mutate()` input `NET_DISTINCT_COUNT`.</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt; ℹ the condition has length &gt; 1 and only the first element will be used</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt; ℹ Input `NET_DISTINCT_COUNT` is `-...`.</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt; Warning in if (x &gt; 0) {: the condition has length &gt; 1 and only the first element</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt; will be used</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt; Warning: Problem with `mutate()` input `NET_DISTINCT_COUNT`.</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; ℹ the condition has length &gt; 1 and only the first element will be used</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; ℹ Input `NET_DISTINCT_COUNT` is `-...`.</span></span>
-<span id="cb7-15"><a href="#cb7-15"></a><span class="co">#&gt; Warning in if (x &gt; 0) {: the condition has length &gt; 1 and only the first element</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a><span class="co">#&gt; will be used</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt; Error: Invalid index: out of bounds</span></span></code></pre></div>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; # A tibble: 11 x 8</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;    name  value  NET_COUNT COUNT DISTINCT_COUNT NA_COUNT NA_STR_COUNT BLANK_COUNT</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;      &lt;int&gt; &lt;int&gt;          &lt;int&gt;    &lt;int&gt;        &lt;int&gt;       &lt;int&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  1 am    1|0           32    32              2        0            0           0</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  2 carb  4|1|2…        32    32              6        0            0           0</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  3 cyl   6|4|8         32    32              3        0            0           0</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  4 disp  160|1…        32    32             27        0            0           0</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  5 drat  3.9|3…        32    32             22        0            0           0</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  6 gear  4|3|5         32    32              3        0            0           0</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  7 hp    110|9…        32    32             22        0            0           0</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  8 mpg   21|22…        32    32             25        0            0           0</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt;  9 qsec  16.46…        32    32             30        0            0           0</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; 10 vs    0|1           32    32              2        0            0           0</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co">#&gt; 11 wt    2.62|…        32    32             29        0            0           0</span></span></code></pre></div>
 </div>
 
 

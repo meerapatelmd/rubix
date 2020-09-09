@@ -67,13 +67,6 @@ summarize_values <-
                                 #         dplyr::ungroup()
                                 #         
                                 
-                                binaryLogic <- 
-                                        function(x) {
-                                                if (x > 0) {
-                                                        1
-                                                }
-                                        }
-                                
                                 .data %>%
                                         dplyr::mutate_at(vars(all_of(inverse_col_labels)), as.character) %>% 
                                         tidyr::pivot_longer(cols = all_of(inverse_col_labels),
@@ -83,15 +76,12 @@ summarize_values <-
                                                                   !!names_to))) %>%
                                         dplyr::summarise_at(vars(!!values_to),
                                                            summaryFunLibrary$categorical) %>%
-                                        dplyr::mutate(NET_COUNT = COUNT-(NA_COUNT+NA_STR_COUNT+BLANK_COUNT),
-                                                      NET_DISTINCT_COUNT = DISTINCT_COUNT-(binaryLogic(NA_COUNT)+
-                                                                                          binaryLogic(NA_STR_COUNT)+ binaryLogic(BLANK_COUNT))) %>%
+                                        dplyr::mutate(NET_COUNT = COUNT-(NA_COUNT+NA_STR_COUNT+BLANK_COUNT)) %>%
                                         dplyr::rename(!!values_to := DISTINCT_VALUES) %>%
                                         dplyr::select(!!!cols,
                                                       !!names_to,
                                                       !!values_to,
                                                       NET_COUNT,
-                                                      NET_DISTINCT_COUNT,
                                                       dplyr::everything())
                                 
                 
