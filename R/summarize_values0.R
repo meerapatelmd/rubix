@@ -24,7 +24,8 @@
 summarize_values <-
         function(.data,
                  ...,
-                 names_to = "VARIABLE") {
+                 names_to = "name",
+                 values_to = "value") {
                 
                                 loadSummaryFnLibrary()
                                 
@@ -33,25 +34,23 @@ summarize_values <-
                                 
                                 inverse_col_labels <- colnames(.data)[!(colnames(.data) %in% col_labels)]
 
-                                valuesets <-
-                                inverse_col_labels %>%
-                                        purrr::map(~. %>% 
-                                                           dplyr::select(all_of(.)) %>% 
-                                                           dplyr::distinct() %>% 
-                                                           unlist() %>% 
-                                                           unname()
-                                                   ) %>%
-                                        purrr::set_names(inverse_col_labels)
                                 
                                 .data %>%
                                         dplyr::mutate_at(vars(all_of(inverse_col_labels)), as.character) %>% 
                                         tidyr::pivot_longer(cols = all_of(inverse_col_labels),
                                                             names_to = names_to,
-                                                            values_drop_na = TRUE)  %>%
+                                                            values_to = values_to) %>%
                                         dplyr::group_by_at(vars(c(!!!cols,
                                                                   !!names_to))) %>%
-                                        dplyr::summarise_at(vars(all_of("value")),
-                                                           summaryFunLibrary$categorical)
+                                        dplyr::summarise_at(vars(!!values_to),
+                                                           summaryFunLibrary$categorical) %>%
+                                        dplyr::mutate(NET_COUNT = COUNT-(NA_COUNT+NA_STR_COUNT+BLANK_COUNT)) %>%
+                                        dplyr::rename(!!values_to := DISTINCT_VALUES) %>%
+                                        dplyr::select(!!!cols,
+                                                      !!names_to,
+                                                      !!values_to,
+                                                      NET_COUNT,
+                                                      dplyr::everything())
                                 
                 
 

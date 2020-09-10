@@ -11,52 +11,22 @@
 #' @importFrom tidyr pivot_longer pivot_wider
 
 summarize_variables <-
-        function(.data, ...) {
-                
-                
-                if (incl_expr) {
-                
-                summary_functions <-
-                        list(
-                                COUNT = ~ length(.),
-                                DISTINCT_COUNT = ~ length(unique(.)),
-                                NA_COUNT = ~ length(.[is.na(.)]),
-                                NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
-                                BLANK_COUNT = ~ length(.[. %in% c("")]),
-                                DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"),
-                                DISTINCT_VALUES_EXPR = ~ cave::vector_to_string(unique(.)))
-                } else {
-                        summary_functions <-
-                                list(
-                                        COUNT = ~ length(.),
-                                        DISTINCT_COUNT = ~ length(unique(.)),
-                                        NA_COUNT = ~ length(.[is.na(.)]),
-                                        NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
-                                        BLANK_COUNT = ~ length(.[. %in% c("")]),
-                                        DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"))
-                }
-
-                output_1 <-
-                .data %>%
-                        dplyr::summarize_all(summary_functions)
-                                
+        function(.data, 
+                 ...,
+                 names_to = "VARIABLE") {
                         
-                
-                output_2 <- 
-                        output_1   %>%
-                        dplyr::mutate_all(as.character) %>%
-                        tidyr::pivot_longer(cols = everything(),
-                                            names_pattern = paste0("(^.*?)[_](", paste(paste0(names(summary_functions), "$"), collapse = "|"), ")"),
-                                            names_to = c("Variable", "Parameter"),
-                                            values_to = "Value") 
-                
-                output_3 <- 
-                        output_2 %>%
-                        tidyr::pivot_wider(id_cols = Variable,
-                                           names_from = Parameter,
-                                           values_from = Value) 
-                
-                                
-                
-                return(output_3)
+                        cols <- enquos(...)
+                        col_labels <- sapply(cols, rlang::as_name) 
+                        
+                        inverse_col_labels <- colnames(.data)[!(colnames(.data) %in% col_labels)]
+                        
+                        .data %>%
+                                dplyr::mutate_at(vars(all_of(inverse_col_labels)), as.character) %>% 
+                                tidyr::pivot_longer(cols = all_of(inverse_col_labels),
+                                                    names_to = names_to,
+                                                    values_drop_na = TRUE)  %>%
+                                dplyr::group_by_at(vars(c(!!!cols,
+                                                          !!names_to))) %>%
+                                dplyr::summarise_at(vars(all_of("value")),
+                                                    summaryFunLibrary$categorical)
         }
