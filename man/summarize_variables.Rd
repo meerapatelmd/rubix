@@ -4,7 +4,7 @@
 \alias{summarize_variables}
 \title{Summarize a Variable}
 \usage{
-summarize_variables(.data, ..., incl_expr = FALSE)
+summarize_variables(.data, ...)
 }
 \arguments{
 \item{...}{grouping vars. If missing, all variables will be summarized.}
