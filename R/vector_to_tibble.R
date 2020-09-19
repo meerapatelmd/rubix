@@ -1,4 +1,5 @@
-#' @title Convert a Vector to a Tibble 
+#' @title 
+#' Convert a Vector to a Tibble 
 #' @param vector        Vector that will become the column in the tibble
 #' @param new_col       Name of the new column
 #' @return
