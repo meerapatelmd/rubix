@@ -14,6 +14,9 @@ summarize_variables <-
         function(.data, 
                  ...,
                  names_to = "VARIABLE") {
+                
+                
+                        load_sum_fun_library()
                         
                         cols <- enquos(...)
                         col_labels <- sapply(cols, rlang::as_name) 

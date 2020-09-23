@@ -2,12 +2,11 @@
 #' Load Summary Function Library     
 #' @seealso 
 #'  \code{\link[centipede]{no_na}}
-#' @rdname loadSummaryFnLibrary
+#' @rdname load_sum_fun_library
 #' @export 
 #' @importFrom centipede no_na
-#' @importFrom magrittr %>%
 
-loadSummaryFnLibrary <- 
+load_sum_fun_library <- 
         function() {
                 summaryFunLibrary <<- 
                         list(numerical = list(

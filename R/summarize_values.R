@@ -31,7 +31,7 @@ summarize_values <-
                         stop('grouping vars required')
                 }
                 
-                                loadSummaryFnLibrary()
+                                load_sum_fun_library()
                                 
                                 cols <- enquos(...)
                                 col_labels <- sapply(cols, rlang::as_name) 
