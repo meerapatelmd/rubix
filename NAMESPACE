@@ -3,6 +3,7 @@
 export("%>%")
 export(all_is_na)
 export(all_not_na)
+export(all_same_value)
 export(any_is_na)
 export(arrange_as_integer)
 export(arrange_by_nchar)

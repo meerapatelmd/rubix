@@ -8,20 +8,10 @@
 
 
 deselect_if_all_na <-
-        function(.data) {
+        function(data) {
                 
-                all_is_na <- 
-                        function(vector) {
-                                return(all(is.na(vector)))
-                        }
-                
-                all_is_not_na <-
-                        function(vector) {
-                                return(!(all_is_na(vector)))
-                        }
-                
-                .data %>%
-                        dplyr::select_if(all_is_not_na)
+                data %>%
+                        dplyr::select_if(all_not_na)
         }
 
 
@@ -38,20 +28,12 @@ deselect_if_all_na <-
 
 
 deselect_if_all_same <-
-        function(dataframe) {
+        function(data,
+                 na.rm = FALSE) {
+
                 
-                all_is_same <- 
-                        function(vector) {
-                                length(unique(vector)) == 1
-                        }
-                
-                all_is_not_same <-
-                        function(vector) {
-                                !all_is_same(vector)
-                        }
-                
-                dataframe %>%
-                        dplyr::select_if(all_is_not_same)
+                data %>%
+                        dplyr::select_if(~ all_same_value(., na.rm = na.rm))
         }
 
 
@@ -90,15 +72,9 @@ select_distinct <-
 
 
 select_if_all_na <-
-        function(dataframe) {
+        function(data) {
                 
-                all_is_na <- 
-                        function(vector) {
-                                return(all(is.na(vector)))
-                        }
-
-                
-                dataframe %>%
+                data %>%
                         dplyr::select_if(all_is_na)
         }
 

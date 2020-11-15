@@ -29,3 +29,16 @@ any_is_na <-
                 any(is.na(vector))
                 
         }
+
+#' @export
+
+all_same_value <- 
+        function(vector, 
+                 na.rm = FALSE) {
+                
+                if (na.rm) {
+                        vector <- vector[!(is.na(vector))]
+                }
+                
+                length(unique(vector)) == 1
+        }

@@ -4,7 +4,7 @@
 \alias{select_if_all_na}
 \title{Select columns that are all NA}
 \usage{
-select_if_all_na(dataframe)
+select_if_all_na(data)
 }
 \description{
 Select columns that are all NA

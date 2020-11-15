@@ -4,7 +4,7 @@
 \alias{deselect_if_all_same}
 \title{Deselect columns that are all NA}
 \usage{
-deselect_if_all_same(dataframe)
+deselect_if_all_same(data, na.rm = FALSE)
 }
 \description{
 Deselect columns that are all NA
