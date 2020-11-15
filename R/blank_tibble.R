@@ -10,10 +10,14 @@
 #' @importFrom purrr map reduce %>%
 
 blank_tibble <-
-        function(column_names) {
-                column_names %>%
-                        purrr::map(function(x) vector_to_tibble(vector = "",
-                                                                new_col = !!x)) %>%
-                        purrr::reduce(cbind) %>%
-                        slice_first_row()
+        function(...) {
+                
+                Args <- unlist(rlang::list2(...))
+                
+                matrix(nrow = 1, 
+                       ncol = length(Args),
+                       dimnames = list(c(""), Args)) %>%
+                        tibble::as_tibble() %>%
+                        dplyr::slice(-1)
+                
         }

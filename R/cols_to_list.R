@@ -11,86 +11,36 @@
 #' @importFrom purrr map
 
 cols_to_list <- 
-        function(dataframe, ..., id_column_name = NULL, named = TRUE) {
-                if (!missing(...)) {
+        function(data, ...) {
                 
-                                if (is.null(id_column_name)) {
-                                        
-                                                cols <- dplyr::enquos(...)
-                                                
-                                                dataframe <-
-                                                        dataframe %>%
-                                                        dplyr::select(!!!cols)
-                                                
-                                                column_names <- colnames(dataframe)
-                                                
-                                                output <- 
-                                                        column_names %>%
-                                                        purrr::map(function(x) dataframe %>%
-                                                                           dplyr::select(all_of(x)))
-                                                
-                                                
-                                                
-                                } else {
-                                        
-                                                id_column_name <- enquo(id_column_name)
-                                                cols <- dplyr::enquos(...)
-                                                
-                                                dataframe <-
-                                                        dataframe %>%
-                                                        dplyr::select(!!id_column_name, !!!cols)
-                                                
-                                                column_names <- 
-                                                        dataframe %>%
-                                                        dplyr::select(!!!cols) %>%
-                                                        colnames()
-                                                
-                                                output <- 
-                                                        column_names %>%
-                                                        purrr::map(function(x) dataframe %>%
-                                                                           dplyr::select(!!id_col, all_of(x)))
-                                                
-                                                
-                                }
+                
+               
+                
+                if (missing(...)) {
+                        
+                        
+                        as.list(data)
+                        
+                
                 } else {
                         
-                        if (is.null(id_column_name)) {
-                                
-                                                column_names <- colnames(dataframe)
-                                                
-                                                output <- 
-                                                        column_names %>%
-                                                        purrr::map(function(x) dataframe %>%
-                                                                           dplyr::select(all_of(x)))
-                                                
-                                                
-                                                
-                        } else {
-                                                
-                                                id_column_name <- dplyr::enquo(id_column_name)
-                                                
-                                                column_names <-
-                                                dataframe %>%
-                                                        dplyr::select(-!!id_column_name) %>%
-                                                        colnames()
-                                                
-                                                
-                                                output <- 
-                                                        column_names %>%
-                                                        purrr::map(function(x) dataframe %>%
-                                                                           dplyr::select(!!id_column_name, all_of(x)))
-                                                
-                                               
-                                                
-                                                
-                        }
-
-                }
-                
-                if (named == TRUE) {
-                        names(output) <- column_names
-                }
-                
-                return(output)
+                        cols <- enquos(...)
                         
+                        as.list(data %>%
+                                        dplyr::select(!!!cols))
+                        
+                        
+                }
+                        
+        }
+
+#' List to Tibble
+#' @importFrom tibble as_tibble
+#' @export
+
+list_to_tibble <- 
+        function(list) {
+                
+                tibble::as_tibble(list)
+                
         }

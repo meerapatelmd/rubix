@@ -9,35 +9,36 @@
 
 
 coalesce_at <- 
-        function(.data,
+        function(data,
                  at_var,
                  ...,
-                 remove = FALSE) {
-                
-                at_var <- ensym(at_var)
-                at_var <- enquo(at_var)
+                 remove = TRUE) {
 
                 cols <- dplyr::enquos(...)
 
-                .data <-
-                        .data %>%
-                        dplyr::mutate_at(vars(c(!!at_var, !!!cols)),
-                                         as.character)
-
-
+                
                 if (remove) {
-                        remove_cols <-
-                                .data %>%
+                        
+                        rm_cols_vector <- 
+                                data %>%
                                 dplyr::select(!!!cols) %>%
                                 colnames()
+                 
+                        data %>%
+                                dplyr::mutate_at(vars({{ at_var }}, !!!cols),
+                                                 as.character) %>%
+                                dplyr::mutate({{ at_var }} := dplyr::coalesce({{ at_var }}, !!!cols)) %>%
+                                dplyr::select_at(vars(!all_of(rm_cols_vector)))
                         
-                        .data %>%
-                                dplyr::mutate(!!at_var := coalesce(!!at_var, !!!cols)) %>%
-                                dplyr::select(-all_of(remove_cols))
+                        
                 } else {
-
-                        .data %>%
-                                dplyr::mutate(!!at_var := coalesce(!!at_var, !!!cols))
+                        
+                        data %>%
+                                dplyr::mutate_at(vars({{ at_var }}, !!!cols),
+                                                 as.character) %>%
+                                dplyr::mutate({{ at_var }} := dplyr::coalesce({{ at_var}},
+                                                                              !!!cols))
                 }
+
 
         }
