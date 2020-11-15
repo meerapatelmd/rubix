@@ -2,10 +2,46 @@
 % Please edit documentation in R/split.R
 \name{split_deselect}
 \alias{split_deselect}
-\title{Split a dataframe into a list with the column removed}
+\title{Split a Dataframe}
 \usage{
-split_deselect(data, column, drop = FALSE, sep = ".", lex.order = FALSE)
+split_deselect(data, col, drop = FALSE, sep = ".", lex.order = FALSE)
+}
+\arguments{
+\item{data}{A dataframe or tibble.}
+
+\item{col}{Target column.}
+
+\item{drop}{logical indicating if levels that do not occur should be dropped
+    (if \code{f} is a \code{factor} or a list).}
+
+\item{sep}{character string, passed to \code{\link[base]{interaction}} in the
+    case where \code{f} is a \code{\link[base]{list}}.}
+
+\item{lex.order}{logical, passed to \code{\link[base]{interaction}} when
+    \code{f} is a list.}
 }
 \description{
-Split a dataframe into a list with the column removed
+Split and deselect the column used to split by in a single function call.
+}
+\examples{
+library(tidyverse)
+test_data <- 
+        tibble(
+                Group = sample(c("Apple", "Pear"), size = 10, replace = TRUE),
+                A     = sample(c(NA_integer_, 1:3), size = 10, replace = TRUE),
+                B     = sample(c(NA_integer_, 4:6), size = 10, replace = TRUE)
+        )
+
+
+# Split
+split_by(test_data,
+         col = Group)
+
+# Split Deselect
+split_deselect(test_data,
+               col = Group)
+}
+\seealso{
+\code{\link[base]{split}}
+ \code{\link[dplyr]{select}}
 }

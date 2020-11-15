@@ -1,5 +1,5 @@
 
-
+#' @export
 
 
 all_is_na <- 
@@ -10,6 +10,7 @@ all_is_na <-
                 
         }
 
+#' @export
 
 all_not_na <- 
         function(vector) {
@@ -19,7 +20,7 @@ all_not_na <-
                 
         }
 
-
+#' @export
 
 any_is_na <- 
         function(vector) {
