@@ -8,17 +8,30 @@ filter_all_grepl_all(
   data,
   grepl_phrase,
   evaluates_to = TRUE,
-  ignore.case = TRUE
+  ignore.case = FALSE,
+  perl = FALSE,
+  fixed = FALSE,
+  useBytes = FALSE
 )
 }
 \arguments{
+\item{data}{input dataframe}
+
 \item{grepl_phrase}{phrase that is being filtered for}
 
 \item{evaluates_to}{whether the filter is for a grepl evaluation of TRUE or FALSE. Defaults to TRUE.}
 
-\item{ignore.case}{boolean the ignore.case argument of grepl function}
+\item{ignore.case}{if \code{FALSE}, the pattern matching is \emph{case
+      sensitive} and if \code{TRUE}, case is ignored during matching.}
 
-\item{dataframe}{input dataframe}
+\item{perl}{logical.  Should Perl-compatible regexps be used?}
+
+\item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
+    matched as is.  Overrides all conflicting arguments.}
+
+\item{useBytes}{logical.  If \code{TRUE} the matching is done
+    byte-by-byte rather than character-by-character.  See
+    \sQuote{Details}.}
 }
 \description{
 This function will return rows that have all TRUE findings of the indicated grepl phrase
