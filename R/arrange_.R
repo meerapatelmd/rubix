@@ -1,27 +1,35 @@
 #' @title 
-#' Arrange by a Given Column as Integer
+#' Arrange by a Column as Integer
 #' @inheritParams wrapper_args
 #' @param desc Return sorted in descending order? 
-#' @example inst/examples/arrange_int.R
-#' @rdname arrange_as_integer
+#' @param .by_group If TRUE, will sort first by grouping variable. Applies to grouped data frames only.
+#' @example inst/examples/arrange_.R
+#' @seealso 
+#'  \code{\link[dplyr]{arrange_at}},\code{\link[dplyr]{vars}}
+#' @rdname arrange_int
+#' @family arrange functions
 #' @export 
-#' @importFrom dplyr enquo arrange %>%
+#' @importFrom dplyr arrange_at vars
 
 
 arrange_int <-
-        function(data, col, desc = FALSE) {
+        function(data, 
+                 col, 
+                 desc = FALSE,
+                 .by_group = FALSE) {
 
                 if (desc == FALSE) {
                         
                        data %>%
                                 dplyr::arrange_at(dplyr::vars({{ col }}),
-                                                  ~ as.integer(.)
-                                                  )
+                                                  ~ as.integer(.),
+                                                  .by_group = .by_group)
                         
                 } else {
                         data %>%
                                 dplyr::arrange_at(dplyr::vars({{ col }}),
-                                                  ~ desc(as.integer(.))
+                                                  ~ desc(as.integer(.)),
+                                                  .by_group = .by_group
                                 )
                 }
 
@@ -29,41 +37,35 @@ arrange_int <-
 
 
 #' @title 
-#' Arrange by a Given Column as Integer
-#' @description 
-#' (Deprecated) Perform an arrange function call on a dataframe with the values of the target column as an integer class.
-#' @param .data PARAM_DESCRIPTION
-#' @param column PARAM_DESCRIPTION
-#' @param desc PARAM_DESCRIPTION, Default: FALSE
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
-#' @examples 
-#' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
-#' }
+#' Arrange by a Given Column as Numeric
+#' @inheritParams wrapper_args
+#' @param desc Return sorted in descending order? 
+#' @param .by_group If TRUE, will sort first by grouping variable. Applies to grouped data frames only.
+#' @example inst/examples/arrange_.R
+#' @rdname arrange_num
+#' @family arrange functions
 #' @seealso 
-#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{arrange}}
-#' @rdname arrange_as_integer
+#'  \code{\link[dplyr]{arrange_at}},\code{\link[dplyr]{vars}}
 #' @export 
-#' @importFrom dplyr enquo arrange %>%
+#' @importFrom dplyr arrange_at vars
 
 
 arrange_num <-
-        function(data, col, desc = FALSE) {
+        function(data, col, desc = FALSE, .by_group = FALSE) {
                 
                 if (desc == FALSE) {
                         
                         data %>%
                                 dplyr::arrange_at(dplyr::vars({{ col }}),
-                                                  ~ as.numeric(.)
+                                                  ~ as.numeric(.),
+                                                  .by_group = .by_group
                                 )
                         
                 } else {
                         data %>%
                                 dplyr::arrange_at(dplyr::vars({{ col }}),
-                                                  ~ desc(as.numeric(.))
+                                                  ~ desc(as.numeric(.)),
+                                                  .by_group = .by_group
                                 )
                 }
                 
@@ -71,41 +73,35 @@ arrange_num <-
 
 
 #' @title 
-#' Arrange by a Given Column as Integer
-#' @description 
-#' (Deprecated) Perform an arrange function call on a dataframe with the values of the target column as an integer class.
-#' @param .data PARAM_DESCRIPTION
-#' @param column PARAM_DESCRIPTION
-#' @param desc PARAM_DESCRIPTION, Default: FALSE
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
-#' @examples 
-#' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
-#' }
+#' Arrange by a Given Column as Double
+#' @inheritParams wrapper_args
+#' @param desc Return sorted in descending order? 
+#' @param .by_group If TRUE, will sort first by grouping variable. Applies to grouped data frames only.
+#' @example inst/examples/arrange_.R
+#' @rdname arrange_dbl
+#' @family arrange functions
 #' @seealso 
-#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{arrange}}
-#' @rdname arrange_as_integer
+#'  \code{\link[dplyr]{arrange_at}},\code{\link[dplyr]{vars}}
 #' @export 
-#' @importFrom dplyr enquo arrange %>%
+#' @importFrom dplyr arrange_at vars
 
 
 arrange_dbl <-
-        function(data, col, desc = FALSE) {
+        function(data, col, desc = FALSE, .by_group = FALSE) {
                 
                 if (desc == FALSE) {
                         
                         data %>%
                                 dplyr::arrange_at(dplyr::vars({{ col }}),
-                                                  ~ as.double(.)
+                                                  ~ as.double(.),
+                                                  .by_group = .by_group
                                 )
                         
                 } else {
                         data %>%
                                 dplyr::arrange_at(dplyr::vars({{ col }}),
-                                                  ~ desc(as.double(.))
+                                                  ~ desc(as.double(.)),
+                                                  .by_group = .by_group
                                 )
                 }
                 
