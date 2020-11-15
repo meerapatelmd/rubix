@@ -1,9 +1,9 @@
-
-
-
-
-
-#' @export
+#' @title 
+#' Randomize a Dataframe
+#' @example inst/examples/randomize.R
+#' @param data A dataframe or tibble. 
+#' @rdname randomize
+#' @export 
 
 randomize <- 
         function(data) {

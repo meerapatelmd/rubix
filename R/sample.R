@@ -19,8 +19,7 @@ sample_all_or_n <-
                                         size = n, 
                                         replace = replace,
                                         ...
-                                                ) %>%
-                                dplyr::distinct()
+                                                )
                         
                         
                 }
