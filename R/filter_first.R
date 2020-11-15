@@ -3,17 +3,18 @@
 #' @importFrom dplyr row_number
 #' @export
 
-filter_first_row <-
-        function(.data, invert = FALSE) {
+filter_first <-
+        function(data, invert = FALSE) {
+                
                 if (invert) {
                         
-                        .data %>%
+                        data %>%
                                 dplyr::filter(dplyr::row_number() != 1)
                         
 
                 } else {
                         
-                        .data %>%
+                        data %>%
                                 dplyr::filter(dplyr::row_number() == 1)
                         
                         
