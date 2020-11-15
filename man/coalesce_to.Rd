@@ -19,42 +19,20 @@ coalesce_to(data, col, ..., remove = FALSE)
 (Deprecated) This is 1 of 2 coalesce functions. This one takes fields that are not the same as the proposed new column name. For example, a dataframe with fields "A", "B", and "C" can be coalesced into a field "D". If all the values need to be coalesced into an existing field such as "A", "B", and "C" to "A", use coalesce_at function instead.
 }
 \examples{
-library(tidyverse)
-test_data <- 
-        tibble(A = sample(c(NA_integer_, 1:3), size = 10, replace = TRUE),
-              B = sample(c(NA_integer_, 4:6), size = 10, replace = TRUE),
-              C = sample(c(NA_integer_, 7:9), size = 10, replace = TRUE))
+# Load Data
+data(mtcars)
 
-# Coalesce at an existing column
-coalesce_at(test_data,
-            col = A,
-            B, 
-            C,
-            remove = FALSE)
-
-coalesce_at(test_data,
-            col = A,
-            B, 
-            C,
-            remove = TRUE)
+# To List of Vectors
+cols_to_list(data = mtcars)
 
 
-# Coalesce to a new column
-coalesce_to(
-        test_data,
-        col = A2,
-        B, 
-        C,
-        remove = FALSE
-)
+cols_to_list(data = mtcars,
+             vs, am, gear)
 
-coalesce_to(
-        test_data,
-        col = A2,
-        B, 
-        C,
-        remove = TRUE
-)
+
+# List to Dataframe
+mtcars_list <- cols_to_list(data = mtcars)
+list_to_tibble(mtcars_list)
 }
 \seealso{
 \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{coalesce}}
