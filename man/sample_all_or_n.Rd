@@ -4,13 +4,38 @@
 \alias{sample_all_or_n}
 \title{Sample a dataframe for n obs and returns full dataframe if n > nrow}
 \usage{
-sample_all_or_n(data, n, replace = TRUE, ...)
+sample_all_or_n(data, n, replace = FALSE, weight = NULL)
 }
 \arguments{
-\item{n}{number of observations}
+\item{data}{A dataframe or tibble.}
 
-\item{...}{additional arguments for dplyr::sample_n function}
+\item{n}{Number of rows to sample. If n is greater than the row count, the dataframe will be returned unchanged.}
+
+\item{replace}{Sample with or without replacement?}
+
+\item{weight}{Sampling weights. This must evaluate to a vector of non-negative numbers the same length as the input. Weights are automatically standardised to sum to 1.}
 }
 \description{
 Sample a dataframe for n obs and returns full dataframe if n > nrow
+}
+\examples{
+library(tidyverse)
+test_data <- 
+        tibble(
+                Group = sample(c("Apple", "Pear"), size = 10, replace = TRUE),
+                A     = sample(c(NA_integer_, 1:3), size = 10, replace = TRUE),
+                B     = sample(c(NA_integer_, 4:6), size = 10, replace = TRUE)
+        )
+
+
+# Sample less than row count
+sample_all_or_n(data = test_data,
+                n = 5)
+
+# When n is greater than row count, the dataframe is returned unchanged
+sample_all_or_n(data = test_data,
+                n = 11)
+}
+\seealso{
+\code{\link[dplyr]{sample_n}}
 }
