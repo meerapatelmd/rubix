@@ -1,10 +1,15 @@
-
-
-
-
-
-
-#' @export
+#' @title 
+#' Bring a Column to Position 1 
+#' 
+#' @inheritParams wrapper_args
+#' 
+#' @example inst/examples/position.R
+#' @seealso 
+#'  \code{\link[dplyr]{select}},\code{\link[dplyr]{reexports}}
+#'  
+#' @rdname to_position_1
+#' @export 
+#' @importFrom dplyr select everything
 
 
 to_position_1 <- 
@@ -20,7 +25,20 @@ to_position_1 <-
         }
 
 
-#' @export
+#' @title 
+#' Bring a Column to the Last Position
+#' 
+#' @inheritParams wrapper_args
+#' 
+#' @example inst/examples/position.R
+#' @seealso 
+#'  \code{\link[dplyr]{select}},
+#'  \code{\link[dplyr]{bind_cols}},
+#'  \code{\link[dplyr]{reexports}},
+#'  
+#' @rdname to_last_position
+#' @export 
+#' @importFrom dplyr select everything bind_cols
 
 to_last_position <- 
         function(data,
@@ -37,8 +55,17 @@ to_last_position <-
                                     
         }
 
-
-#' @export
+#' @title 
+#' Bring a Column to the Last Position
+#' 
+#' @inheritParams wrapper_args
+#' 
+#' @example inst/examples/position.R
+#' @seealso 
+#'  \code{\link[dplyr]{select}},\code{\link[dplyr]{select_all}},\code{\link[dplyr]{reexports}},\code{\link[dplyr]{bind}}
+#' @rdname to_position_n
+#' @export 
+#' @importFrom dplyr select select_at all_of bind_cols
 
 to_position_n <- 
         function(data,
