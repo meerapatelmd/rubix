@@ -5,9 +5,11 @@
 #' @inheritParams wrapper_args
 #' @param ... Other columns in addition to `col` that will be coalesced in the correct order of precedence. 
 #' @param remove Should columns supplied in `...` be removed in the output?
+#' @example inst/examples/coalesce_.R
 #' @seealso 
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{mutate_all}},\code{\link[dplyr]{vars}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{coalesce}},\code{\link[dplyr]{select_all}}
 #' @rdname coalesce_at
+#' @family coalesce functions
 #' @export
 #' @importFrom dplyr enquos select mutate_at vars mutate coalesce select_at
 
@@ -59,11 +61,12 @@ coalesce_at <-
 #' (Deprecated) This is 1 of 2 coalesce functions. This one takes fields that are not the same as the proposed new column name. For example, a dataframe with fields "A", "B", and "C" can be coalesced into a field "D". If all the values need to be coalesced into an existing field such as "A", "B", and "C" to "A", use coalesce_at function instead.
 #' 
 #' @inheritParams coalesce_at
-#' 
+#' @example inst/examples/coalesce_.R
 #' @seealso 
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{coalesce}}
 #'  
 #' @rdname coalesce_to
+#' @family coalesce functions
 #' @export 
 #' @importFrom dplyr vars enquos select mutate mutate_at coalesce select_at
 
