@@ -7,7 +7,7 @@
 #' @importFrom centipede no_na
 #' @importFrom magrittr %>%
 
-loadSummaryFnLibrary <- 
+summary_fun_list <- 
         function() {
                 summaryFunLibrary <<- 
                         list(numerical = list(
