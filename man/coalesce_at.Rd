@@ -4,14 +4,20 @@
 \alias{coalesce_at}
 \title{Coalesce 1+ Fields to an Existing Field}
 \usage{
-coalesce_at(data, at_var, ..., remove = TRUE)
+coalesce_at(data, col, ..., remove = TRUE)
 }
 \arguments{
-\item{at_var}{character vector of length 1 of the column that the coalesce function will be combine to}
+\item{data}{A dataframe or tibble.}
+
+\item{col}{Target column.}
+
+\item{...}{Other columns in addition to `col` that will be coalesced in the correct order of precedence.}
+
+\item{remove}{Should columns supplied in `...` be removed in the output?}
 }
 \description{
-This is 2 of 2 coalesce functions.
+Coalesce a set of fields to an existing column `col` in the order in which the arguments are supplied with `col` leading.
 }
 \seealso{
-\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{mutate_all}},\code{\link[dplyr]{select}},\code{\link[dplyr]{mutate}}
+\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{mutate_all}},\code{\link[dplyr]{vars}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{coalesce}},\code{\link[dplyr]{select_all}}
 }
