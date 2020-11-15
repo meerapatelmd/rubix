@@ -7,6 +7,7 @@
 #' @seealso 
 #'  \code{\link[dplyr]{mutate}},\code{\link[dplyr]{select}},\code{\link[dplyr]{reexports}}
 #' @rdname datetime_to_col
+#' @example inst/examples/time.R
 #' @export 
 #' @importFrom dplyr mutate select everything
 
@@ -32,6 +33,7 @@ datetime_to_col <-
 #' @seealso 
 #'  \code{\link[dplyr]{mutate}},\code{\link[dplyr]{select}},\code{\link[dplyr]{reexports}}
 #' @rdname date_to_col
+#' @example inst/examples/time.R
 #' @export 
 #' @importFrom dplyr mutate select everything
 
