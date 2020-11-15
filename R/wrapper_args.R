@@ -6,5 +6,4 @@
 #' @param col  Target column.
 #' 
 #' @name wrapper_args
-#' @export
 NULL
