@@ -4,7 +4,7 @@
 \alias{blank_tibble}
 \title{Create a Blank Tibble}
 \usage{
-blank_tibble(column_names)
+blank_tibble(...)
 }
 \arguments{
 \item{column_names}{vector of column names}

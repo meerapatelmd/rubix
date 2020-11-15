@@ -4,7 +4,7 @@
 \alias{cols_to_list}
 \title{Select cols and convert them to a list}
 \usage{
-cols_to_list(dataframe, ..., id_column_name = NULL, named = TRUE)
+cols_to_list(data, ...)
 }
 \arguments{
 \item{id_column_name}{optional string of the column designated as the identifier that should remain in the output.}
