@@ -18,6 +18,10 @@ arrange_as_integer(.data, column, desc = FALSE)
 arrange_as_integer(.data, column, desc = FALSE)
 }
 \arguments{
+\item{data}{A dataframe or tibble.}
+
+\item{col}{Target column.}
+
 \item{desc}{PARAM_DESCRIPTION, Default: FALSE}
 
 \item{.data}{PARAM_DESCRIPTION}
@@ -32,12 +36,8 @@ OUTPUT_DESCRIPTION
 OUTPUT_DESCRIPTION
 
 OUTPUT_DESCRIPTION
-
-OUTPUT_DESCRIPTION
 }
 \description{
-(Deprecated) Perform an arrange function call on a dataframe with the values of the target column as an integer class.
-
 (Deprecated) Perform an arrange function call on a dataframe with the values of the target column as an integer class.
 
 (Deprecated) Perform an arrange function call on a dataframe with the values of the target column as an integer class.
@@ -54,15 +54,20 @@ DETAILS
 DETAILS
 
 DETAILS
-
-DETAILS
 }
 \examples{
-\dontrun{
-if(interactive()){
- #EXAMPLE1
- }
-}
+# Load Data  
+data("mtcars")
+
+arrange_int(mtcars, col = carb) \%>\%
+        head()
+arrange_int(mtcars, col = carb, desc = TRUE) \%>\%
+        head()
+
+
+mtcars \%>\%
+mutate_all(as.character) \%>\%
+arrange_int(carb)
 \dontrun{
 if(interactive()){
  #EXAMPLE1
@@ -85,8 +90,6 @@ if(interactive()){
 }
 }
 \seealso{
-\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{arrange}}
-
 \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{arrange}}
 
 \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{arrange}}
