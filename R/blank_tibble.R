@@ -2,12 +2,11 @@
 #' Create a Blank Tibble
 #' @description 
 #' This function takes a character vector and creates a 0-row dataframe with the vector as the column name names.  
-#' @param column_names vector of column names
-#' @seealso 
-#'  \code{\link[purrr]{map}},\code{\link[purrr]{reduce}}
 #' @rdname blank_tibble
 #' @export 
-#' @importFrom purrr map reduce %>%
+#' @importFrom rlang list2
+#' @importFrom tibble as_tibble 
+#' @importFrom dplyr slice
 
 blank_tibble <-
         function(...) {
