@@ -15,6 +15,8 @@
 
 vector_to_tibble <-
         function(vector, new_col) {
+                .Deprecated(new = "as_tibble_col",
+                            package = "tibble")
                 new_col <- dplyr::enquo(new_col)
                 tibble::tibble(!!new_col := vector)
         }
