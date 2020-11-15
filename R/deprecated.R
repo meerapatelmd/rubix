@@ -816,3 +816,293 @@ mutate_timestamp_column <-
 
 
 
+
+
+
+
+
+#' Filter for the first row
+#' @importFrom dplyr filter
+#' @importFrom dplyr row_number
+#' @export
+
+filter_first_row <-
+        function(.data, invert = FALSE) {
+                if (invert) {
+                        
+                        .data %>%
+                                dplyr::filter(dplyr::row_number() != 1)
+                        
+
+                } else {
+                        
+                        .data %>%
+                                dplyr::filter(dplyr::row_number() == 1)
+                        
+                        
+                }
+
+        }
+
+
+
+
+
+#' @title
+#' Load Summary Function Library     
+#' @seealso 
+#'  \code{\link[centipede]{no_na}}
+#' @rdname loadSummaryFnLibrary
+#' @export 
+#' @importFrom centipede no_na
+#' @importFrom magrittr %>%
+
+loadSummaryFnLibrary <- 
+        function() {
+                summaryFunLibrary <<- 
+                        list(numerical = list(
+                                MEAN = ~mean(., na.rm = TRUE), 
+                                MEAN_NA = ~mean(., na.rm = FALSE), 
+                                MEDIAN = ~median(., na.rm = TRUE), 
+                                MEDIAN_NA = ~median(., na.rm = FALSE), 
+                                SD = ~sd(., na.rm = TRUE), 
+                                SD_NA = ~sd(., na.rm = FALSE), 
+                                MAX = ~max(., na.rm = TRUE), 
+                                MAX_NA = ~max(., na.rm = FALSE), 
+                                MIN = function(x) min(x, na.rm = TRUE), 
+                                MIN_NA = function(x) min(x, na.rm = FALSE),
+                                SUM = ~sum(.,na.rm = TRUE),
+                                SUM_NA = ~sum(.,na.rm = FALSE),
+                                DISTINCT_LENGTH = ~length(unique(.)),
+                                NA_LENGTH = ~length(.[is.na(.)]), 
+                                BLANK_LENGTH = ~length(.[. %in%  c("")]), 
+                                DISTINCT_STR = ~paste(sort(unique(as.character(.))), collapse = "|"),
+                                DISTINCT_STR_NA = ~paste(sort(unique(as.character(.)) %>% centipede::no_na()), collapse = "|")
+                        ),
+                        categorical = list(
+                                COUNT = ~length(.), 
+                                DISTINCT_COUNT = ~length(unique(.)), 
+                                NA_COUNT = ~length(.[is.na(.)]), 
+                                NA_STR_COUNT = ~length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]), 
+                                BLANK_COUNT = ~length(.[. %in%  c("")]), 
+                                DISTINCT_VALUES = ~paste(sort(unique(as.character(.))), collapse = "|"),
+                                DISTINCT_VALUES_NA = ~paste(sort(unique(as.character(.)) %>% centipede::no_na()), collapse = "|")
+                        )
+                        )
+        }
+
+
+
+
+
+#' Release all the columns in a dataframe into vectors of the same name
+#' @importFrom dplyr select
+#' @importFrom purrr map2
+#' @export
+
+release_df <-
+        function(dataframe) {
+                
+                .Deprecated()
+                column_names <- colnames(dataframe)
+                
+                output1 <-
+                column_names %>%
+                        map_names_set(function(x) dataframe %>%
+                                                        dplyr::select(x) %>%
+                                                        unlist() %>%
+                                                        unname())
+
+                invisible(
+                output1 %>%
+                        purrr::map2(names(output1),
+                                    function(xx,yy) assign(yy,
+                                                         value = xx,
+                                                         envir = globalenv())))
+        }
+
+
+
+
+
+#' Slice first row
+#' @importFrom dplyr slice
+#' @export
+
+slice_first_row <-
+        function(dataframe) {
+                dataframe %>%
+                        dplyr::slice(-1)
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+#' General Dataframe Cleanup
+#' Convert all columns to character class and trim all left and right white spaces.
+#' @param dataframe input dataframe
+#' @importFrom dplyr mutate_all
+#' @export
+
+mutate_all_as_char <- function(dataframe) {
+        dataframe %>%
+                dplyr::mutate_all(as.character)
+}
+
+
+
+
+
+
+#' Replace "" with <NA>
+#' @return A tibble
+#' @importFrom tibble as_tibble
+#' @export
+
+mutate_all_blank_to_na <- 
+        function(.data) {
+                .data <-
+                        .data %>%
+                        tibble::as_tibble()
+                
+                .data[.data == ""] <- NA_character_
+                return(.data)
+        }
+
+
+
+
+
+#' Mutate all "NA" to <NA>
+#' @return A tibble
+#' @importFrom tibble as_tibble
+#' @export
+
+mutate_all_na_str_to_na <- 
+        function(.data) {
+                .data <-
+                        .data %>%
+                        tibble::as_tibble()
+                
+                .data[.data == "NA"] <- NA_character_
+                return(.data)
+        }
+
+
+
+
+
+#' Substitute all true NA values in a dataframe as blank
+#' @importFrom dplyr mutate_all
+#' @export
+mutate_all_na_to_blank <-
+        function(dataframe, include_na_as_string = TRUE) {
+                x <- dataframe
+                x[is.na(x)] <- ""
+
+                if (include_na_as_string == TRUE) {
+                        x <- x %>%
+                                dplyr::mutate_all(str_replace_all, "NA", "")
+                } else {
+                        x <- x
+                }
+                return(x)
+        }
+
+
+
+
+
+
+
+
+
+
+#' Mutate cols to integer data type
+#' @import dplyr
+#' @export
+
+mutate_to_integer <- 
+        function(.data, ...) {
+                
+                cols <- enquos(...)
+                
+                .data %>%
+                        dplyr::mutate_at(vars(!!!cols), as.integer)
+                
+                
+        }
+
+
+
+
+
+
+
+
+
+
+#' Mutate a column to position 1
+#' @importFrom dplyr mutate
+#' @importFrom dplyr select
+#' @importFrom dplyr enquo
+#' @export
+
+
+mutate1 <-
+        function(dataframe, ...) {
+                col <- list(...)
+                
+                dataframe <- 
+                        dataframe %>%
+                        dplyr::mutate(...)
+
+                 dataframe %>%
+                         dplyr::select(!!names(col), everything())
+        }
+
+
+
+
+
+
+#' @title 
+#' Convert a Vector to a Tibble 
+#' @param vector        Vector that will become the column in the tibble
+#' @param new_col       Name of the new column
+#' @return
+#' A tibble with 1 column with `new_col` as the name.
+#' @seealso 
+#'  \code{\link[dplyr]{tidyeval-compat}}
+#'  \code{\link[tibble]{tibble}}
+#' @rdname vector_to_tibble
+#' @export 
+#' @importFrom dplyr enquo
+#' @importFrom tibble tibble
+
+
+vector_to_tibble <-
+        function(vector, new_col) {
+                .Deprecated(new = "as_tibble_col",
+                            package = "tibble")
+                new_col <- dplyr::enquo(new_col)
+                tibble::tibble(!!new_col := vector)
+        }
+
+
+
+
+
+
+
+
+
+
