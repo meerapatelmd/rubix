@@ -2,13 +2,14 @@
 #' Arrange a Column by Character Number 
 #' @description 
 #' Order a dataframe based on the number of characters in the column provided as an argument.
-#' @param col     column where number of characters will determine the order
-#' @param desc          Should the output be in descending or ascending order?
+#' @inheritParams wrapper_args
+#' @param desc Return sorted in descending order? 
+#' @param .by_group If TRUE, will sort first by grouping variable. Applies to grouped data frames only.
 #' @seealso 
-#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{select}}
+#'  \code{\link[dplyr]{arrange_all}}
 #' @rdname arrange_by_nchar
 #' @export 
-#' @importFrom dplyr enquo mutate arrange select %>%
+#' @importFrom dplyr arrange_at
 
 arrange_by_nchar <-
         function(data, col, desc = FALSE) {

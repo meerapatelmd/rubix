@@ -7,13 +7,17 @@
 arrange_by_nchar(data, col, desc = FALSE)
 }
 \arguments{
-\item{col}{column where number of characters will determine the order}
+\item{data}{A dataframe or tibble.}
 
-\item{desc}{Should the output be in descending or ascending order?}
+\item{col}{Target column.}
+
+\item{desc}{Return sorted in descending order?}
+
+\item{.by_group}{If TRUE, will sort first by grouping variable. Applies to grouped data frames only.}
 }
 \description{
 Order a dataframe based on the number of characters in the column provided as an argument.
 }
 \seealso{
-\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{select}}
+\code{\link[dplyr]{arrange_all}}
 }
