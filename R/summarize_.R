@@ -12,6 +12,9 @@ summarize_grouped_n <-
                  ...,
                  desc = FALSE) {
                 
+                .Deprecated(new = "count",
+                            package = "dplyr")
+                
                 cols <- dplyr::enquos(...)
                 
                 if (desc == FALSE) {
@@ -35,23 +38,79 @@ summarize_grouped_n <-
 
 
 #' Summarizes each column with max value
+#' @param data A dataframe or tibble. 
 #' @param ... column names for vectors of any data class
-#' @param na.rm TRUE if true NA are to be removed. Default is TRUE.
+#' @param na.rm TRUE if true NA are to be removed. 
+#' @param grouper (optional) Group by column.
 #' @seealso 
 #'  \code{\link[dplyr]{tidyeval-compat}}
 #' @rdname summarize_max
+#' @example inst/examples/summarize_max.R
+#' @family summarize functions
 #' @export 
-#' @importFrom dplyr enquos %>%
+#' @importFrom dplyr enquos select summarise_at vars all_of group_by_at ungroup group_by
 
 summarize_max <-
-        function(.data, ..., na.rm = TRUE) {
-                max_value_vars <- dplyr::enquos(...)
+        function(data, 
+                 ..., 
+                 na.rm = TRUE,
+                 grouper) {
+                
+                if (missing(grouper)) {
+                        
+                        if (!missing(...)) {
+                                
+                                all_num_cols <- all_numeric_cols(data = data)
+                                
+                                cols <- dplyr::enquos(...)
+                                selected_cols <- 
+                                        data %>%
+                                                dplyr::select(!!!cols) %>%
+                                                colnames()
+                                
+                                max_value_vars <- selected_cols[selected_cols %in% all_num_cols]
+                                
+                                if (length(max_value_vars) == 0) {
+                                        
+                                        stop("columns are not numeric")
+                                        
+                                }
+                        
+                        } else {
+                                
+                                max_value_vars <- all_numeric_cols(data = data)
+                                
+                        }
+                        
+                        data %>%
+                                dplyr::summarise_at(dplyr::vars(dplyr::all_of(max_value_vars)), max, na.rm = na.rm)
+                        
+                } else {
+                        
+                        if (!missing(...)) {
 
-                return(
-                        .data %>%
-                                mutate_at(vars(!!!max_value_vars), funs(as.double(as.character(.)))) %>%
-                                summarise_at(vars(!!!max_value_vars), max, na.rm = na.rm)
-                )
+                                max_value_vars <- dplyr::enquos(...)
+
+                                data %>%
+                                        dplyr::group_by_at(dplyr::vars({{ grouper }})) %>%
+                                        dplyr::summarise_at(dplyr::vars(!!!max_value_vars), max, na.rm = na.rm) %>%
+                                        dplyr::ungroup()
+
+                        } else {
+
+                                max_value_vars <- all_numeric_cols(data = data)
+
+                                data %>%
+                                        dplyr::group_by({{ grouper }}) %>%
+                                        dplyr::summarise_at(dplyr::vars(dplyr::all_of(max_value_vars)), max, na.rm = na.rm) %>%
+                                        dplyr::ungroup()
+
+                        }
+                        
+                        
+                }
+
+                
         }
 
 
@@ -59,37 +118,23 @@ summarize_max <-
 
 
 #' @title
-#' Summarize a variable by the standard summary functions
-#' @param ... grouping vars. If missing, all variables will be summarized.
+#' Summarize Numeric Columns with Standard Summary Functions
+#' @param data A dataframe or tibble. 
+#' @param ... column names for vectors of any data class
+#' @param na.rm TRUE if true NA are to be removed. 
+#' @param grouper (optional) Group by column.
 #' @seealso 
-#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{select_all}},\code{\link[dplyr]{mutate_all}}
-#'  \code{\link[tidyr]{pivot_longer}},\code{\link[tidyr]{pivot_wider}}
-#' @rdname summarize_numeric_vars
+#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{vars}},\code{\link[dplyr]{reexports}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{group_by}}
+#' @rdname summarize_numeric
+#' @example inst/examples/summarize_numeric.R
 #' @export 
-#' @importFrom dplyr enquos select summarize_all select_if mutate_all %>%
-#' @importFrom tidyr pivot_longer pivot_wider
+#' @importFrom dplyr enquos select summarize_at vars all_of group_by_at ungroup
 
-summarize_numeric_vars <-
-        function(.data, ...) {
+summarize_numeric <-
+        function(data, ..., grouper) {
+
                 
-                is_integer_or_number <-
-                        function(x) {
-                                if (is.numeric(x)) {
-                                        return(TRUE)
-                                } else {
-                                        if (is.integer(x)) {
-                                                return(TRUE)
-                                        } else {
-                                                if (is.double(x)) {
-                                                        return(TRUE)
-                                                } else {
-                                                        return(FALSE)
-                                                }
-                                        }
-                                }
-                        }
-                
-                summary_functions <-
+                funs <-
                         list(
                                 MEAN = ~ mean(., na.rm = TRUE),
                                 MEAN_NA = ~ mean(., na.rm = FALSE),
@@ -101,68 +146,60 @@ summarize_numeric_vars <-
                                 MAX_NA = ~ max(., na.rm = FALSE),
                                 MIN = function(x) min(x, na.rm = TRUE),
                                 MIN_NA = function(x) min(x, na.rm = FALSE))
-
+                
+                
+                all_num_cols <- all_numeric_cols(data = data)
+                
                 if (!missing(...)) {
                         
-                                cols <- dplyr::enquos(...)
-                                
+                        cols <- dplyr::enquos(...)
+                        selected_cols <- 
+                                data %>%
+                                dplyr::select(!!!cols) %>%
+                                colnames()
                         
-                                .data_qa <-
-                                    .data %>%
-                                            dplyr::select(!!!cols)
+                        num_vars <- selected_cols[selected_cols %in% all_num_cols]
+                        
+                        if (length(num_vars) == 0) {
                                 
+                                stop("columns are not numeric")
                                 
-                                
-                                .data_qa <- sapply(.data_qa, is_integer_or_number, USE.NAMES = TRUE)
-                                .data_qa <- .data_qa[.data_qa == FALSE]
-                                
-                                if (length(.data_qa) > 0) {
-                                        stop(paste(names(.data_qa), collapse = ", "), ": not numeric, integer, or double.")
-                                }
-                               
-                                
-                                    
-                                output_1 <-
-                                        .data %>%
-                                                dplyr::select(!!!cols) %>%
-                                                dplyr::summarize_all(summary_functions)
+                        }
                         
                 } else {
-                                output_1 <-
-                                .data %>%
-                                        dplyr::select_if(is_integer_or_number) %>%
-                                        dplyr::summarize_all(summary_functions)
-                                
+                        
+                        num_vars <- all_num_cols
+                        
                         
                 }
                 
-                output_2 <- 
-                        output_1   %>%
-                        dplyr::mutate_all(as.character) %>%
-                        tidyr::pivot_longer(cols = everything(),
-                                            names_pattern = paste0("(^.*?)[_](", paste(paste0(names(summary_functions), "$"), collapse = "|"), ")"),
-                                            names_to = c("Variable", "Parameter"),
-                                            values_to = "Value") 
+                if (missing(grouper)) {
+
                 
-                output_3 <- 
-                        output_2 %>%
-                        tidyr::pivot_wider(id_cols = Variable,
-                                           names_from = Parameter,
-                                           values_from = Value) 
+                        data %>%
+                                dplyr::summarize_at(dplyr::vars(dplyr::all_of(num_vars)),
+                                                    funs)
                 
-                                
-                
-                return(output_3)
+                } else {
+                        
+                        
+                        data %>%
+                                dplyr::group_by_at(dplyr::vars({{ grouper }})) %>%
+                                dplyr::summarize_at(dplyr::vars(dplyr::all_of(num_vars)),
+                                                    funs) %>%
+                                dplyr::ungroup()
+                        
+                }
         }
 
 
 
 
 
-#' Summarize the counts of values in columns
-#' @description To group by more than 1 variable can be summarized using summarize_grouped_vars().
-#' @param ... grouping vars. If missing, groups and summarizes based on all columns.
-#' @seealso 
+#' @title 
+#' Get the number of times a row appears in a dataframe
+#' @description 
+#' Shortcut for `group_by_all()` followed by `count()`.
 #'  \code{\link[cave]{vector_to_string}}
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{summarise}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{desc}},\code{\link[dplyr]{group_by_all}}
 #' @rdname summarize_rows
@@ -170,58 +207,32 @@ summarize_numeric_vars <-
 #' @importFrom cave vector_to_string
 #' @importFrom dplyr enquos group_by summarize arrange ungroup desc group_by_at group_by_all %>% 
 
-summarize_rows <-
-        function(dataframe,
-                 ...,
+row_count <-
+        function(data,
                  desc = TRUE) {
                 
-                summary_functions <-
-                        list(
-                                COUNT = ~ length(.),
-                                DISTINCT_COUNT = ~ length(unique(.)),
-                                NA_COUNT = ~ length(.[is.na(.)]),
-                                NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
-                                BLANK_COUNT = ~ length(.[. %in% c("")]),
-                                DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"),
-                                DISTINCT_VALUES_EXPR = ~ cave::vector_to_string(.))
                 
-                
-                if (!missing(...)) {
+                if (desc) {
                         
-                                cols <- dplyr::enquos(...)
-                                
-                                if (desc == FALSE) {
-                                        dataframe %>%
-                                                dplyr::group_by(!!!cols) %>%
-                                                dplyr::summarize(COUNT = n()) %>%
-                                                dplyr::arrange(COUNT) %>%
-                                                dplyr::ungroup()
-                                } else {
-                                        dataframe %>%
-                                                dplyr::group_by(!!!cols) %>%
-                                                dplyr::summarize(COUNT = n()) %>%
-                                                dplyr::arrange(dplyr::desc(COUNT)) %>%
-                                                dplyr::ungroup()
-                                }
+                        data %>%
+                                dplyr::group_by_all() %>%
+                                dplyr::count() %>%
+                                dplyr::ungroup() %>%
+                                dplyr::arrange(desc(n))
                         
                 } else {
+                
+                data %>%
+                        dplyr::group_by_all() %>%
+                        dplyr::count() %>%
+                        dplyr::ungroup() %>%
+                        dplyr::arrange(n)
                         
-                        if (desc == FALSE) {
-                                dataframe %>% 
-                                        dplyr::group_by_at(vars(everything())) %>%
-                                        dplyr::summarize(COUNT = n()) %>%
-                                        dplyr::arrange(COUNT) %>%
-                                        dplyr::ungroup()
-                                
-                        } else {
-                                dataframe %>%
-                                        dplyr::group_by_all() %>%
-                                        dplyr::summarize(COUNT = n()) %>%
-                                        dplyr::arrange(dplyr::desc(COUNT)) %>%
-                                        dplyr::ungroup()
-                        }
                         
                 }
+                
+                
+
                 
                 
         }
@@ -388,70 +399,70 @@ summarize_var_group <-
 
 
 
-#' Summarize a Variable
-#' @param ... grouping vars. If missing, all variables will be summarized.
-#' @seealso 
-#'  \code{\link[cave]{vector_to_string}}
-#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{mutate_all}}
-#'  \code{\link[tidyr]{pivot_longer}},\code{\link[tidyr]{pivot_wider}}
-#' @rdname summarize_variables
-#' @export 
-#' @importFrom cave vector_to_string
-#' @importFrom dplyr enquos summarize_at summarize_all mutate_all %>% 
-#' @importFrom tidyr pivot_longer pivot_wider
-
-summarize_variables <-
-        function(.data, ...) {
-                
-                
-                if (incl_expr) {
-                
-                summary_functions <-
-                        list(
-                                COUNT = ~ length(.),
-                                DISTINCT_COUNT = ~ length(unique(.)),
-                                NA_COUNT = ~ length(.[is.na(.)]),
-                                NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
-                                BLANK_COUNT = ~ length(.[. %in% c("")]),
-                                DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"),
-                                DISTINCT_VALUES_EXPR = ~ cave::vector_to_string(unique(.)))
-                } else {
-                        summary_functions <-
-                                list(
-                                        COUNT = ~ length(.),
-                                        DISTINCT_COUNT = ~ length(unique(.)),
-                                        NA_COUNT = ~ length(.[is.na(.)]),
-                                        NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
-                                        BLANK_COUNT = ~ length(.[. %in% c("")]),
-                                        DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"))
-                }
-
-                output_1 <-
-                .data %>%
-                        dplyr::summarize_all(summary_functions)
-                                
-                        
-                
-                output_2 <- 
-                        output_1   %>%
-                        dplyr::mutate_all(as.character) %>%
-                        tidyr::pivot_longer(cols = everything(),
-                                            names_pattern = paste0("(^.*?)[_](", paste(paste0(names(summary_functions), "$"), collapse = "|"), ")"),
-                                            names_to = c("Variable", "Parameter"),
-                                            values_to = "Value") 
-                
-                output_3 <- 
-                        output_2 %>%
-                        tidyr::pivot_wider(id_cols = Variable,
-                                           names_from = Parameter,
-                                           values_from = Value) 
-                
-                                
-                
-                return(output_3)
-        }
-
-
-
-
-
+#' #' Summarize a Variable
+#' #' @param ... grouping vars. If missing, all variables will be summarized.
+#' #' @seealso 
+#' #'  \code{\link[cave]{vector_to_string}}
+#' #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{mutate_all}}
+#' #'  \code{\link[tidyr]{pivot_longer}},\code{\link[tidyr]{pivot_wider}}
+#' #' @rdname summarize_variables
+#' #' @export 
+#' #' @importFrom cave vector_to_string
+#' #' @importFrom dplyr enquos summarize_at summarize_all mutate_all %>% 
+#' #' @importFrom tidyr pivot_longer pivot_wider
+#' 
+#' summarize_variables <-
+#'         function(.data, ...) {
+#'                 
+#'                 
+#'                 if (incl_expr) {
+#'                 
+#'                 summary_functions <-
+#'                         list(
+#'                                 COUNT = ~ length(.),
+#'                                 DISTINCT_COUNT = ~ length(unique(.)),
+#'                                 NA_COUNT = ~ length(.[is.na(.)]),
+#'                                 NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
+#'                                 BLANK_COUNT = ~ length(.[. %in% c("")]),
+#'                                 DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"),
+#'                                 DISTINCT_VALUES_EXPR = ~ cave::vector_to_string(unique(.)))
+#'                 } else {
+#'                         summary_functions <-
+#'                                 list(
+#'                                         COUNT = ~ length(.),
+#'                                         DISTINCT_COUNT = ~ length(unique(.)),
+#'                                         NA_COUNT = ~ length(.[is.na(.)]),
+#'                                         NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
+#'                                         BLANK_COUNT = ~ length(.[. %in% c("")]),
+#'                                         DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"))
+#'                 }
+#' 
+#'                 output_1 <-
+#'                 .data %>%
+#'                         dplyr::summarize_all(summary_functions)
+#'                                 
+#'                         
+#'                 
+#'                 output_2 <- 
+#'                         output_1   %>%
+#'                         dplyr::mutate_all(as.character) %>%
+#'                         tidyr::pivot_longer(cols = everything(),
+#'                                             names_pattern = paste0("(^.*?)[_](", paste(paste0(names(summary_functions), "$"), collapse = "|"), ")"),
+#'                                             names_to = c("Variable", "Parameter"),
+#'                                             values_to = "Value") 
+#'                 
+#'                 output_3 <- 
+#'                         output_2 %>%
+#'                         tidyr::pivot_wider(id_cols = Variable,
+#'                                            names_from = Parameter,
+#'                                            values_from = Value) 
+#'                 
+#'                                 
+#'                 
+#'                 return(output_3)
+#'         }
+#' 
+#' 
+#' 
+#' 
+#' 

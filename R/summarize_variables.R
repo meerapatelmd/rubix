@@ -1,35 +1,90 @@
 #' Summarize a Variable
-#' @param ... grouping vars. If missing, all variables will be summarized.
-#' @seealso 
-#'  \code{\link[cave]{vector_to_string}}
-#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{mutate_all}}
-#'  \code{\link[tidyr]{pivot_longer}},\code{\link[tidyr]{pivot_wider}}
+#' @param incl_num_calc If TRUE, includes an additional dataframe of summary statistics on the numeric columns in the dataframe.
 #' @rdname summarize_variables
+#' @seealso 
+#'  \code{\link[tidyr]{pivot_longer}}
+#'  \code{\link[dplyr]{reexports}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{vars}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{select}}
+#' @rdname summarize_variables
+#' @family summary functions
+#' @example inst/examples/summarize_variables.R
 #' @export 
-#' @importFrom cave vector_to_string
-#' @importFrom dplyr enquos summarize_at summarize_all mutate_all %>% 
-#' @importFrom tidyr pivot_longer pivot_wider
+#' @importFrom tidyr pivot_longer
+#' @importFrom dplyr everything group_by_at vars all_of summarize_at select
 
 summarize_variables <-
-        function(.data, 
-                 ...,
-                 names_to = "VARIABLE") {
+        function(data, 
+                 incl_num_calc = TRUE,
+                 names_to = "Variable",
+                 values_to = "Value") {
+                
+                char_funs <- list(COUNT = ~ length(.),
+                                  DISTINCT_COUNT = ~ length(unique(.)),
+                                  NA_COUNT = ~ length(.[is.na(.)]),
+                                  NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
+                                  BLANK_COUNT = ~ length(.[. %in% c("")]),
+                                  DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"))
                 
                 
-                        load_sum_fun_library()
+                
+                main_output <-
+                                data %>%
+                                        mutate_all_char()  %>% 
+                                        tidyr::pivot_longer(cols = dplyr::everything(),
+                                                            names_to = names_to,
+                                                            values_to = values_to,
+                                                            values_drop_na = FALSE)  %>%
+                                         dplyr::group_by_at(dplyr::vars(dplyr::all_of(names_to)))  %>%
+                                        dplyr::summarize_at(dplyr::vars(dplyr::all_of(values_to)),
+                                                            char_funs)
+                                 
+                
+                if (incl_num_calc) {      
+                                
+                                all_nums <- all_numeric_cols(data = data)
+
+                                numeric_funs <-
+                                   list(MEAN = ~mean(., na.rm = TRUE), 
+                                        MEAN_NA = ~mean(., na.rm = FALSE), 
+                                        MEDIAN = ~median(., na.rm = TRUE), 
+                                        MEDIAN_NA = ~median(., na.rm = FALSE), 
+                                        SD = ~sd(., na.rm = TRUE), 
+                                        SD_NA = ~sd(., na.rm = FALSE), 
+                                        MAX = ~max(., na.rm = TRUE), 
+                                        MAX_NA = ~max(., na.rm = FALSE), 
+                                        MIN = function(x) min(x, na.rm = TRUE), 
+                                        MIN_NA = function(x) min(x, na.rm = FALSE),
+                                        SUM = ~sum(.,na.rm = TRUE),
+                                        SUM_NA = ~sum(.,na.rm = FALSE),
+                                        DISTINCT_LENGTH = ~length(unique(.)),
+                                        NA_LENGTH = ~length(.[is.na(.)]), 
+                                        BLANK_LENGTH = ~length(.[. %in%  c("")]), 
+                                        DISTINCT_STR = ~paste(sort(unique(as.character(.))), collapse = "|"),
+                                        DISTINCT_STR_NA = ~paste(sort(unique(as.character(.)) %>% no_na()), collapse = "|"))
+                                
+                                
+                                numeric_output <- 
+                                        data %>%
+                                        dplyr::select(dplyr::all_of(all_nums)) %>%
+                                        tidyr::pivot_longer(cols = dplyr::everything(),
+                                                            names_to = names_to,
+                                                            values_to = values_to,
+                                                            values_drop_na = FALSE)  %>%
+                                        dplyr::group_by_at(dplyr::vars(dplyr::all_of(names_to)))  %>%
+                                        dplyr::summarize_at(dplyr::vars(dplyr::all_of(values_to)),
+                                                            numeric_funs)
+                                
+                                
+                                list(SUMMARY = main_output,
+                                     NUMERIC_CALCULATIONS = numeric_output)
+                                
+                                
+                                
+                                
+                } else {
+                                
+                        main_output
                         
-                        cols <- enquos(...)
-                        col_labels <- sapply(cols, rlang::as_name) 
-                        
-                        inverse_col_labels <- colnames(.data)[!(colnames(.data) %in% col_labels)]
-                        
-                        .data %>%
-                                dplyr::mutate_at(vars(all_of(inverse_col_labels)), as.character) %>% 
-                                tidyr::pivot_longer(cols = all_of(inverse_col_labels),
-                                                    names_to = names_to,
-                                                    values_drop_na = TRUE)  %>%
-                                dplyr::group_by_at(vars(c(!!!cols,
-                                                          !!names_to))) %>%
-                                dplyr::summarise_at(vars(all_of("value")),
-                                                    summaryFunLibrary$categorical)
+                }
+                
+                
         }

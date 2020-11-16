@@ -4,13 +4,13 @@
 
 
 rename_at_prefix <-
-        function(dataframe,
+        function(data,
                  ...,
                  prefix) {
                 
                 cols <- dplyr::enquos(...)
                 
-                dataframe %>%
+                data %>%
                         dplyr::rename_at(vars(!!!cols), function(x) paste0(prefix, x))
         }
 
@@ -24,13 +24,13 @@ rename_at_prefix <-
 #' @export
 
 rename_at_remove <-
-        function(dataframe,
+        function(data,
                  ...,
                  pattern) {
                 
                 cols <- dplyr::enquos(cols)
                 
-                dataframe %>%
+                data %>%
                         dplyr::rename_at(vars(!!!cols), function(x) stringr::str_remove_all(x, 
                                                                                pattern = pattern))
         }
@@ -45,14 +45,14 @@ rename_at_remove <-
 #' @export
 
 rename_at_replace <-
-        function(dataframe,
+        function(data,
                  ...,
                  pattern,
                  replacement) {
                 
                 cols <- dplyr::enquos(cols)
                 
-                dataframe %>%
+                data %>%
                         dplyr::rename_at(vars(!!!cols), function(x) stringr::str_replace_all(x, 
                                                                                pattern = pattern,
                                                                                replacement = replacement))
@@ -67,13 +67,13 @@ rename_at_replace <-
 #' @export
 
 rename_at_suffix <-
-        function(dataframe,
+        function(data,
                  ...,
                  suffix) {
                 
                 cols <- enquos(...)
                 
-                dataframe %>%
+                data %>%
                         dplyr::rename_at(vars(!!!cols), function(x) paste0(x, suffix))
         }
 

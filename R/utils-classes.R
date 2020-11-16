@@ -66,6 +66,16 @@ num_cols <-
 
 #' @export
 
+all_numeric_cols <- 
+        function(data) {
+                unique(c(int_cols(data), 
+                         dbl_cols(data), 
+                         num_cols(data)))
+        }
+
+
+#' @export
+
 lgl_cols <- 
         class_cols_ff(class = "logical")
 

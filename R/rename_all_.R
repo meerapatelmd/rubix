@@ -8,9 +8,9 @@
 
 
 rename_all_prefix <-
-        function(dataframe,
+        function(data,
                  prefix) {
-                dataframe %>%
+                data %>%
                         dplyr::rename_all(function(x) paste0(prefix, x))
         }
 
@@ -24,9 +24,9 @@ rename_all_prefix <-
 #' @export
 
 rename_all_remove <-
-        function(dataframe,
+        function(data,
                  pattern) {
-                dataframe %>%
+                data %>%
                         dplyr::rename_all(function(x) stringr::str_remove_all(x, 
                                                                                pattern = pattern))
         }
@@ -41,10 +41,10 @@ rename_all_remove <-
 #' @export
 
 rename_all_replace <-
-        function(dataframe,
+        function(data,
                  pattern,
                  replacement) {
-                dataframe %>%
+                data %>%
                         dplyr::rename_all(function(x) stringr::str_replace_all(x, 
                                                                                pattern = pattern,
                                                                                replacement = replacement))
@@ -59,9 +59,9 @@ rename_all_replace <-
 #' @export
 
 rename_all_suffix <-
-        function(dataframe,
+        function(data,
                  suffix) {
-                dataframe %>%
+                data %>%
                         dplyr::rename_all(function(x) paste0(x, suffix))
         }
 
@@ -82,9 +82,9 @@ rename_all_suffix <-
 
 
 rename_all_with_prefix <-
-        function(dataframe,
+        function(data,
                  prefix) {
-                dataframe %>%
+                data %>%
                         dplyr::rename_all(function(x) paste0(prefix, x))
         }
 
@@ -98,10 +98,10 @@ rename_all_with_prefix <-
 #' @export
 
 rename_all_with_replace <-
-        function(dataframe,
+        function(data,
                  pattern,
                  replacement) {
-                dataframe %>%
+                data %>%
                         dplyr::rename_all(function(x) stringr::str_replace_all(x, 
                                                                                pattern = pattern,
                                                                                replacement = replacement))
@@ -116,9 +116,9 @@ rename_all_with_replace <-
 #' @export
 
 rename_all_with_suffix <-
-        function(dataframe,
+        function(data,
                  suffix) {
-                dataframe %>%
+                data %>%
                         dplyr::rename_all(function(x) paste0(x, suffix))
         }
 
