@@ -4,7 +4,7 @@
 \alias{rename_at_prefix}
 \title{Rename all columns with a prefix}
 \usage{
-rename_at_prefix(dataframe, ..., prefix)
+rename_at_prefix(data, ..., prefix)
 }
 \description{
 Rename all columns with a prefix

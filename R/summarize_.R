@@ -239,10 +239,59 @@ row_count <-
 
 
 
+#' @title 
+#' Value Count for a Dataframe
+
+#' @param data                  A dataframe or tibble.     
+#' @param names_to              passed to tidyr pivot_longer()
+#' @param values_to             passed to tidyr pivot_longer()
+#' @seealso 
+#'  \code{\link[tidyr]{pivot_longer}}
+#'  \code{\link[dplyr]{reexports}},\code{\link[dplyr]{count}},\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{arrange}}
+#' @rdname value_count
+#' @family summarize functions
+#' @export 
+#' @importFrom tidyr pivot_longer
+#' @importFrom dplyr everything count sym arrange
+
+value_count <-
+        function(data,
+                 names_to = "Variable",
+                 values_to = "Value",
+                 desc = TRUE) {
+   
+                
+                if (desc) {
+                        
+                        data %>%
+                                mutate_all_char() %>%
+                                tidyr::pivot_longer(cols = dplyr::everything(),
+                                                    names_to = names_to,
+                                                    values_to = values_to) %>%
+                                dplyr::count(!!dplyr::sym(names_to), !!dplyr::sym(values_to)) %>%
+                                        dplyr::arrange(desc(n))
+                        
+                        
+                } else {
+                        
+                        data %>%
+                                mutate_all_char() %>%
+                                tidyr::pivot_longer(cols = dplyr::everything(),
+                                                    names_to = names_to,
+                                                    values_to = values_to) %>%
+                                dplyr::count(!!dplyr::sym(names_to), !!dplyr::sym(values_to)) %>%
+                                dplyr::arrange(n)
+                        
+                        
+                }
+                
+                
+                
+        }
 
 
 #' Summarize the counts of values in columns
-#' @description To group by more than 1 variable can be summarized using summarize_grouped_vars().
+#' @description (Deprecated) To group by more than 1 variable can be summarized using summarize_grouped_vars().
 #' @param .data                 data frame      
 #' @param ...                   group by variables     
 #' @param names_to              passed to tidyr pivot_longer()
@@ -269,6 +318,9 @@ summarize_values <-
                  ...,
                  names_to = "name",
                  values_to = "value") {
+                
+                
+                .Deprecated(new = "value_count")
                                 summaryFunLibrary <- 
                                         list(numerical = list(
                                                 MEAN = ~mean(., na.rm = TRUE), 
@@ -397,72 +449,3 @@ summarize_var_group <-
 
 
 
-
-
-#' #' Summarize a Variable
-#' #' @param ... grouping vars. If missing, all variables will be summarized.
-#' #' @seealso 
-#' #'  \code{\link[cave]{vector_to_string}}
-#' #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{mutate_all}}
-#' #'  \code{\link[tidyr]{pivot_longer}},\code{\link[tidyr]{pivot_wider}}
-#' #' @rdname summarize_variables
-#' #' @export 
-#' #' @importFrom cave vector_to_string
-#' #' @importFrom dplyr enquos summarize_at summarize_all mutate_all %>% 
-#' #' @importFrom tidyr pivot_longer pivot_wider
-#' 
-#' summarize_variables <-
-#'         function(.data, ...) {
-#'                 
-#'                 
-#'                 if (incl_expr) {
-#'                 
-#'                 summary_functions <-
-#'                         list(
-#'                                 COUNT = ~ length(.),
-#'                                 DISTINCT_COUNT = ~ length(unique(.)),
-#'                                 NA_COUNT = ~ length(.[is.na(.)]),
-#'                                 NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
-#'                                 BLANK_COUNT = ~ length(.[. %in% c("")]),
-#'                                 DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"),
-#'                                 DISTINCT_VALUES_EXPR = ~ cave::vector_to_string(unique(.)))
-#'                 } else {
-#'                         summary_functions <-
-#'                                 list(
-#'                                         COUNT = ~ length(.),
-#'                                         DISTINCT_COUNT = ~ length(unique(.)),
-#'                                         NA_COUNT = ~ length(.[is.na(.)]),
-#'                                         NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
-#'                                         BLANK_COUNT = ~ length(.[. %in% c("")]),
-#'                                         DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"))
-#'                 }
-#' 
-#'                 output_1 <-
-#'                 .data %>%
-#'                         dplyr::summarize_all(summary_functions)
-#'                                 
-#'                         
-#'                 
-#'                 output_2 <- 
-#'                         output_1   %>%
-#'                         dplyr::mutate_all(as.character) %>%
-#'                         tidyr::pivot_longer(cols = everything(),
-#'                                             names_pattern = paste0("(^.*?)[_](", paste(paste0(names(summary_functions), "$"), collapse = "|"), ")"),
-#'                                             names_to = c("Variable", "Parameter"),
-#'                                             values_to = "Value") 
-#'                 
-#'                 output_3 <- 
-#'                         output_2 %>%
-#'                         tidyr::pivot_wider(id_cols = Variable,
-#'                                            names_from = Parameter,
-#'                                            values_from = Value) 
-#'                 
-#'                                 
-#'                 
-#'                 return(output_3)
-#'         }
-#' 
-#' 
-#' 
-#' 
-#' 

@@ -21,7 +21,7 @@ summarize_values(.data, ..., names_to = "name", values_to = "value")
 \item{values_to}{passed to tidyr pivot_longer()}
 }
 \description{
-To group by more than 1 variable can be summarized using summarize_grouped_vars().
+(Deprecated) To group by more than 1 variable can be summarized using summarize_grouped_vars().
 
 To group by more than 1 variable can be summarized using summarize_grouped_vars().
 

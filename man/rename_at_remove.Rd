@@ -4,7 +4,7 @@
 \alias{rename_at_remove}
 \title{Replace a pattern in all column names}
 \usage{
-rename_at_remove(dataframe, ..., pattern)
+rename_at_remove(data, ..., pattern)
 }
 \description{
 Replace a pattern in all column names

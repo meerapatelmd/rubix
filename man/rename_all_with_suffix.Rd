@@ -4,7 +4,7 @@
 \alias{rename_all_with_suffix}
 \title{Rename all with suffix}
 \usage{
-rename_all_with_suffix(dataframe, suffix)
+rename_all_with_suffix(data, suffix)
 }
 \description{
 Rename all with suffix
