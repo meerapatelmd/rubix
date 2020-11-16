@@ -22,6 +22,8 @@
 
 arrange_as_integer <-
         function(.data, column, desc = FALSE) {
+          
+                .Deprecated(new = "arrange_int")
                 
                 column <- dplyr::enquo(column)
                 
@@ -48,7 +50,7 @@ arrange_as_integer <-
 
 cleanup_colnames <-
         function(dataframe) {
-                .Deprecated()
+                .Deprecated(new = "format_colnames")
                 x <-
                         dataframe %>%
                                 dplyr::rename_all(trimws, "both") %>%
@@ -75,7 +77,7 @@ cleanup_colnames <-
 
 cleanup_listnames <-
         function(list) {
-                .Deprecated()
+                .Deprecated(new = "format_names")
                 names(list) <-
                         names(list) %>%
                                 purrr::map(centipede::trimws, "both") %>%
@@ -143,6 +145,7 @@ coalesce_into <-
 #'@export
 
 dated <- function(punct = FALSE) {
+            .Deprecated()
         if (punct == FALSE) {
                 return(as.character(Sys.Date()))
         } else {
