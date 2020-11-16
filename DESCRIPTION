@@ -1,7 +1,7 @@
 Package: rubix
 Type: Package
 Title: rubix Package
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: 
     person(given = "Meera", family = "Patel, MD", role = c("aut", "cre"), email = "patelmeeray@gmail.com")
 Description: This package contains data reshaping functions.
