@@ -1,6 +1,3 @@
-
-
-
 #' @export
 
 categorize <-
@@ -11,6 +8,25 @@ categorize <-
                         dplyr::mutate_at(dplyr::vars({{ col }}), forcats::fct_collapse, ...) %>%
                         dplyr::mutate_at(dplyr::vars({{ col }}), as.character)
                 
+        }
+
+#' @export
+
+categorize_ff <-
+        function(...) {
+                
+                
+                function(data,
+                         col) {
+                        
+                
+                
+                data %>%
+                        dplyr::mutate_at(dplyr::vars({{ col }}), factor) %>%
+                        dplyr::mutate_at(dplyr::vars({{ col }}), forcats::fct_collapse, ...) %>%
+                        dplyr::mutate_at(dplyr::vars({{ col }}), as.character)
+                
+                }
         }
 
 #' @export
