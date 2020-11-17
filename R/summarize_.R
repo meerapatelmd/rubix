@@ -293,20 +293,20 @@ summarize_numeric <-
 
 
 
-
-
 #' @title 
 #' Get the number of times a row appears in a dataframe
 #' @description 
-#' Shortcut for `group_by_all()` followed by `count()`.
-#'  \code{\link[cave]{vector_to_string}}
-#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{summarise}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{desc}},\code{\link[dplyr]{group_by_all}}
-#' @rdname summarize_rows
+#' Not to be confused with a total row count of a dataframe (ie `nrow()`), this is a shortcut for `group_by_all()` followed by `count()`. 
+#' @return 
+#' Ungrouped dataframe with all input columns with the addition of an `n` column for the count.
+#' @seealso 
+#'  \code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{count}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{arrange}}
+#' @rdname observation_count
+#' @family summary functions
 #' @export 
-#' @importFrom cave vector_to_string
-#' @importFrom dplyr enquos group_by summarize arrange ungroup desc group_by_at group_by_all %>% 
+#' @importFrom dplyr group_by_all count ungroup arrange
 
-row_count <-
+observation_count <-
         function(data,
                  desc = TRUE) {
                 
