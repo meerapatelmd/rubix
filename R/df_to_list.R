@@ -21,7 +21,8 @@ cols_to_list <-
                 if (missing(...)) {
                         
                         
-                        as.list(data)
+                        as.list(data) %>%
+                                purrr::map(~ unlist(.))
                         
                 
                 } else {
@@ -29,7 +30,8 @@ cols_to_list <-
                         cols <- enquos(...)
                         
                         as.list(data %>%
-                                        dplyr::select(!!!cols))
+                                        dplyr::select(!!!cols))  %>%
+                                purrr::map(~ unlist(.))
                         
                         
                 }
