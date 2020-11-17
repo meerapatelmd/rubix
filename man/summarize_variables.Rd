@@ -8,11 +8,20 @@ summarize_variables(
   data,
   incl_num_calc = TRUE,
   names_to = "Variable",
-  values_to = "Value"
+  values_to = "Value",
+  grouper
 )
 }
 \arguments{
+\item{data}{A dataframe or tibble.}
+
 \item{incl_num_calc}{If TRUE, includes an additional dataframe of summary statistics on the numeric columns in the dataframe.}
+
+\item{names_to}{Passed to `tidyr::pivot_longer()`.}
+
+\item{values_to}{Passed to `tidyr::pivot_longer()`.}
+
+\item{grouper}{(Optional) Group by column.}
 }
 \description{
 Summarize a Variable
@@ -33,9 +42,28 @@ summarize_variables(data = test_data,
 
 summarize_variables(data = test_data,
                     incl_num_calc = TRUE)
+
+summarize_variables(data = test_data,
+                    incl_num_calc = TRUE,
+                    grouper = Group)
+
+summarize_variables(data = test_data,
+                    incl_num_calc = FALSE,
+                    grouper = Group)
+
+
+observation_count(data = test_data)
+
+
+value_count(data = test_data)
+value_count(data = test_data,
+            grouper = Group)
 }
 \seealso{
 \code{\link[tidyr]{pivot_longer}}
  \code{\link[dplyr]{reexports}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{vars}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{select}}
+
+Other summary functions: 
+\code{\link{observation_count}()}
 }
 \concept{summary functions}

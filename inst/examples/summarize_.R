@@ -23,6 +23,9 @@ summarize_variables(data = test_data,
                     grouper = Group)
 
 
+observation_count(data = test_data)
+
+
 value_count(data = test_data)
 value_count(data = test_data,
             grouper = Group)

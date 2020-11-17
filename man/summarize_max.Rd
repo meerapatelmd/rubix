@@ -9,11 +9,11 @@ summarize_max(data, ..., na.rm = TRUE, grouper)
 \arguments{
 \item{data}{A dataframe or tibble.}
 
-\item{...}{column names for vectors of any data class}
+\item{...}{(Optional) Numeric columns to summarize.}
 
 \item{na.rm}{TRUE if true NA are to be removed.}
 
-\item{grouper}{(optional) Group by column.}
+\item{grouper}{(Optional) Group by column.}
 }
 \description{
 Summarizes each column with max value

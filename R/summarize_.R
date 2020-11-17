@@ -1,18 +1,23 @@
 #' @title 
 #' Summarize Functions
-#' @param data A dataframe or tibble. 
-#' @param incl_num_calc If TRUE, includes an additional dataframe of summary statistics on the numeric columns in the dataframe.
+#' 
+#' @param data                  A dataframe or tibble. 
+#' @param grouper               (Optional) Group by column.
+#' @param names_to              Passed to `tidyr::pivot_longer()`.
+#' @param values_to             Passed to `tidyr::pivot_longer()`.
+#' @param na.rm                 TRUE if true NA are to be removed. 
 #' 
 #' @name summarize_functions
+#' @example inst/examples/summarize_.R
 NULL
 
 
 
 
+#' @title
 #' Summarize a Variable
-#' @param data A dataframe or tibble. 
-#' @param incl_num_calc If TRUE, includes an additional dataframe of summary statistics on the numeric columns in the dataframe.
-#' @rdname summarize_variables
+#' @inheritParams summarize_functions
+#' @param incl_num_calc         If TRUE, includes an additional dataframe of summary statistics on the numeric columns in the dataframe. 
 #' @seealso 
 #'  \code{\link[tidyr]{pivot_longer}}
 #'  \code{\link[dplyr]{reexports}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{vars}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{select}}
@@ -152,10 +157,8 @@ summarize_variables <-
 
 
 #' Summarizes each column with max value
-#' @param data A dataframe or tibble. 
-#' @param ... column names for vectors of any data class
-#' @param na.rm TRUE if true NA are to be removed. 
-#' @param grouper (optional) Group by column.
+#' @inheritParams summarize_functions
+#' @param ... (Optional) Numeric columns to summarize. 
 #' @seealso 
 #'  \code{\link[dplyr]{tidyeval-compat}}
 #' @rdname summarize_max
@@ -233,10 +236,8 @@ summarize_max <-
 
 #' @title
 #' Summarize Numeric Columns with Standard Summary Functions
-#' @param data A dataframe or tibble. 
-#' @param ... column names for vectors of any data class
-#' @param na.rm TRUE if true NA are to be removed. 
-#' @param grouper (optional) Group by column.
+#' @inheritParams summarize_functions
+#' @param ... (Optional) Numeric columns to summarize. 
 #' @seealso 
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{vars}},\code{\link[dplyr]{reexports}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{group_by}}
 #' @rdname summarize_numeric
@@ -312,12 +313,16 @@ summarize_numeric <-
 #' Get the number of times a row appears in a dataframe
 #' @description 
 #' Not to be confused with a total row count of a dataframe (ie `nrow()`), this is a shortcut for `group_by_all()` followed by `count()`. 
+#' 
+#' @inheritParams summarize_functions
+#' @param desc If TRUE, the output is arranged in descending order. Otherwise it is arranged in ascending order.
 #' @return 
 #' Ungrouped dataframe with all input columns with the addition of an `n` column for the count.
 #' @seealso 
 #'  \code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{count}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{arrange}}
 #' @rdname observation_count
 #' @family summary functions
+#' @example inst/examples/summarize_.R
 #' @export 
 #' @importFrom dplyr group_by_all count ungroup arrange
 
@@ -355,15 +360,18 @@ observation_count <-
 
 #' @title 
 #' Value Count for a Dataframe
-
-#' @param data                  A dataframe or tibble.     
-#' @param names_to              passed to tidyr pivot_longer()
-#' @param values_to             passed to tidyr pivot_longer()
+#' 
+#' @description 
+#' Depivot a dataframe and retrieve unique counts for each column with the option of grouping the counts with a `grouper` column.
+#' 
+#' @inheritParams summarize_functions
+#' @param desc If TRUE, the output is arranged in descending order. Otherwise it is arranged in ascending order.
 #' @seealso 
 #'  \code{\link[tidyr]{pivot_longer}}
 #'  \code{\link[dplyr]{reexports}},\code{\link[dplyr]{count}},\code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{arrange}}
 #' @rdname value_count
 #' @family summarize functions
+#' @example inst/examples/summarize_.R
 #' @export 
 #' @importFrom tidyr pivot_longer
 #' @importFrom dplyr everything count sym arrange
