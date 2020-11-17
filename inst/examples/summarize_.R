@@ -14,3 +14,15 @@ summarize_variables(data = test_data,
 summarize_variables(data = test_data,
                     incl_num_calc = TRUE)
 
+summarize_variables(data = test_data,
+                    incl_num_calc = TRUE,
+                    grouper = Group)
+
+summarize_variables(data = test_data,
+                    incl_num_calc = FALSE,
+                    grouper = Group)
+
+
+value_count(data = test_data)
+value_count(data = test_data,
+            grouper = Group)

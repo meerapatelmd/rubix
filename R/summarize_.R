@@ -1,3 +1,14 @@
+#' @title 
+#' Summarize Functions
+#' @param data A dataframe or tibble. 
+#' @param incl_num_calc If TRUE, includes an additional dataframe of summary statistics on the numeric columns in the dataframe.
+#' 
+#' @name summarize_functions
+NULL
+
+
+
+
 #' Summarize a Variable
 #' @param data A dataframe or tibble. 
 #' @param incl_num_calc If TRUE, includes an additional dataframe of summary statistics on the numeric columns in the dataframe.
@@ -7,7 +18,7 @@
 #'  \code{\link[dplyr]{reexports}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{vars}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{select}}
 #' @rdname summarize_variables
 #' @family summary functions
-#' @example inst/examples/summarize_variables.R
+#' @example inst/examples/summarize_.R
 #' @export 
 #' @importFrom tidyr pivot_longer
 #' @importFrom dplyr everything group_by_at vars all_of summarize_at select
@@ -16,7 +27,8 @@ summarize_variables <-
         function(data, 
                  incl_num_calc = TRUE,
                  names_to = "Variable",
-                 values_to = "Value") {
+                 values_to = "Value",
+                 grouper) {
                 
                 char_funs <- list(COUNT = ~ length(.),
                                   DISTINCT_COUNT = ~ length(unique(.)),
@@ -25,6 +37,7 @@ summarize_variables <-
                                   BLANK_COUNT = ~ length(.[. %in% c("")]),
                                   DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"))
                 
+                if (missing(grouper)) {
                 
                         
                         main_output <-
@@ -37,6 +50,27 @@ summarize_variables <-
                                 dplyr::group_by_at(dplyr::vars(dplyr::all_of(names_to)))  %>%
                                 dplyr::summarize_at(dplyr::vars(dplyr::all_of(values_to)),
                                                     char_funs)
+                        
+                        
+                } else {
+                        
+                        
+                        main_output <-
+                                data %>%
+                                mutate_all_char()  %>% 
+                                tidyr::pivot_longer(cols = !{{ grouper }},
+                                                    names_to = names_to,
+                                                    values_to = values_to,
+                                                    values_drop_na = FALSE)  %>%
+                                dplyr::group_by_at(dplyr::vars({{ grouper }}, 
+                                                               dplyr::all_of(names_to)))  %>%
+                                dplyr::summarize_at(dplyr::vars(dplyr::all_of(values_to)),
+                                                    char_funs)
+                        
+                        
+                        
+                        
+                }
                 
                 
                 
@@ -63,6 +97,9 @@ summarize_variables <-
                                      DISTINCT_STR = ~paste(sort(unique(as.character(.))), collapse = "|"),
                                      DISTINCT_STR_NA = ~paste(sort(unique(as.character(.)) %>% no_na()), collapse = "|"))
                         
+                        
+                        if (missing(grouper)) {
+                        
                                 
                                 numeric_output <- 
                                         data %>%
@@ -74,6 +111,25 @@ summarize_variables <-
                                         dplyr::group_by_at(dplyr::vars(dplyr::all_of(names_to)))  %>%
                                         dplyr::summarize_at(dplyr::vars(dplyr::all_of(values_to)),
                                                             numeric_funs)
+                                
+                                
+                        } else {
+                                
+                                
+                                numeric_output <- 
+                                        data %>%
+                                        dplyr::select({{ grouper }}, dplyr::all_of(all_nums)) %>%
+                                        tidyr::pivot_longer(cols = !{{ grouper }},
+                                                            names_to = names_to,
+                                                            values_to = values_to,
+                                                            values_drop_na = FALSE)  %>%
+                                        dplyr::group_by_at(dplyr::vars({{ grouper }}, dplyr::all_of(names_to)))  %>%
+                                        dplyr::summarize_at(dplyr::vars(dplyr::all_of(values_to)),
+                                                            numeric_funs)
+                                
+                                
+                                
+                        }
                                 
                                 
                                 
@@ -316,94 +372,70 @@ value_count <-
         function(data,
                  names_to = "Variable",
                  values_to = "Value",
-                 desc = TRUE) {
+                 desc = TRUE,
+                 grouper) {
    
+                if (missing(grouper)) {
                 
-                if (desc) {
+                        if (desc) {
+                                
+                                data %>%
+                                        mutate_all_char() %>%
+                                        tidyr::pivot_longer(cols = dplyr::everything(),
+                                                            names_to = names_to,
+                                                            values_to = values_to) %>%
+                                        dplyr::count(!!dplyr::sym(names_to), !!dplyr::sym(values_to)) %>%
+                                                dplyr::arrange(desc(n))
+                                
+                                
+                        } else {
+                                
+                                data %>%
+                                        mutate_all_char() %>%
+                                        tidyr::pivot_longer(cols = dplyr::everything(),
+                                                            names_to = names_to,
+                                                            values_to = values_to) %>%
+                                        dplyr::count(!!dplyr::sym(names_to), !!dplyr::sym(values_to)) %>%
+                                        dplyr::arrange(n)
+                                
+                                
+                        }
                         
-                        data %>%
-                                mutate_all_char() %>%
-                                tidyr::pivot_longer(cols = dplyr::everything(),
-                                                    names_to = names_to,
-                                                    values_to = values_to) %>%
-                                dplyr::count(!!dplyr::sym(names_to), !!dplyr::sym(values_to)) %>%
+                } else {
+                        
+                        
+                        if (desc) {
+                                
+                                data %>%
+                                        mutate_all_char() %>%
+                                        tidyr::pivot_longer(cols = !{{ grouper }},
+                                                            names_to = names_to,
+                                                            values_to = values_to) %>%
+                                        dplyr::count({{ grouper }}, !!dplyr::sym(names_to), !!dplyr::sym(values_to)) %>%
                                         dplyr::arrange(desc(n))
+                                
+                                
+                        } else {
+                                
+                                data %>%
+                                        mutate_all_char() %>%
+                                        tidyr::pivot_longer(cols = !{{ grouper }},
+                                                            names_to = names_to,
+                                                            values_to = values_to) %>%
+                                        dplyr::count({{ grouper }}, !!dplyr::sym(names_to), !!dplyr::sym(values_to)) %>%
+                                        dplyr::arrange(n)
+                                
+                                
+                        }
                         
                         
-                } else {
                         
-                        data %>%
-                                mutate_all_char() %>%
-                                tidyr::pivot_longer(cols = dplyr::everything(),
-                                                    names_to = names_to,
-                                                    values_to = values_to) %>%
-                                dplyr::count(!!dplyr::sym(names_to), !!dplyr::sym(values_to)) %>%
-                                dplyr::arrange(n)
                         
                         
                 }
                 
                 
                 
-        }
-
-
-
-#' Summarize a variable by the standard summary functions
-#' @param ... grouping vars. If missing, all variables will be summarized.
-#' @seealso 
-#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{mutate_all}}
-#'  \code{\link[tidyr]{pivot_longer}},\code{\link[tidyr]{pivot_wider}}
-#' @rdname summarize_var_group
-#' @export 
-#' @importFrom dplyr enquos group_by_at summarize_all mutate_at %>%
-#' @importFrom tidyr pivot_longer pivot_wider
-
-summarize_var_group <-
-        function(.data, ...) {
-                
-                summary_functions <-
-                        list(
-                                COUNT = ~ length(.),
-                                DISTINCT_COUNT = ~ length(unique(.)),
-                                NA_COUNT = ~ length(.[is.na(.)]),
-                                NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
-                                BLANK_COUNT = ~ length(.[. %in% c("")]),
-                                DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|") #,
-                                #DISTINCT_VALUES_EXPR = ~ cave::vector_to_string(.)
-                                )
-
-                if (!missing(...)) {
-                        
-                                cols <- dplyr::enquos(...)
-                                
-                                output_1 <-
-                                        .data %>% 
-                                                dplyr::group_by_at(vars(!!!cols)) %>%
-                                                dplyr::summarize_all(summary_functions) %>%
-                                                bring_to_front(!!!cols)
-                
-                output_2 <- 
-                        output_1   %>%
-                        dplyr::mutate_at(vars(-group_cols()), as.character) %>%
-                         tidyr::pivot_longer(col = contains(names(summary_functions)),
-                                             names_pattern = paste0("(^.*?)[_](", paste(paste0(names(summary_functions), "$"), collapse = "|"), ")"),
-                                             names_to = c("Variable", "Parameter"),
-                                             values_to = "Value")
-                
-                output_3 <- 
-                        output_2  %>%
-                         tidyr::pivot_wider(id_cols = c(!!!cols, Variable),
-                                           names_from = Parameter,
-                                            values_from = Value) 
-                
-                                
-                
-                return(output_3)
-                
-                } else {
-                        stop("group_cols() not provided. Use summarize_variables() for ungrouped summary.")
-                }
         }
 
 
