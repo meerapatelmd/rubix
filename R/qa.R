@@ -4,7 +4,7 @@
 #' @description 
 #' Return the column names in a dataframe that contain duplicate values of another column. 
 #' 
-#' @rdname qa_duplicate_cols
+#' @rdname  duplicated_cols
 #' @example inst/examples/qa.R
 #' 
 #' @importFrom purrr set_names keep
