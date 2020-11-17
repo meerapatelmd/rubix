@@ -13,3 +13,4 @@ summarize_variables(data = test_data,
 
 summarize_variables(data = test_data,
                     incl_num_calc = TRUE)
+
