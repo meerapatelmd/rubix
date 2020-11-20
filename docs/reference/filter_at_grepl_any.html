@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rubix</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -107,6 +107,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -132,21 +135,17 @@
     <p>Filter at a variable that contains or doesn't contain a phrase</p>
     </div>
 
-    <pre class="usage"><span class='fu'>filter_at_grepl_any</span>(
-  <span class='no'>dataframe</span>,
-  <span class='no'>...</span>,
-  <span class='no'>grepl_phrase</span>,
-  <span class='kw'>evaluates_to</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>filter_at_grepl_any</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>...</span>,
+  <span class='va'>grepl_phrase</span>,
+  evaluates_to <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  ignore.case <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>dataframe</th>
-      <td><p>input dataframe</p></td>
-    </tr>
     <tr>
       <th>grepl_phrase</th>
       <td><p>phrase that is being filtered for</p></td>
@@ -158,6 +157,10 @@
     <tr>
       <th>ignore.case</th>
       <td><p>boolean the ignore.case argument of grepl function</p></td>
+    </tr>
+    <tr>
+      <th>dataframe</th>
+      <td><p>input dataframe</p></td>
     </tr>
     <tr>
       <th>col</th>
@@ -181,7 +184,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

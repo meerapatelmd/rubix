@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rubix</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -107,6 +107,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -132,18 +135,18 @@
     <p>This is a shortcut to using the dplyr::filter(col <!-- %in% {vector}) function along with its inverse. --></p>
     </div>
 
-    <pre class="usage"><span class='fu'>filter_for</span>(<span class='no'>dataframe</span>, <span class='no'>filter_col</span>, <span class='no'>inclusion_vector</span>, <span class='kw'>invert</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>filter_for</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>col</span>, <span class='va'>vector</span>, invert <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>filter_col</th>
-      <td><p>column targeted for filtering</p></td>
+      <th>vector</th>
+      <td><p>a vector of values to be included</p></td>
     </tr>
     <tr>
-      <th>inclusion_vector</th>
-      <td><p>a vector of values to be included</p></td>
+      <th>cols</th>
+      <td><p>column targeted for filtering</p></td>
     </tr>
     </table>
 
@@ -163,7 +166,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

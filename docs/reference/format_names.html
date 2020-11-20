@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Standardize List Names
-This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals) — format_names • rubix</title>
+<title>Standardize List Names — format_names • rubix</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,10 +46,8 @@ This function takes a dataframe and changes column names in the following order:
 
 
 
-<meta property="og:title" content="Standardize List Names
-This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals) — format_names" />
-<meta property="og:description" content="Standardize List Names
-This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals)" />
+<meta property="og:title" content="Standardize List Names — format_names" />
+<meta property="og:description" content="This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals)" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -83,7 +80,7 @@ This function takes a dataframe and changes column names in the following order:
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rubix</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -110,6 +107,9 @@ This function takes a dataframe and changes column names in the following order:
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -126,20 +126,23 @@ This function takes a dataframe and changes column names in the following order:
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Standardize List Names
-This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals)</h1>
+    <h1>Standardize List Names</h1>
     
     <div class="hidden name"><code>format_names.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Standardize List Names
-This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals)</p>
+    <p>This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>format_names</span>(<span class='no'>list</span>)</pre>
+    <pre class="usage"><span class='fu'>format_names</span><span class='op'>(</span><span class='va'>list</span><span class='op'>)</span></pre>
 
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></code>
+ <code><a href='https://rdrr.io/pkg/centipede/man/trimws.html'>trimws</a></code>
+ <code><a href='https://stringr.tidyverse.org/reference/str_replace.html'>str_replace</a></code>,<code><a href='https://stringr.tidyverse.org/reference/str_remove.html'>str_remove</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -156,7 +159,7 @@ This function takes a dataframe and changes column names in the following order:
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

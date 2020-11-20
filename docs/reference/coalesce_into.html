@@ -47,7 +47,7 @@
 
 
 <meta property="og:title" content="Coalesce 1+ Fields to a New Field — coalesce_into" />
-<meta property="og:description" content="This is 1 of 2 coalesce functions. This one takes fields that are not the same as the proposed new column name. For example, a dataframe with fields &quot;A&quot;, &quot;B&quot;, and &quot;C&quot; can be coalesced into a field &quot;D&quot;. If all the values need to be coalesced into an existing field such as &quot;A&quot;, &quot;B&quot;, and &quot;C&quot; to &quot;A&quot;, use coalesce_at function instead." />
+<meta property="og:description" content="(Deprecated) This is 1 of 2 coalesce functions. This one takes fields that are not the same as the proposed new column name. For example, a dataframe with fields &quot;A&quot;, &quot;B&quot;, and &quot;C&quot; can be coalesced into a field &quot;D&quot;. If all the values need to be coalesced into an existing field such as &quot;A&quot;, &quot;B&quot;, and &quot;C&quot; to &quot;A&quot;, use coalesce_at function instead." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rubix</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -107,6 +107,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -129,12 +132,15 @@
     </div>
 
     <div class="ref-description">
-    <p>This is 1 of 2 coalesce functions. This one takes fields that are not the same as the proposed new column name. For example, a dataframe with fields "A", "B", and "C" can be coalesced into a field "D". If all the values need to be coalesced into an existing field such as "A", "B", and "C" to "A", use coalesce_at function instead.</p>
+    <p>(Deprecated) This is 1 of 2 coalesce functions. This one takes fields that are not the same as the proposed new column name. For example, a dataframe with fields "A", "B", and "C" can be coalesced into a field "D". If all the values need to be coalesced into an existing field such as "A", "B", and "C" to "A", use coalesce_at function instead.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>coalesce_into</span>(<span class='no'>.data</span>, <span class='no'>into</span>, <span class='no'>...</span>, <span class='kw'>remove</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>coalesce_into</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>into</span>, <span class='va'>...</span>, remove <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/tidyeval-compat.html'>tidyeval-compat</a></code>,<code><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></code>,<code><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></code>,<code><a href='https://dplyr.tidyverse.org/reference/coalesce.html'>coalesce</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -151,7 +157,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

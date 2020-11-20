@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rubix</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -105,6 +105,9 @@
       <a href="../articles/Summarize.html">Summarize Variables</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -148,15 +151,33 @@
       <tr>
         
         <td>
-          <p><code><a href="arrange_as_integer.html">arrange_as_integer()</a></code> </p>
+          <p><code><a href="arrange_as_integer.html">arrange_as_integer()</a></code> <code><a href="arrange_as_integer.html">arrange_as_integer()</a></code> </p>
         </td>
-        <td><p>Arrange by Column as an Integer</p></td>
+        <td><p>Arrange by a Given Column as Integer</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="arrange_by_nchar.html">arrange_by_nchar()</a></code> </p>
         </td>
-        <td><p>Arrange by Character Number</p></td>
+        <td><p>Arrange a Column by Character Number</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="arrange_dbl.html">arrange_dbl()</a></code> </p>
+        </td>
+        <td><p>Arrange by a Given Column as Double</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="arrange_int.html">arrange_int()</a></code> </p>
+        </td>
+        <td><p>Arrange by a Column as Integer</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="arrange_num.html">arrange_num()</a></code> </p>
+        </td>
+        <td><p>Arrange by a Given Column as Numeric</p></td>
       </tr><tr>
         
         <td>
@@ -174,8 +195,19 @@
         <td>
           <p><code><a href="call_mr_clean.html">call_mr_clean()</a></code> </p>
         </td>
-        <td><p>General Dataframe Cleanup
-Convert all columns to character class and trim all left and right white spaces.</p></td>
+        <td><p>General Dataframe Cleanup</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="categorize.html">categorize()</a></code> </p>
+        </td>
+        <td><p>Categorize a Column</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="categorize_ff.html">categorize_ff()</a></code> </p>
+        </td>
+        <td><p>Create a Categorizing Function</p></td>
       </tr><tr>
         
         <td>
@@ -205,15 +237,33 @@ This function takes a dataframe and changes column names in the following order:
       </tr><tr>
         
         <td>
+          <p><code><a href="coalesce_to.html">coalesce_to()</a></code> </p>
+        </td>
+        <td><p>Coalesce 1+ Fields to a New Field</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="cols_to_list.html">cols_to_list()</a></code> </p>
         </td>
-        <td><p>Select cols and convert them to a list</p></td>
+        <td><p>Dataframe to a List of Vectors</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="date_to_col.html">date_to_col()</a></code> </p>
+        </td>
+        <td><p>Add a Date Column to Position 1</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="dated.html">dated()</a></code> </p>
         </td>
         <td><p>Add the current date</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="datetime_to_col.html">datetime_to_col()</a></code> </p>
+        </td>
+        <td><p>Add a Datetime Column to Position 1</p></td>
       </tr><tr>
         
         <td>
@@ -229,15 +279,15 @@ This function takes a dataframe and changes column names in the following order:
       </tr><tr>
         
         <td>
-          <p><code><a href="filterByList.html">filterByList()</a></code> </p>
+          <p><code><a href="diffs.html">diffs</a></code> </p>
         </td>
-        <td><p>Filter By a List and Other Filters</p></td>
+        <td><p>Diff Functions</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="filterList.html">filterList()</a></code> </p>
+          <p><code><a href="duplicated_cols.html">duplicated_cols()</a></code> </p>
         </td>
-        <td><p>Filter by a list or vector</p></td>
+        <td><p>Names of Duplicate Columns</p></td>
       </tr><tr>
         
         <td>
@@ -255,7 +305,7 @@ This function takes a dataframe and changes column names in the following order:
         <td>
           <p><code><a href="filter_all_grepl_any.html">filter_all_grepl_any()</a></code> </p>
         </td>
-        <td><p>Filter all the variables for any matches to the grepl phrase</p></td>
+        <td><p>Filter at a variable that contains or doesn't contain a phrase</p></td>
       </tr><tr>
         
         <td>
@@ -291,6 +341,12 @@ This function splits a string based on the provide split argument, and recursive
       </tr><tr>
         
         <td>
+          <p><code><a href="filter_first.html">filter_first()</a></code> </p>
+        </td>
+        <td><p>Filter for the first row</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="filter_first_row.html">filter_first_row()</a></code> </p>
         </td>
         <td><p>Filter for the first row</p></td>
@@ -298,6 +354,18 @@ This function splits a string based on the provide split argument, and recursive
         
         <td>
           <p><code><a href="filter_for.html">filter_for()</a></code> </p>
+        </td>
+        <td><p>Filter a column for a set of values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filter_for_all.html">filter_for_all()</a></code> </p>
+        </td>
+        <td><p>Filter a column for a set of values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filter_for_any.html">filter_for_any()</a></code> </p>
         </td>
         <td><p>Filter a column for a set of values</p></td>
       </tr><tr>
@@ -315,18 +383,6 @@ This function splits a string based on the provide split argument, and recursive
       </tr><tr>
         
         <td>
-          <p><code><a href="filter_out_row_number.html">filter_out_row_number()</a></code> </p>
-        </td>
-        <td><p>Removes a row by its number</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="filter_out_vector.html">filter_out_vector()</a></code> </p>
-        </td>
-        <td><p>Filter out observations using a character vector of excluded values</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="filter_row_n.html">filter_row_n()</a></code> </p>
         </td>
         <td><p>Filter for a row n</p></td>
@@ -341,8 +397,7 @@ This function splits a string based on the provide split argument, and recursive
         <td>
           <p><code><a href="format_names.html">format_names()</a></code> </p>
         </td>
-        <td><p>Standardize List Names
-This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals)</p></td>
+        <td><p>Standardize List Names</p></td>
       </tr><tr>
         
         <td>
@@ -358,9 +413,27 @@ This function takes a dataframe and changes column names in the following order:
       </tr><tr>
         
         <td>
+          <p><code><a href="grouped_paste.html">grouped_paste()</a></code> </p>
+        </td>
+        <td><p>Aggregate Function</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="hello.html">hello()</a></code> </p>
         </td>
         <td><p>Hello, World!</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_to_tibble.html">list_to_tibble()</a></code> </p>
+        </td>
+        <td><p>List to Tibble</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="loadSummaryFnLibrary.html">loadSummaryFnLibrary()</a></code> </p>
+        </td>
+        <td><p>Load Summary Function Library</p></td>
       </tr><tr>
         
         <td>
@@ -395,6 +468,18 @@ Convert all columns to character class and trim all left and right white spaces.
       </tr><tr>
         
         <td>
+          <p><code><a href="mutate_all_char.html">mutate_all_char()</a></code> </p>
+        </td>
+        <td><p>Mutate All Columns to Character</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mutate_all_na_character.html">mutate_all_na_character()</a></code> </p>
+        </td>
+        <td><p>Normalize Character Column Values to `NA_character_``</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="mutate_all_na_str_to_na.html">mutate_all_na_str_to_na()</a></code> </p>
         </td>
         <td><p>Mutate all "NA" to &lt;NA&gt;</p></td>
@@ -404,6 +489,12 @@ Convert all columns to character class and trim all left and right white spaces.
           <p><code><a href="mutate_all_na_to_blank.html">mutate_all_na_to_blank()</a></code> </p>
         </td>
         <td><p>Substitute all true NA values in a dataframe as blank</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mutate_all_trimws.html">mutate_all_trimws()</a></code> </p>
+        </td>
+        <td><p>Trim Whitespace of all Character Columns</p></td>
       </tr><tr>
         
         <td>
@@ -467,9 +558,39 @@ Convert all columns to character class and trim all left and right white spaces.
       </tr><tr>
         
         <td>
+          <p><code><a href="observation_count.html">observation_count()</a></code> </p>
+        </td>
+        <td><p>Get the number of times a row appears in a dataframe</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="parse_date_col.html">parse_date_col()</a></code> </p>
+        </td>
+        <td><p>Parse a Date Column</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="parse_date_var.html">parse_date_var()</a></code> </p>
         </td>
         <td><p>Parse a Date Var</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="randomize.html">randomize()</a></code> </p>
+        </td>
+        <td><p>Randomize a Dataframe</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="recode_boolean.html">recode_boolean()</a></code> </p>
+        </td>
+        <td><p>Recode a values to boolean</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="recode_value.html">recode_value()</a></code> </p>
+        </td>
+        <td><p>Recode a values to another</p></td>
       </tr><tr>
         
         <td>
@@ -557,6 +678,18 @@ Convert all columns to character class and trim all left and right white spaces.
       </tr><tr>
         
         <td>
+          <p><code><a href="rubix.html">rubix</a></code> </p>
+        </td>
+        <td><p>Rubix: A package for doing gymnastics with the Tidyverse Suite</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sample_all_or_n.html">sample_all_or_n()</a></code> </p>
+        </td>
+        <td><p>Sample a dataframe for n obs and returns full dataframe if n &gt; nrow</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="sample_n_or_bust.html">sample_n_or_bust()</a></code> </p>
         </td>
         <td><p>Sample a dataframe for n obs and returns full dataframe if n &gt; nrow</p></td>
@@ -581,9 +714,15 @@ Convert all columns to character class and trim all left and right white spaces.
       </tr><tr>
         
         <td>
+          <p><code><a href="setdiff_col_match.html">setdiff_col_match()</a></code> <code><a href="setdiff_col_match.html">compare_cols()</a></code> </p>
+        </td>
+        <td><p>Set Difference between Overlapping Columns</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="setdiff_nrow.html">setdiff_nrow()</a></code> </p>
         </td>
-        <td><p>Get the number of rows that differ between 2 dataframes</p></td>
+        <td><p>Number of Different Rows between 2 Dataframes</p></td>
       </tr><tr>
         
         <td>
@@ -595,19 +734,25 @@ Convert all columns to character class and trim all left and right white spaces.
         <td>
           <p><code><a href="split_by.html">split_by()</a></code> </p>
         </td>
-        <td><p>Split a dataframe into a list with the column removed</p></td>
+        <td><p>Split a Dataframe</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="split_deselect.html">split_deselect()</a></code> </p>
         </td>
-        <td><p>Split a dataframe into a list with the column removed</p></td>
+        <td><p>Split a Dataframe</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="stamped.html">stamped()</a></code> </p>
         </td>
         <td><p>Create Timestamp</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="summarize_functions.html">summarize_functions</a></code> </p>
+        </td>
+        <td><p>Summarize Functions</p></td>
       </tr><tr>
         
         <td>
@@ -623,15 +768,9 @@ Convert all columns to character class and trim all left and right white spaces.
       </tr><tr>
         
         <td>
-          <p><code><a href="summarize_numeric_vars.html">summarize_numeric_vars()</a></code> </p>
+          <p><code><a href="summarize_numeric.html">summarize_numeric()</a></code> </p>
         </td>
-        <td><p>Summarize a variable by the standard summary functions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="summarize_rows.html">summarize_rows()</a></code> </p>
-        </td>
-        <td><p>Summarize the counts of values in columns</p></td>
+        <td><p>Summarize Numeric Columns with Standard Summary Functions</p></td>
       </tr><tr>
         
         <td>
@@ -649,13 +788,43 @@ Convert all columns to character class and trim all left and right white spaces.
         <td>
           <p><code><a href="summarize_variables.html">summarize_variables()</a></code> </p>
         </td>
-        <td><p>Summarize a variable by the standard summary functions</p></td>
+        <td><p>Summarize a Variable</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="to_last_position.html">to_last_position()</a></code> </p>
+        </td>
+        <td><p>Bring a Column to the Last Position</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="to_position_1.html">to_position_1()</a></code> </p>
+        </td>
+        <td><p>Bring a Column to Position 1</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="to_position_n.html">to_position_n()</a></code> </p>
+        </td>
+        <td><p>Bring a Column to the Last Position</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="value_count.html">value_count()</a></code> </p>
+        </td>
+        <td><p>Value Count for a Dataframe</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="vector_to_tibble.html">vector_to_tibble()</a></code> </p>
         </td>
-        <td><p>Take a single vector of values and convert it to a dataframe</p></td>
+        <td><p>Convert a Vector to a Tibble</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="wrapper_args.html">wrapper_args</a></code> </p>
+        </td>
+        <td><p>Tidyverse Wrapper Arguments</p></td>
       </tr>
     </tbody>
     </table>
@@ -675,7 +844,7 @@ Convert all columns to character class and trim all left and right white spaces.
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

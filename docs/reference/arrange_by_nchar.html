@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Arrange by Character Number — arrange_by_nchar • rubix</title>
+<title>Arrange a Column by Character Number — arrange_by_nchar • rubix</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Arrange by Character Number — arrange_by_nchar" />
+<meta property="og:title" content="Arrange a Column by Character Number — arrange_by_nchar" />
 <meta property="og:description" content="Order a dataframe based on the number of characters in the column provided as an argument." />
 <meta property="og:image" content="/logo.png" />
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rubix</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -107,6 +107,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -123,7 +126,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Arrange by Character Number</h1>
+    <h1>Arrange a Column by Character Number</h1>
     
     <div class="hidden name"><code>arrange_by_nchar.Rd</code></div>
     </div>
@@ -132,21 +135,32 @@
     <p>Order a dataframe based on the number of characters in the column provided as an argument.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>arrange_by_nchar</span>(<span class='no'>.data</span>, <span class='no'>nchar_col</span>, <span class='kw'>desc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>arrange_by_nchar</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>col</span>, desc <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>nchar_col</th>
-      <td><p>column where number of characters will determine the order</p></td>
+      <th>data</th>
+      <td><p>A dataframe or tibble.</p></td>
+    </tr>
+    <tr>
+      <th>col</th>
+      <td><p>Target column.</p></td>
     </tr>
     <tr>
       <th>desc</th>
-      <td><p>Should the output be in descending or ascending order?</p></td>
+      <td><p>Return sorted in descending order?</p></td>
+    </tr>
+    <tr>
+      <th>.by_group</th>
+      <td><p>If TRUE, will sort first by grouping variable. Applies to grouped data frames only.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/arrange_all.html'>arrange_all</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -163,7 +177,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

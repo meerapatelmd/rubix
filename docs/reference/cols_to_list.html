@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Select cols and convert them to a list — cols_to_list • rubix</title>
+<title>Dataframe to a List of Vectors — cols_to_list • rubix</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Select cols and convert them to a list — cols_to_list" />
-<meta property="og:description" content="This function takes a dataframe and breaks it down into a list by column. The columns can be explicitly provided or if ... is empty, the entire dataframe will be broken down." />
+<meta property="og:title" content="Dataframe to a List of Vectors — cols_to_list" />
+<meta property="og:description" content="Convert a dataframe into a list of vectors for each column. If ... is empty, the entire dataframe will be broken down." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rubix</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -107,6 +107,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -123,30 +126,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Select cols and convert them to a list</h1>
+    <h1>Dataframe to a List of Vectors</h1>
     
     <div class="hidden name"><code>cols_to_list.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function takes a dataframe and breaks it down into a list by column. The columns can be explicitly provided or if ... is empty, the entire dataframe will be broken down.</p>
+    <p>Convert a dataframe into a list of vectors for each column. If ... is empty, the entire dataframe will be broken down.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cols_to_list</span>(<span class='no'>dataframe</span>, <span class='no'>...</span>, <span class='kw'>id_column_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>named</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>cols_to_list</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>id_column_name</th>
-      <td><p>optional string of the column designated as the identifier that should remain in the output.</p></td>
+      <th>data</th>
+      <td><p>A dataframe or tibble.</p></td>
     </tr>
     <tr>
-      <th>named</th>
-      <td><p>the returned list is named with the column name</p></td>
+      <th>...</th>
+      <td><p>(optional) Columns to select for.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></code></p>
+<p>Other dataframe &lt;&gt; list functions: 
+<code><a href='list_to_tibble.html'>list_to_tibble</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -163,7 +171,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
