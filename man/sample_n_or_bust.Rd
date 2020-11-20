@@ -14,3 +14,4 @@ sample_n_or_bust(dataframe, n, ...)
 \description{
 Sample a dataframe for n obs and returns full dataframe if n > nrow
 }
+\keyword{internal}

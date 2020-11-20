@@ -20,3 +20,4 @@ filter_by_words_in_str(string, split, dataframe, col)
 Loop a filter over words in a string
 This function splits a string based on the provide split argument, and recursively filters a dataframe for those words at a given column.
 }
+\keyword{internal}

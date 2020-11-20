@@ -12,3 +12,4 @@ Load Summary Function Library
 \seealso{
 \code{\link[centipede]{no_na}}
 }
+\keyword{internal}

@@ -16,3 +16,4 @@ Summarize a variable by the standard summary functions
 \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{mutate_all}}
  \code{\link[tidyr]{pivot_longer}},\code{\link[tidyr]{pivot_wider}}
 }
+\keyword{internal}

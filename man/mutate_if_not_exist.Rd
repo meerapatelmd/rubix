@@ -14,3 +14,4 @@ mutate_if_not_exist(dataframe, column_name, value = "")
 \description{
 Adds a column if it doesn't exist in the dataframe
 }
+\keyword{internal}

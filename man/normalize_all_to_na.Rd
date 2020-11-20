@@ -9,3 +9,4 @@ normalize_all_to_na(.data, blanks = TRUE)
 \description{
 This functions takes all the fields in a dataframe and replaces the "NA" string with NA_character_. If blanks is set to TRUE, blanks of character length of 0 are also replaced with NA_character_.
 }
+\keyword{internal}

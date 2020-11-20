@@ -2,7 +2,7 @@
 #' @importFrom dplyr enquos
 #' @importFrom dplyr mutate_at
 #' @importFrom lubridate mdy
-#' @export
+#' @keywords internal
 
 mutate_as_mdy <-
         function(dataframe,
@@ -21,7 +21,7 @@ mutate_as_mdy <-
 #' @importFrom dplyr enquos
 #' @importFrom dplyr mutate_at
 #' @importFrom lubridate ymd
-#' @export
+#' @keywords internal
 
 mutate_as_ymd <-
         function(dataframe,
@@ -44,7 +44,7 @@ mutate_as_ymd <-
 #' Get the sum of the rows base on the designated columns
 #' @importFrom dplyr select
 #' @importFrom dplyr mutate
-#' @export
+#' @keywords internal
 
 mutate_rowsum <-
         function(dataframe, ...) {
@@ -75,7 +75,7 @@ mutate_rowsum <-
 #'  \code{\link[dplyr]{select}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{bind}}
 #'  \code{\link[lubridate]{ymd}}
 #' @rdname parse_date_var
-#' @export 
+#' @keywords internal 
 #' @importFrom rlang as_name
 #' @importFrom purrr map set_names map2
 #' @importFrom dplyr select mutate bind_cols %>%
@@ -152,7 +152,7 @@ parse_date_var <-
 #' @seealso 
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{arrange}}
 #' @rdname arrange_as_integer
-#' @export 
+#' @keywords internal 
 #' @importFrom dplyr enquo arrange %>%
 
 
@@ -182,7 +182,7 @@ arrange_as_integer <-
 #' This function takes a dataframe and changes column names in the following order: 1) Trims whitespace on both sides, 2) converts to uppercase, 3) replaces punctuation of any length with a single underscore, 4) removes trailing underscores from native column names that often times have trailing punctuation (usually decimals)
 #' @inheritParams call_mr_clean
 #' @importFrom  dplyr rename_all
-#' @export
+#' @keywords internal
 
 cleanup_colnames <-
         function(dataframe) {
@@ -209,7 +209,7 @@ cleanup_colnames <-
 #' @importFrom centipede trimws
 #' @importFrom stringr str_replace_all
 #' @importFrom stringr str_remove_all
-#' @export
+#' @keywords internal
 
 cleanup_listnames <-
         function(list) {
@@ -237,7 +237,7 @@ cleanup_listnames <-
 #' @seealso 
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{coalesce}}
 #' @rdname coalesce_into
-#' @export 
+#' @keywords internal 
 #' @importFrom dplyr enquos enquo select mutate coalesce %>%
 
 
@@ -278,7 +278,7 @@ coalesce_into <-
 
 #'Add the current date
 #'@param punct default is FALSE. If true, returns date in YYYYmmdd format. Otherwise YYYY-mm-dd format.
-#'@export
+#'@keywords internal
 
 dated <- function(punct = FALSE) {
             .Deprecated()
@@ -297,7 +297,7 @@ dated <- function(punct = FALSE) {
 #' This function splits a string based on the provide split argument, and recursively filters a dataframe for those words at a given column. It differs from the filter_by_words_in_str function because it returns a dataframe if the loop ends up evaluating to zero rows.
 #' @inheritParams filter_by_words_in_str
 #' @importFrom secretary typewrite
-#' @export
+#' @keywords internal
 
 filter_by_words_in_str_before_zero <-
         function(string, split, dataframe, col) {
@@ -335,7 +335,7 @@ filter_by_words_in_str_before_zero <-
 #' @param col column to filter against
 #' @importFrom secretary typewrite
 #' @importFrom dplyr enquo
-#' @export
+#' @keywords internal
 
 filter_by_words_in_str <-
         function(string, split, dataframe, col) {
@@ -368,7 +368,7 @@ filter_by_words_in_str <-
 #' @seealso 
 #'  \code{\link[dplyr]{filter_all}},\code{\link[dplyr]{all_vars}}
 #' @rdname filter_for_date
-#' @export 
+#' @keywords internal 
 #' @importFrom dplyr filter_at all_vars %>%
 
 filter_for_date <-
@@ -396,7 +396,7 @@ filter_for_date <-
 #' @seealso 
 #'  \code{\link[stringr]{str_remove}}
 #' @rdname stamped
-#' @export 
+#' @keywords internal 
 #' @importFrom stringr str_remove_all
 
 stamped <- 
@@ -445,7 +445,7 @@ stamped <-
 #' @seealso 
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{arrange}}
 #' @rdname arrange_as_integer
-#' @export 
+#' @keywords internal 
 #' @importFrom dplyr enquo arrange %>%
 
 
@@ -486,7 +486,7 @@ arrange_as_integer <-
 #' @seealso 
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{reexports}}
 #' @rdname bring_to_front
-#' @export 
+#' @keywords internal 
 #' @importFrom dplyr enquos select everything %>%
 
 
@@ -510,7 +510,7 @@ bring_to_front <-
 #' @param dataframe input dataframe
 #' @importFrom dplyr mutate_all
 #' @importFrom dplyr %>% 
-#' @export
+#' @keywords internal
 
 call_mr_clean <- function(dataframe) {
         dataframe %>%
@@ -526,7 +526,7 @@ call_mr_clean <- function(dataframe) {
 #' Filter for a row n
 #' @importFrom dplyr filter
 #' @importFrom dplyr row_number
-#' @export
+#' @keywords internal
 
 filter_row_n <-
         function(.data, n, invert = FALSE) {
@@ -566,7 +566,7 @@ filter_row_n <-
 #' @importFrom dplyr select
 #' @importFrom dplyr n
 #' @importFrom dplyr everything
-#' @export
+#' @keywords internal
 
 mutate_primary_key <-
         function(dataframe,
@@ -650,7 +650,7 @@ mutate_primary_key <-
 #' @description This functions takes all the fields in a dataframe and replaces the "NA" string with NA_character_. If blanks is set to TRUE, blanks of character length of 0 are also replaced with NA_character_.
 #' @import dplyr
 #' @import stringr
-#' @export
+#' @keywords internal
 
 
 
@@ -681,7 +681,7 @@ normalize_all_to_na <-
 #' @seealso 
 #'  \code{\link[dplyr]{mutate_all}}
 #' @rdname normalize_at_to_na
-#' @export 
+#' @keywords internal 
 #' @importFrom dplyr mutate_at %>%
 
 normalize_at_to_na <- 
@@ -727,7 +727,7 @@ normalize_at_to_na <-
 #' @importFrom stringr str_replace_all
 #' @importFrom dplyr mutate_all
 #' @importFrom dplyr na_if
-#' @export
+#' @keywords internal
 
 normalize_na <-
         function(.data) {
@@ -745,7 +745,7 @@ normalize_na <-
 #' @param ... additional arguments for dplyr::sample_n function
 #' @importFrom dplyr sample_n
 #' @importFrom dplyr distinct
-#' @export
+#' @keywords internal
 
 sample_n_or_bust <-
   function(dataframe, n, ...) {
@@ -761,7 +761,7 @@ sample_n_or_bust <-
 #' @importFrom dplyr enquos
 #' @importFrom dplyr select
 #' @importFrom dplyr everything
-#' @export
+#' @keywords internal
 
 send_to_back <-
         function(.data, ...) {
@@ -799,7 +799,7 @@ send_to_back <-
 #' @param timestamp_col column where timestamp has date and/or datetime data that is in the format YYYY-mm-dd
 #' @return dataframe filtered for today's date
 #' @import dplyr
-#' @export
+#' @keywords internal
 
 filter_for_today <-
         function(dataframe, timestamp_col) {
@@ -823,7 +823,7 @@ filter_for_today <-
 #' @seealso 
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{summarise_all}}
 #' @rdname group_by_aggregate
-#' @export 
+#' @keywords internal 
 #' @importFrom dplyr enquos enquo group_by summarize_at ungroup %>%
 
 group_by_aggregate <- 
@@ -859,7 +859,7 @@ group_by_aggregate <-
 #' @importFrom dplyr group_by
 #' @importFrom dplyr summarize_at
 #' @importFrom dplyr ungroup
-#' @export
+#' @keywords internal
 
 group_by_unique_aggregate <- 
                 function(dataframe, 
@@ -888,7 +888,7 @@ group_by_unique_aggregate <-
 #' Make a unique id
 #' @description This is an alternative to converting the timestamp into an integer to serve as an identifgier, which requires using packages such as gmp to manage within R and then adds the trouble of having to figure out how to manage it as a bigint in a database. Using DatabaseConnector's dbWriteTable function, identifiers are converted from bigz to character and this also makes it difficult to use this data for joins with OMOP vocabularies where the concept_ids are int and what homegrown identifiers are primary required for. To avoid the trouble of dealing with large integers, the timestamp is used and the "202" in the year "2020" is removed. This means that the identifier will be unique to this decade.
 #' @import stringr
-#' @export
+#' @keywords internal
 
 
 make_identifier <- 
@@ -907,7 +907,7 @@ make_identifier <-
 #' @param value character vector of length 1 of the new value. Defaults to "".
 #' @importFrom magrittr %>%
 #' @importFrom dplyr mutate
-#' @export
+#' @keywords internal
 
 mutate_if_not_exist <-
         function(dataframe, column_name, value = "") {
@@ -934,7 +934,7 @@ mutate_if_not_exist <-
 #' @importFrom magrittr %>%
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
-#' @export
+#' @keywords internal
 
 mutate_timestamp_column <-
   function(dataframe, new_col_name = "TIMESTAMP") {
@@ -963,7 +963,7 @@ mutate_timestamp_column <-
 #' Filter for the first row
 #' @importFrom dplyr filter
 #' @importFrom dplyr row_number
-#' @export
+#' @keywords internal
 
 filter_first_row <-
         function(.data, invert = FALSE) {
@@ -992,7 +992,7 @@ filter_first_row <-
 #' @seealso 
 #'  \code{\link[centipede]{no_na}}
 #' @rdname loadSummaryFnLibrary
-#' @export 
+#' @keywords internal 
 #' @importFrom centipede no_na
 #' @importFrom magrittr %>%
 
@@ -1037,7 +1037,7 @@ loadSummaryFnLibrary <-
 #' Release all the columns in a dataframe into vectors of the same name
 #' @importFrom dplyr select
 #' @importFrom purrr map2
-#' @export
+#' @keywords internal
 
 release_df <-
         function(dataframe) {
@@ -1066,7 +1066,7 @@ release_df <-
 
 #' Slice first row
 #' @importFrom dplyr slice
-#' @export
+#' @keywords internal
 
 slice_first_row <-
         function(dataframe) {
@@ -1089,7 +1089,7 @@ slice_first_row <-
 #' Convert all columns to character class and trim all left and right white spaces.
 #' @param dataframe input dataframe
 #' @importFrom dplyr mutate_all
-#' @export
+#' @keywords internal
 
 mutate_all_as_char <- function(dataframe) {
         dataframe %>%
@@ -1104,7 +1104,7 @@ mutate_all_as_char <- function(dataframe) {
 #' Replace "" with <NA>
 #' @return A tibble
 #' @importFrom tibble as_tibble
-#' @export
+#' @keywords internal
 
 mutate_all_blank_to_na <- 
         function(.data) {
@@ -1123,7 +1123,7 @@ mutate_all_blank_to_na <-
 #' Mutate all "NA" to <NA>
 #' @return A tibble
 #' @importFrom tibble as_tibble
-#' @export
+#' @keywords internal
 
 mutate_all_na_str_to_na <- 
         function(.data) {
@@ -1141,7 +1141,7 @@ mutate_all_na_str_to_na <-
 
 #' Substitute all true NA values in a dataframe as blank
 #' @importFrom dplyr mutate_all
-#' @export
+#' @keywords internal
 mutate_all_na_to_blank <-
         function(dataframe, include_na_as_string = TRUE) {
                 x <- dataframe
@@ -1167,7 +1167,7 @@ mutate_all_na_to_blank <-
 
 #' Mutate cols to integer data type
 #' @import dplyr
-#' @export
+#' @keywords internal
 
 mutate_to_integer <- 
         function(.data, ...) {
@@ -1193,7 +1193,7 @@ mutate_to_integer <-
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
 #' @importFrom dplyr enquo
-#' @export
+#' @keywords internal
 
 
 mutate1 <-
@@ -1223,7 +1223,7 @@ mutate1 <-
 #'  \code{\link[dplyr]{tidyeval-compat}}
 #'  \code{\link[tibble]{tibble}}
 #' @rdname vector_to_tibble
-#' @export 
+#' @keywords internal 
 #' @importFrom dplyr enquo
 #' @importFrom tibble tibble
 
@@ -1255,7 +1255,7 @@ vector_to_tibble <-
 #'  \code{\link[dplyr]{mutate_all}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{rename}},\code{\link[dplyr]{select}},\code{\link[dplyr]{reexports}}
 #'  \code{\link[tidyr]{pivot_longer}}
 #' @rdname summarize_values
-#' @export 
+#' @keywords internal 
 #' @importFrom rlang as_name
 #' @importFrom dplyr mutate_at group_by_at summarise_at mutate rename select everything
 #' @importFrom tidyr pivot_longer
@@ -1342,7 +1342,7 @@ summarize_values <-
 #' @seealso 
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{summarise}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{desc}}
 #' @rdname summarize_grouped_n
-#' @export 
+#' @keywords internal 
 #' @importFrom dplyr enquos group_by summarize arrange ungroup desc %>%
 
 
@@ -1381,7 +1381,7 @@ summarize_grouped_n <-
 #'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{mutate_all}}
 #'  \code{\link[tidyr]{pivot_longer}},\code{\link[tidyr]{pivot_wider}}
 #' @rdname summarize_var_group
-#' @export 
+#' @keywords internal 
 #' @importFrom dplyr enquos group_by_at summarize_all mutate_at %>%
 #' @importFrom tidyr pivot_longer pivot_wider
 

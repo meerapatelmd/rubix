@@ -12,3 +12,4 @@ dated(punct = FALSE)
 \description{
 Add the current date
 }
+\keyword{internal}

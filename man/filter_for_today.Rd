@@ -17,3 +17,4 @@ dataframe filtered for today's date
 \description{
 Filters a dataframe for today's date in a timestamp column
 }
+\keyword{internal}

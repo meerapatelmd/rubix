@@ -9,3 +9,4 @@ send_to_back(.data, ...)
 \description{
 Send columns to back
 }
+\keyword{internal}

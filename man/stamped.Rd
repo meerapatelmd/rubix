@@ -15,3 +15,4 @@ stamped(string = FALSE, add_sleep_time = NULL)
 \seealso{
 \code{\link[stringr]{str_remove}}
 }
+\keyword{internal}

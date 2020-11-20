@@ -12,3 +12,4 @@ coalesce_into(.data, into, ..., remove = FALSE)
 \seealso{
 \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{coalesce}}
 }
+\keyword{internal}

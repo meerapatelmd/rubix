@@ -9,3 +9,4 @@ filter_row_n(.data, n, invert = FALSE)
 \description{
 Filter for a row n
 }
+\keyword{internal}

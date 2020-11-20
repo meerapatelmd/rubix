@@ -21,3 +21,4 @@ This function takes a character variable of dates in various formats and parses 
  \code{\link[dplyr]{select}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{bind}}
  \code{\link[lubridate]{ymd}}
 }
+\keyword{internal}

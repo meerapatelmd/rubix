@@ -24,3 +24,4 @@ mutate_primary_key(
 \description{
 Adds primary key to dataframe in position 1
 }
+\keyword{internal}

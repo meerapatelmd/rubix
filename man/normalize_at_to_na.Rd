@@ -12,3 +12,4 @@ This functions takes all the fields in a dataframe and replaces the "NA" string 
 \seealso{
 \code{\link[dplyr]{mutate_all}}
 }
+\keyword{internal}

@@ -9,3 +9,4 @@ mutate1(dataframe, ...)
 \description{
 Mutate a column to position 1
 }
+\keyword{internal}

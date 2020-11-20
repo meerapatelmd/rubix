@@ -9,3 +9,4 @@ slice_first_row(dataframe)
 \description{
 Slice first row
 }
+\keyword{internal}

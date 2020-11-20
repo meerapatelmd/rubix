@@ -30,3 +30,4 @@ if(interactive()){
 \seealso{
 \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{select}},\code{\link[dplyr]{reexports}}
 }
+\keyword{internal}

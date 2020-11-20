@@ -9,3 +9,4 @@ mutate_rowsum(dataframe, ...)
 \description{
 Get the sum of the rows base on the designated columns
 }
+\keyword{internal}

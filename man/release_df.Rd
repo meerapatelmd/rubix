@@ -9,3 +9,4 @@ release_df(dataframe)
 \description{
 Release all the columns in a dataframe into vectors of the same name
 }
+\keyword{internal}

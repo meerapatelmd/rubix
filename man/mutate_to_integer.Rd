@@ -9,3 +9,4 @@ mutate_to_integer(.data, ...)
 \description{
 Mutate cols to integer data type
 }
+\keyword{internal}
