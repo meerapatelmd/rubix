@@ -28,3 +28,4 @@ summarize_values(.data, ..., names_to = "name", values_to = "value")
  \code{\link[dplyr]{mutate_all}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{summarise_all}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{rename}},\code{\link[dplyr]{select}},\code{\link[dplyr]{reexports}}
  \code{\link[tidyr]{pivot_longer}}
 }
+\keyword{internal}

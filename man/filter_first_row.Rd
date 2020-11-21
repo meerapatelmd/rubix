@@ -9,3 +9,4 @@ filter_first_row(.data, invert = FALSE)
 \description{
 Filter for the first row
 }
+\keyword{internal}

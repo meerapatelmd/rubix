@@ -12,3 +12,4 @@ mutate_timestamp_column(dataframe, new_col_name = "TIMESTAMP")
 \description{
 Add timestamp to the entire dataframe at position 1 with the provided column name
 }
+\keyword{internal}

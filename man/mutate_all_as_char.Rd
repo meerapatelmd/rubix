@@ -14,3 +14,4 @@ mutate_all_as_char(dataframe)
 General Dataframe Cleanup
 Convert all columns to character class and trim all left and right white spaces.
 }
+\keyword{internal}

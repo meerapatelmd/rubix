@@ -21,3 +21,4 @@ Convert a Vector to a Tibble
 \code{\link[dplyr]{tidyeval-compat}}
  \code{\link[tibble]{tibble}}
 }
+\keyword{internal}

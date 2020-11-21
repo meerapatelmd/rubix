@@ -47,3 +47,4 @@ if(interactive()){
 
 \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{arrange}}
 }
+\keyword{internal}

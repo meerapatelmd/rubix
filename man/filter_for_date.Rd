@@ -22,3 +22,4 @@ Filters a dataframe for a date in YYYY-mm-dd format in a timestamp column
 \seealso{
 \code{\link[dplyr]{filter_all}},\code{\link[dplyr]{all_vars}}
 }
+\keyword{internal}

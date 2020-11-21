@@ -9,3 +9,4 @@ group_by_unique_aggregate(dataframe, ..., agg.col, collapse = "|")
 \description{
 Aggregate Function
 }
+\keyword{internal}

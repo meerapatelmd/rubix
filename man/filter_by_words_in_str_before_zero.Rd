@@ -20,3 +20,4 @@ filter_by_words_in_str_before_zero(string, split, dataframe, col)
 Loop a filter over words in a string until there are zero rows
 This function splits a string based on the provide split argument, and recursively filters a dataframe for those words at a given column. It differs from the filter_by_words_in_str function because it returns a dataframe if the loop ends up evaluating to zero rows.
 }
+\keyword{internal}

@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 pandoc: 2.3.1
+=======
+pandoc: 2.7.3
+>>>>>>> cf1e04cd1c7ac9a4ae0ffe3bb264178f3d9b9cd7
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   Summarize: Summarize.html
+<<<<<<< HEAD
 last_built: 2020-11-21T01:42Z
+=======
+last_built: 2020-11-20T08:33Z
+>>>>>>> cf1e04cd1c7ac9a4ae0ffe3bb264178f3d9b9cd7
 

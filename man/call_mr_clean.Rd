@@ -12,3 +12,4 @@ call_mr_clean(dataframe)
 \description{
 Convert all columns to character class and trim all left and right white spaces.
 }
+\keyword{internal}
