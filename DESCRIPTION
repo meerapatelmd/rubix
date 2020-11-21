@@ -22,3 +22,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+RL: https://meerapatelmd.github.io/rubix/, https://github.com/meerapatelmd/rubix/
+BugReports: https://github.com/meerapatelmd/rubix/issues/
