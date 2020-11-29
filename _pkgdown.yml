@@ -5,11 +5,56 @@ reference:
     - title: Categorize and Recode  
       contents: 
         - starts_with("categorize")
+        - starts_with("recode")
     - title: Coalesce  
       contents: 
         - starts_with("coalesce")
+    - title: Time Columns 
+      contents: 
+        - contains("date")        
+    - title: Deselect and Select
+      contents: 
+        - starts_with("deselect")   
+        - starts_with("select")
+    - title: Filter 
+      contents: 
+        - starts_with("filter")   
+    - title: Mutate 
+      contents: 
+        - starts_with("mutate")   
+    - title: Rename 
+      contents: 
+        - starts_with("rename")
+    - title: Format 
+      contents: 
+        - starts_with("format")   
+        - rm_multibyte_chars
+    - title: Aggregations  
+      contents: 
+        - observation_count
+        - value_count
+        - starts_with("summarize")
+    - title: Randomize and Sampling
+      contents: 
+        - randomize  
+        - sample_all_or_n
+    - title: Split  
+      contents:  
+        - starts_with("split")
+    - title: Diffs  
+      contents:  
+        - starts_with("setdiff")
+    - title: Repositioning  
+      contents:  
+        - contains("position")
+    - title: QA 
+      contents: 
+        - duplicated_cols            
     - title: Miscellaneous  
       contents: 
         - blank_tibble
-        - cols_to_list 
+        - cols_to_list  
+        - list_to_tibble  
+        - map_names_set  
+        - release
 

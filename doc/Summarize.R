@@ -7,26 +7,16 @@ knitr::opts_chunk$set(
 
 ## ----setup--------------------------------------------------------------------
 library(rubix)
-library(cave)
 data("mtcars")
 
 ## ----summarize_variables function---------------------------------------------
-rubix::summarize_variables(mtcars)
-
-## -----------------------------------------------------------------------------
-rubix::summarize_variables(mtcars, mpg, cyl)
+summarize_variables(mtcars,
+                    incl_num_calc = FALSE)
 
 ## ----summarize_numeric_var----------------------------------------------------
-rubix::summarize_numeric_vars(mtcars)
-
-## ----summarize_numeric_var2---------------------------------------------------
-rubix::summarize_numeric_vars(mtcars, cyl, disp)
-
-## ----summarize_numeric_var2_error---------------------------------------------
-mtcars2 <- mtcars
-mtcars2$cyl <- as.character(mtcars2$cyl)
-rubix::summarize_numeric_vars(mtcars2, cyl, disp)
+summarize_variables(data = mtcars,
+                    incl_num_calc = TRUE)
 
 ## -----------------------------------------------------------------------------
-rubix::summarize_values(mtcars)
+value_count(data = mtcars)
 
