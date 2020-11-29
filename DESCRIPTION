@@ -1,21 +1,39 @@
-Package: rubix
 Type: Package
+Package: rubix
 Title: rubix Package
 Version: 0.4.0
 Authors@R: 
-    person(given = "Meera", family = "Patel, MD", role = c("aut", "cre"), email = "patelmeeray@gmail.com")
-Description: This package contains data reshaping functions.
+    person(given = "Meera",
+           family = "Patel, MD",
+           role = c("aut", "cre"),
+           email = "patelmeeray@gmail.com",
+           comment = c(ORCID = "0000-0002-3401-3948"))
+Description: This package contains data reshaping
+    functions.
 License: Apache License 2.0
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.1
-Imports:     centipede,    dplyr,    forcats,    lubridate,    magrittr,    purrr,    rlang,    secretary,    stringr,    tibble,    tidyr
-Remotes:
-    meerapatelmd/secretary,
-    meerapatelmd/centipede
+URL: https://meerapatelmd.github.io/rubix/,
+    https://github.com/meerapatelmd/rubix/
+BugReports: https://github.com/meerapatelmd/rubix/issues/
+Imports: 
+    centipede,
+    dplyr,
+    forcats,
+    lubridate,
+    magrittr,
+    purrr,
+    rlang,
+    secretary,
+    stringr,
+    tibble,
+    tidyr
 Suggests: 
     knitr,
     rmarkdown
-VignetteBuilder: knitr
-URL: https://meerapatelmd.github.io/rubix/, https://github.com/meerapatelmd/rubix/
-BugReports: https://github.com/meerapatelmd/rubix/issues/
+VignetteBuilder: 
+    knitr
+Remotes:
+    meerapatelmd/centipede,
+    meerapatelmd/secretary
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1

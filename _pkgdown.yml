@@ -42,10 +42,10 @@ reference:
     - title: Split  
       contents:  
         - starts_with("split")
-    - title: Diffs  
+    - title: Diff  
       contents:  
         - starts_with("setdiff")
-    - title: Repositioning  
+    - title: Reposition  
       contents:  
         - contains("position")
     - title: QA 
