@@ -29,11 +29,12 @@ reference:
       contents: 
         - starts_with("format")   
         - rm_multibyte_chars
-    - title: Aggregations  
+    - title: Aggregation  
       contents: 
+        - starts_with("summarize")
+        - grouped_paste
         - observation_count
         - value_count
-        - starts_with("summarize")
     - title: Randomize and Sampling
       contents: 
         - randomize  
