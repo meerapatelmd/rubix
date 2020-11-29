@@ -190,18 +190,72 @@
 #&gt; </span><span style='color: #555555;'># … with 1 more variable: DISTINCT_VALUES </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='fu'><a href='summarize_variables.html'>summarize_variables</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>test_data</span>,
                     incl_num_calc <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: Problem with `summarise()` input `DISTINCT_STR_NA`.</span>
-#&gt; <span class='error'></span><span style='color: #BB0000;'>x</span><span> could not find function "no_na"</span>
-#&gt; <span class='error'></span><span style='color: #0000BB;'>ℹ</span><span> Input `DISTINCT_STR_NA` is `(structure(function (..., .x = ..1, .y = ..2, . = ..1) ...`.</span>
-#&gt; <span class='error'></span><span style='color: #0000BB;'>ℹ</span><span> The error occurred in group 1: Variable = "A".</span></div><div class='input'>
+</div><div class='output co'>#&gt; $SUMMARY
+#&gt; </span><span style='color: #555555;'># A tibble: 4 x 7</span><span>
+#&gt;   Variable COUNT DISTINCT_COUNT NA_COUNT NA_STR_COUNT BLANK_COUNT
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> A           10              3        5            0           0
+#&gt; </span><span style='color: #555555;'>2</span><span> B           10              3        3            0           0
+#&gt; </span><span style='color: #555555;'>3</span><span> C           10              6        0            0           0
+#&gt; </span><span style='color: #555555;'>4</span><span> Group       10              2        0            0           0
+#&gt; </span><span style='color: #555555;'># … with 1 more variable: DISTINCT_VALUES </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; 
+#&gt; $NUMERIC_CALCULATIONS
+#&gt; </span><span style='color: #555555;'># A tibble: 3 x 18</span><span>
+#&gt;   Variable  MEAN MEAN_NA MEDIAN MEDIAN_NA     SD   SD_NA   MAX MAX_NA   MIN
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> A         2.2    </span><span style='color: #BB0000;'>NA</span><span>      3        </span><span style='color: #BB0000;'>NA</span><span>    1.10   </span><span style='color: #BB0000;'>NA</span><span>       3     </span><span style='color: #BB0000;'>NA</span><span>     1   
+#&gt; </span><span style='color: #555555;'>2</span><span> B         5.43   </span><span style='color: #BB0000;'>NA</span><span>      5        </span><span style='color: #BB0000;'>NA</span><span>    0.535  </span><span style='color: #BB0000;'>NA</span><span>       6     </span><span style='color: #BB0000;'>NA</span><span>     5   
+#&gt; </span><span style='color: #555555;'>3</span><span> C         6.04    6.04   6.04      6.04 0.020</span><span style='text-decoration: underline;'>0</span><span>  0.020</span><span style='text-decoration: underline;'>0</span><span>  6.07   6.07  6.02
+#&gt; </span><span style='color: #555555;'># … with 8 more variables: MIN_NA </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, SUM </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, SUM_NA </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   DISTINCT_LENGTH </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>, NA_LENGTH </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>, BLANK_LENGTH </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   DISTINCT_STR </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, DISTINCT_STR_NA </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </div><div class='input'>
 <span class='fu'><a href='summarize_variables.html'>summarize_variables</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>test_data</span>,
                     incl_num_calc <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     grouper <span class='op'>=</span> <span class='va'>Group</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in summarize_variables(data = test_data, incl_num_calc = TRUE, grouper = Group): unused argument (grouper = Group)</span></div><div class='input'>
+</div><div class='output co'>#&gt; $SUMMARY
+#&gt; </span><span style='color: #555555;'># A tibble: 6 x 8</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   Group [2]</span><span>
+#&gt;   Group Variable COUNT DISTINCT_COUNT NA_COUNT NA_STR_COUNT BLANK_COUNT
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> Apple A            6              3        3            0           0
+#&gt; </span><span style='color: #555555;'>2</span><span> Apple B            6              3        3            0           0
+#&gt; </span><span style='color: #555555;'>3</span><span> Apple C            6              5        0            0           0
+#&gt; </span><span style='color: #555555;'>4</span><span> Pear  A            4              2        2            0           0
+#&gt; </span><span style='color: #555555;'>5</span><span> Pear  B            4              2        0            0           0
+#&gt; </span><span style='color: #555555;'>6</span><span> Pear  C            4              4        0            0           0
+#&gt; </span><span style='color: #555555;'># … with 1 more variable: DISTINCT_VALUES </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; 
+#&gt; $NUMERIC_CALCULATIONS
+#&gt; </span><span style='color: #555555;'># A tibble: 6 x 19</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   Group [2]</span><span>
+#&gt;   Group Variable  MEAN MEAN_NA MEDIAN MEDIAN_NA     SD   SD_NA   MAX MAX_NA
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> Apple A         1.67   </span><span style='color: #BB0000;'>NA</span><span>      1        </span><span style='color: #BB0000;'>NA</span><span>    1.15   </span><span style='color: #BB0000;'>NA</span><span>       3     </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #555555;'>2</span><span> Apple B         5.33   </span><span style='color: #BB0000;'>NA</span><span>      5        </span><span style='color: #BB0000;'>NA</span><span>    0.577  </span><span style='color: #BB0000;'>NA</span><span>       6     </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #555555;'>3</span><span> Apple C         6.04    6.04   6.04      6.04 0.021</span><span style='text-decoration: underline;'>4</span><span>  0.021</span><span style='text-decoration: underline;'>4</span><span>  6.07   6.07
+#&gt; </span><span style='color: #555555;'>4</span><span> Pear  A         3      </span><span style='color: #BB0000;'>NA</span><span>      3        </span><span style='color: #BB0000;'>NA</span><span>    0      </span><span style='color: #BB0000;'>NA</span><span>       3     </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #555555;'>5</span><span> Pear  B         5.5     5.5    5.5       5.5  0.577   0.577   6      6   
+#&gt; </span><span style='color: #555555;'>6</span><span> Pear  C         6.04    6.04   6.04      6.04 0.020</span><span style='text-decoration: underline;'>8</span><span>  0.020</span><span style='text-decoration: underline;'>8</span><span>  6.07   6.07
+#&gt; </span><span style='color: #555555;'># … with 9 more variables: MIN </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, MIN_NA </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, SUM </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, SUM_NA </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   DISTINCT_LENGTH </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>, NA_LENGTH </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>, BLANK_LENGTH </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   DISTINCT_STR </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, DISTINCT_STR_NA </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </div><div class='input'>
 <span class='fu'><a href='summarize_variables.html'>summarize_variables</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>test_data</span>,
                     incl_num_calc <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     grouper <span class='op'>=</span> <span class='va'>Group</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in summarize_variables(data = test_data, incl_num_calc = FALSE,     grouper = Group): unused argument (grouper = Group)</span></div><div class='input'>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 8</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   Group [2]</span><span>
+#&gt;   Group Variable COUNT DISTINCT_COUNT NA_COUNT NA_STR_COUNT BLANK_COUNT
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> Apple A            6              3        3            0           0
+#&gt; </span><span style='color: #555555;'>2</span><span> Apple B            6              3        3            0           0
+#&gt; </span><span style='color: #555555;'>3</span><span> Apple C            6              5        0            0           0
+#&gt; </span><span style='color: #555555;'>4</span><span> Pear  A            4              2        2            0           0
+#&gt; </span><span style='color: #555555;'>5</span><span> Pear  B            4              2        0            0           0
+#&gt; </span><span style='color: #555555;'>6</span><span> Pear  C            4              4        0            0           0
+#&gt; </span><span style='color: #555555;'># … with 1 more variable: DISTINCT_VALUES </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 
 <span class='fu'><a href='observation_count.html'>observation_count</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>test_data</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 10 x 5</span><span>
@@ -237,7 +291,28 @@
 #&gt; </span><span style='color: #555555;'>13</span><span> C        6.04      1
 #&gt; </span><span style='color: #555555;'>14</span><span> C        6.06      1</div><div class='input'><span class='fu'><a href='value_count.html'>value_count</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>test_data</span>,
             grouper <span class='op'>=</span> <span class='va'>Group</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in value_count(data = test_data, grouper = Group): unused argument (grouper = Group)</span></div></span></pre>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 19 x 4</span><span>
+#&gt;    Group Variable Value     n
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Apple A        </span><span style='color: #BB0000;'>NA</span><span>        3
+#&gt; </span><span style='color: #555555;'> 2</span><span> Apple B        </span><span style='color: #BB0000;'>NA</span><span>        3
+#&gt; </span><span style='color: #555555;'> 3</span><span> Apple A        1         2
+#&gt; </span><span style='color: #555555;'> 4</span><span> Apple B        5         2
+#&gt; </span><span style='color: #555555;'> 5</span><span> Apple C        6.02      2
+#&gt; </span><span style='color: #555555;'> 6</span><span> Pear  A        3         2
+#&gt; </span><span style='color: #555555;'> 7</span><span> Pear  A        </span><span style='color: #BB0000;'>NA</span><span>        2
+#&gt; </span><span style='color: #555555;'> 8</span><span> Pear  B        5         2
+#&gt; </span><span style='color: #555555;'> 9</span><span> Pear  B        6         2
+#&gt; </span><span style='color: #555555;'>10</span><span> Apple A        3         1
+#&gt; </span><span style='color: #555555;'>11</span><span> Apple B        6         1
+#&gt; </span><span style='color: #555555;'>12</span><span> Apple C        6.03      1
+#&gt; </span><span style='color: #555555;'>13</span><span> Apple C        6.05      1
+#&gt; </span><span style='color: #555555;'>14</span><span> Apple C        6.06      1
+#&gt; </span><span style='color: #555555;'>15</span><span> Apple C        6.07      1
+#&gt; </span><span style='color: #555555;'>16</span><span> Pear  C        6.02      1
+#&gt; </span><span style='color: #555555;'>17</span><span> Pear  C        6.04      1
+#&gt; </span><span style='color: #555555;'>18</span><span> Pear  C        6.05      1
+#&gt; </span><span style='color: #555555;'>19</span><span> Pear  C        6.07      1</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
