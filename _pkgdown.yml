@@ -1,0 +1,15 @@
+reference:
+    - title: Arrange
+      contents:
+        - starts_with("arrange")
+    - title: Categorize and Recode  
+      contents: 
+        - starts_with("categorize")
+    - title: Coalesce  
+      contents: 
+        - starts_with("coalesce")
+    - title: Miscellaneous  
+      contents: 
+        - blank_tibble
+        - cols_to_list 
+
