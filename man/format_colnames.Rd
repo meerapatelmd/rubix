@@ -4,7 +4,10 @@
 \alias{format_colnames}
 \title{Format Column Names}
 \usage{
-format_colnames(.data)
+format_colnames(
+  data,
+  order = c("btrim", "tolower", "uscore", "rm_trailing_punct", "rm_leading_punct")
+)
 }
 \description{
 Format is defined as 

@@ -13,15 +13,17 @@
 #' @importFrom dplyr rename_all %>%
 
 format_colnames <-
-        function(.data) {
-                x <-
-                        .data %>%
-                                dplyr::rename_all(trimws, "both") %>%
-                                dplyr::rename_all(toupper) %>%
-                                dplyr::rename_all(str_replace_all, "[[:punct:]]{1,}|[ ]{1,}", "_") %>%
-                                dplyr::rename_all(str_remove_all, "[_]{1}$")
-
-                return(x)
+        function(data,
+                 order = c("btrim", 
+                           "tolower", 
+                           "uscore",
+                           "rm_trailing_punct", 
+                           "rm_leading_punct")) {
+                
+                expr <- paste(sprintf("dplyr::rename_all(%s)", order), collapse = " %>% ")
+                expr <- paste0("data %>% ", expr)
+                
+                eval(rlang::parse_expr(expr))
         }
 
 
@@ -40,21 +42,58 @@ format_colnames <-
 #' @export
 #' @importFrom magrittr %>%
 #' @importFrom purrr map
-#' @importFrom centipede trimws
 #' @importFrom stringr str_replace_all str_remove_all
 
 format_names <-
-        function(list) {
-                names(list) <-
-                        names(list) %>%
-                                purrr::map(centipede::trimws, "both") %>%
-                                purrr::map(toupper) %>%
-                                purrr::map(stringr::str_replace_all, "[[:punct:]]{1,}|[ ]{1,}", "_") %>%
-                                purrr::map(stringr::str_remove_all, "[_]{1}$")
-                return(list)
+        function(list,
+                 order = c("btrim", 
+                            "tolower", 
+                            "uscore",
+                            "rm_trailing_punct", 
+                            "rm_leading_punct")) {
+                
+                expr <- paste(sprintf("purrr::map(%s)", order), collapse = " %>% ")
+                expr <- paste0("names(list) %>% ", expr)
+                
+                names(list) <- eval(rlang::parse_expr(expr))
+                
+                list
         }
 
 
 
+#' @export
+
+uscore <-
+        function(vector) {
+                
+                stringr::str_replace_all(vector, "[^0-9a-zA-Z]", "_")
+        }
+
+#' @export
+
+rm_leading_punct <-
+        function(vector) {
+                
+                stringr::str_remove_all(vector, "^[[:punct:]]{1,}")
+        }
 
 
+#' @export
+
+rm_trailing_punct <-
+        function(vector) {
+                
+                stringr::str_remove_all(vector, "[[:punct:]]{1,}$")
+        }
+
+
+#' @export
+
+btrim <- 
+        function(vector) {
+                
+                trimws(x = vector,
+                       which = "both")
+                
+        }

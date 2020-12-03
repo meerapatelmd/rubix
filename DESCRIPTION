@@ -1,7 +1,7 @@
 Type: Package
 Package: rubix
 Title: rubix Package
-Version: 0.4.0
+Version: 0.4.1
 Authors@R: 
     person(given = "Meera",
            family = "Patel, MD",

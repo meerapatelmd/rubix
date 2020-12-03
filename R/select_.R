@@ -10,8 +10,13 @@
 deselect_if_all_na <-
         function(data) {
                 
+                na_cols <-
+                        data %>%
+                                dplyr::select_if(all_is_na) %>%
+                                colnames()
+                
                 data %>%
-                        dplyr::select_if(all_not_na)
+                        dplyr::select_at(dplyr::vars(!dplyr::all_of(na_cols)))
         }
 
 

@@ -17,12 +17,8 @@ rm_multibyte <-
 rm_multibyte_chars <-
     function(data) {
             
-            cols <- char_cols(data = data)
-
             data %>%
-                    dplyr::mutate_at(
-                            dplyr::vars(dplyr::all_of(cols)),
-                                        ~ rm_multibyte(.))
+                    dplyr::mutate_if(is.character, ~ rm_multibyte(.))
             
         
     }
