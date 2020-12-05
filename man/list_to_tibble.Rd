@@ -11,6 +11,6 @@ Convert a list of vectors into a dataframe.
 }
 \seealso{
 Other dataframe <> list functions: 
-\code{\link{cols_to_list}()}
+\code{\link{tibble_to_list}()}
 }
 \concept{dataframe <> list functions}

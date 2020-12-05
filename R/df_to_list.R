@@ -7,12 +7,12 @@
 #' @param ...  (optional) Columns to select for. 
 #' @seealso 
 #'  \code{\link[dplyr]{select}}
-#' @rdname cols_to_list
+#' @rdname tibble_to_list
 #' @family dataframe <> list functions
 #' @export 
 #' @importFrom dplyr select
 
-cols_to_list <- 
+tibble_to_list <- 
         function(data, ...) {
                 
                 

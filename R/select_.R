@@ -5,7 +5,7 @@
 #' @rdname deselect_if_all_na
 #' @export 
 #' @importFrom dplyr select_if %>%
-
+#' @example inst/examples/deselect.R
 
 deselect_if_all_na <-
         function(data) {
@@ -30,15 +30,21 @@ deselect_if_all_na <-
 #' @rdname deselect_if_all_same
 #' @export 
 #' @importFrom dplyr select_if %>%
+#' @example inst/examples/deselect.R
 
 
 deselect_if_all_same <-
         function(data,
                  na.rm = FALSE) {
 
+                same_cols <- 
+                data %>%
+                        dplyr::select_if(~ all_same_value(., na.rm = na.rm)) %>%
+                        colnames()
                 
                 data %>%
-                        dplyr::select_if(~ all_same_value(., na.rm = na.rm))
+                        dplyr::select_at(dplyr::vars(!dplyr::all_of(same_cols)))
+                
         }
 
 

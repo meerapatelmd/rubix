@@ -36,12 +36,9 @@ mutate_all_trimws <-
         function(data,
                  which = c("both", "left", "right"),
                  whitespace = "[ \t\r\n]") {
-                
-                cols <- char_cols(data)
-                
-                
+
                 data %>%
-                        dplyr::mutate_at(vars(dplyr::all_of(cols)),
+                        dplyr::mutate_if(is.character,
                                          ~ trimws(., 
                                                   which = which,
                                                   whitespace = whitespace))
