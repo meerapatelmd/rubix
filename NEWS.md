@@ -1,6 +1,7 @@
 # rubix 0.4.2   
 
-* Add documentation for `util` functions 
+* Add documentation for `util` functions  
+* Add examples for `deselect_*` functions  
 
 
 # rubix 0.4.1   

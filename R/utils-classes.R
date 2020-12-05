@@ -1,6 +1,18 @@
-#' @export
 
 
+#' @title FUNCTION_TITLE
+#' @description FUNCTION_DESCRIPTION
+#' @param data PARAM_DESCRIPTION
+#' @return OUTPUT_DESCRIPTION
+#' @details DETAILS
+#' @examples 
+#' \dontrun{
+#' if(interactive()){
+#'  #EXAMPLE1
+#'  }
+#' }
+#' @rdname col_classes
+#' @export 
 col_classes <- 
         function(data) {
                 
@@ -9,9 +21,25 @@ col_classes <-
         }
 
 
-#' @export
 
 
+#' @title FUNCTION_TITLE
+#' @description FUNCTION_DESCRIPTION
+#' @param data PARAM_DESCRIPTION
+#' @param col PARAM_DESCRIPTION
+#' @return OUTPUT_DESCRIPTION
+#' @details DETAILS
+#' @examples 
+#' \dontrun{
+#' if(interactive()){
+#'  #EXAMPLE1
+#'  }
+#' }
+#' @seealso 
+#'  \code{\link[dplyr]{select}}
+#' @rdname col_class
+#' @export 
+#' @importFrom dplyr select
 col_class <- 
         function(data, col) {
                 
@@ -23,8 +51,23 @@ col_class <-
         }
 
 
-#' @export
 
+#' @title FUNCTION_TITLE
+#' @description FUNCTION_DESCRIPTION
+#' @param class PARAM_DESCRIPTION
+#' @return OUTPUT_DESCRIPTION
+#' @details DETAILS
+#' @examples 
+#' \dontrun{
+#' if(interactive()){
+#'  #EXAMPLE1
+#'  }
+#' }
+#' @seealso 
+#'  \code{\link[purrr]{keep}}
+#' @rdname class_cols_ff
+#' @export 
+#' @importFrom purrr keep
 class_cols_ff <- 
         function(class) {
                 
@@ -41,31 +84,103 @@ class_cols_ff <-
         }
 
 
-#' @export
 
+#' @title FUNCTION_TITLE
+#' @description FUNCTION_DESCRIPTION
+#' @param data PARAM_DESCRIPTION
+#' @return OUTPUT_DESCRIPTION
+#' @details DETAILS
+#' @examples 
+#' \dontrun{
+#' if(interactive()){
+#'  #EXAMPLE1
+#'  }
+#' }
+#' @seealso 
+#'  \code{\link[purrr]{keep}}
+#' @rdname char_cols
+#' @export 
+#' @importFrom purrr keep
 char_cols <- 
         class_cols_ff(class = "character")
 
 
-#' @export
 
+#' @title FUNCTION_TITLE
+#' @description FUNCTION_DESCRIPTION
+#' @param data PARAM_DESCRIPTION
+#' @return OUTPUT_DESCRIPTION
+#' @details DETAILS
+#' @examples 
+#' \dontrun{
+#' if(interactive()){
+#'  #EXAMPLE1
+#'  }
+#' }
+#' @seealso 
+#'  \code{\link[purrr]{keep}}
+#' @rdname int_cols
+#' @export 
+#' @importFrom purrr keep
 int_cols <- 
         class_cols_ff(class = "integer")
 
-#' @export
 
+#' @title FUNCTION_TITLE
+#' @description FUNCTION_DESCRIPTION
+#' @param data PARAM_DESCRIPTION
+#' @return OUTPUT_DESCRIPTION
+#' @details DETAILS
+#' @examples 
+#' \dontrun{
+#' if(interactive()){
+#'  #EXAMPLE1
+#'  }
+#' }
+#' @seealso 
+#'  \code{\link[purrr]{keep}}
+#' @rdname dbl_cols
+#' @export 
+#' @importFrom purrr keep
 dbl_cols <- 
         class_cols_ff(class = "double")
 
 
-#' @export
 
+#' @title FUNCTION_TITLE
+#' @description FUNCTION_DESCRIPTION
+#' @param data PARAM_DESCRIPTION
+#' @return OUTPUT_DESCRIPTION
+#' @details DETAILS
+#' @examples 
+#' \dontrun{
+#' if(interactive()){
+#'  #EXAMPLE1
+#'  }
+#' }
+#' @seealso 
+#'  \code{\link[purrr]{keep}}
+#' @rdname num_cols
+#' @export 
+#' @importFrom purrr keep
 num_cols <- 
         class_cols_ff(class = "numeric")
 
 
-#' @export
 
+#' @title FUNCTION_TITLE
+#' @description FUNCTION_DESCRIPTION
+#' @param data PARAM_DESCRIPTION
+#' @return OUTPUT_DESCRIPTION
+#' @details DETAILS
+#' @examples 
+#' \dontrun{
+#' if(interactive()){
+#'  #EXAMPLE1
+#'  }
+#' }
+#' @rdname all_numeric_cols
+#' @export 
 all_numeric_cols <- 
         function(data) {
                 unique(c(int_cols(data), 
@@ -74,8 +189,23 @@ all_numeric_cols <-
         }
 
 
-#' @export
 
+#' @title FUNCTION_TITLE
+#' @description FUNCTION_DESCRIPTION
+#' @param data PARAM_DESCRIPTION
+#' @return OUTPUT_DESCRIPTION
+#' @details DETAILS
+#' @examples 
+#' \dontrun{
+#' if(interactive()){
+#'  #EXAMPLE1
+#'  }
+#' }
+#' @seealso 
+#'  \code{\link[purrr]{keep}}
+#' @rdname lgl_cols
+#' @export 
+#' @importFrom purrr keep
 lgl_cols <- 
         class_cols_ff(class = "logical")
 
