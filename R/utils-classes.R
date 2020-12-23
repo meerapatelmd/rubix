@@ -1,4 +1,15 @@
+#' @export
 
+is_enumerable <- 
+        function(vector) {
+                
+                if (is.integer(vector)|is.double(vector)|is.numeric(vector)) {
+                        
+                        TRUE
+                } else {
+                        FALSE
+                }
+        }
 
 #' @title FUNCTION_TITLE
 #' @description FUNCTION_DESCRIPTION

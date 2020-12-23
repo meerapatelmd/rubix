@@ -99,8 +99,7 @@ summarize_variables <-
                                      DISTINCT_LENGTH = ~length(unique(.)),
                                      NA_LENGTH = ~length(.[is.na(.)]), 
                                      BLANK_LENGTH = ~length(.[. %in%  c("")]), 
-                                     DISTINCT_STR = ~paste(sort(unique(as.character(.))), collapse = "|"),
-                                     DISTINCT_STR_NA = ~paste(sort(unique(as.character(.)) %>% no_na()), collapse = "|"))
+                                     DISTINCT_STR = ~paste(sort(unique(as.character(.))), collapse = "|"))
                         
                         
                         if (missing(grouper)) {
@@ -108,7 +107,7 @@ summarize_variables <-
                                 
                                 numeric_output <- 
                                         data %>%
-                                        dplyr::select(dplyr::all_of(all_nums)) %>%
+                                        dplyr::select_if(is_enumerable) %>%
                                         tidyr::pivot_longer(cols = dplyr::everything(),
                                                             names_to = names_to,
                                                             values_to = values_to,
