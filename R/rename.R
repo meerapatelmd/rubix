@@ -1,3 +1,35 @@
+#' @title FUNCTION_TITLE
+#' @description FUNCTION_DESCRIPTION
+#' @param data PARAM_DESCRIPTION
+#' @param .x PARAM_DESCRIPTION
+#' @return OUTPUT_DESCRIPTION
+#' @details DETAILS
+#' @examples 
+#' \dontrun{
+#' if(interactive()){
+#'  #EXAMPLE1
+#'  }
+#' }
+#' @seealso 
+#'  \code{\link[dplyr]{select_all}},\code{\link[dplyr]{funs}}
+#' @rdname rename_as
+#' @export 
+#' @importFrom dplyr rename_at funs
+
+rename_as <- 
+        function(data, .x) {
+                
+                if (ncol(data) != length(.x)) {
+                        stop("vector not the same length as columns")
+                }
+                
+                data %>%
+                        dplyr::rename_at(., names(x), dplyr::funs(c(.x)))
+                
+        }
+
+
+
 #' @title
 #' Rename all columns with a prefix
 #' @seealso 
