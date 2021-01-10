@@ -14,17 +14,16 @@
 #'  \code{\link[dplyr]{select_all}},\code{\link[dplyr]{funs}}
 #' @rdname rename_as
 #' @export 
-#' @importFrom dplyr rename_at funs
 
 rename_as <- 
-        function(data, .x) {
+        function(data, new_colnames) {
                 
-                if (ncol(data) != length(.x)) {
+                if (ncol(data) != length(new_colnames)) {
                         stop("vector not the same length as columns")
                 }
                 
-                data %>%
-                        dplyr::rename_at(., names(x), dplyr::funs(c(.x)))
+                colnames(data) <- new_colnames
+                data
                 
         }
 

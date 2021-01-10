@@ -4,7 +4,7 @@
 \alias{rename_as}
 \title{FUNCTION_TITLE}
 \usage{
-rename_as(data, .x)
+rename_as(data, new_colnames)
 }
 \arguments{
 \item{data}{PARAM_DESCRIPTION}
