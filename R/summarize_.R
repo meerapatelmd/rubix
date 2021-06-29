@@ -40,6 +40,8 @@ summarize_variables <-
                                   NA_COUNT = ~ length(.[is.na(.)]),
                                   NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
                                   BLANK_COUNT = ~ length(.[. %in% c("")]),
+                                  SPACE_COUNT = ~ length(grep(pattern = "^[ ]{1,}$",
+                                                              x = .)),
                                   DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"))
                 
                 if (missing(grouper)) {
