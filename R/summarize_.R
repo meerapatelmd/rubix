@@ -30,19 +30,20 @@ NULL
 
 summarize_variables <-
         function(data, 
-                 incl_num_calc = TRUE,
+                 as_number = rubix::all_numeric_cols(data),
                  names_to = "Variable",
                  values_to = "Value",
                  grouper) {
                 
-                char_funs <- list(COUNT = ~ length(.),
+                char_funs <- list(
+                                  COUNT = ~ length(.),
                                   DISTINCT_COUNT = ~ length(unique(.)),
                                   NA_COUNT = ~ length(.[is.na(.)]),
                                   NA_STR_COUNT = ~ length(.[. %in% c("NA", "#N/A", "NaN", "NAN")]),
                                   BLANK_COUNT = ~ length(.[. %in% c("")]),
                                   SPACE_COUNT = ~ length(grep(pattern = "^[ ]{1,}$",
-                                                              x = .)),
-                                  DISTINCT_VALUES = ~ paste(unique(as.character(.)), collapse="|"))
+                                                              x = .))
+                                  )
                 
                 if (missing(grouper)) {
                 
@@ -79,11 +80,82 @@ summarize_variables <-
                         
                 }
                 
+                DISTINCT_VALUES <- list()
+                variables <- unlist(main_output[,names_to])
+                for (i in seq_along(variables)) {
+                        DISTINCT_VALUES[[i]] <-
+                                data %>%
+                                select_at(vars(all_of(variables[i]))) %>%
+                                mutate_at(vars(all_of(variables[i])),
+                                          factor) %>%
+                                unlist() %>%
+                                unname() %>%
+                                forcats::fct_count(sort = TRUE,
+                                                   prop = TRUE)
+                }
                 
                 
-                if (incl_num_calc) {      
+                names(DISTINCT_VALUES) <- variables
+                
+                main_output$DISTINCT_VALUES <- 
+                        DISTINCT_VALUES
+                
+                
+                main_output_b <- 
+                lapply(data, class) %>%
+                        purrr::map(~ tibble::as_tibble_col(x = ., column_name = "DTYPE")) %>%
+                        bind_rows(.id = names_to)
+
+                main_output <-
+                        main_output_b %>% 
+                        left_join(main_output,
+                                  by = names_to) %>%
+                        distinct()
+                
+                generalize_values <- 
+                        function(x) {
+                                x <- 
+                                        stringr::str_replace_all(x,
+                                                                 pattern = "[A-Z]{1}",
+                                                                 replacement = "X")
+                                
+                                x <- 
+                                        stringr::str_replace_all(x,
+                                                                 pattern = "[a-z]{1}",
+                                                                 replacement = "x")
+                                x <- 
+                                        stringr::str_replace_all(x,
+                                                                 pattern = "[1-9]{1}",
+                                                                 replacement = "0")
+                                x
+                        }
+                
+                
+                VALUE_FORMATS <- list()
+                for (i in seq_along(variables)) {
+                        VALUE_FORMATS[[i]] <- 
+                                data %>%
+                                select_at(vars(all_of(variables[i]))) %>%
+                                mutate_at(vars(all_of(variables[i])), 
+                                          generalize_values) %>%
+                                mutate_at(vars(all_of(variables[i])),
+                                          factor) %>%
+                                unlist() %>%
+                                unname() %>%
+                                forcats::fct_count(sort = TRUE,
+                                                   prop = TRUE) 
+                                
+                }
+                
+                names(VALUE_FORMATS) <- variables 
+                
+                main_output$VALUE_FORMATS <- 
+                        VALUE_FORMATS
+
+                
+                if (length(as_number)>0) {      
                         
-                        all_nums <- all_numeric_cols(data = data)
+                        all_nums <- as_number
                         
                         numeric_funs <-
                                 list(MEAN = ~mean(., na.rm = TRUE), 
@@ -100,8 +172,7 @@ summarize_variables <-
                                      SUM_NA = ~sum(.,na.rm = FALSE),
                                      DISTINCT_LENGTH = ~length(unique(.)),
                                      NA_LENGTH = ~length(.[is.na(.)]), 
-                                     BLANK_LENGTH = ~length(.[. %in%  c("")]), 
-                                     DISTINCT_STR = ~paste(sort(unique(as.character(.))), collapse = "|"))
+                                     BLANK_LENGTH = ~length(.[. %in%  c("")]))
                         
                         
                         if (missing(grouper)) {
@@ -109,7 +180,7 @@ summarize_variables <-
                                 
                                 numeric_output <- 
                                         data %>%
-                                        dplyr::select_if(is_enumerable) %>%
+                                        dplyr::select_at(all_of(all_nums)) %>%
                                         tidyr::pivot_longer(cols = dplyr::everything(),
                                                             names_to = names_to,
                                                             values_to = values_to,
@@ -149,7 +220,11 @@ summarize_variables <-
                         
                 } else {
                         
+                        
                         main_output
+
+ 
+                               
                         
                 }
                 

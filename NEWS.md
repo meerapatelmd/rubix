@@ -1,3 +1,9 @@
+# rubix 0.4.3  
+
+* Fixed bug in `summarize_variables()`  
+
+
+
 # rubix 0.4.2   
 
 * Add documentation for `util` functions  

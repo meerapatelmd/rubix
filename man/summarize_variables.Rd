@@ -6,7 +6,7 @@
 \usage{
 summarize_variables(
   data,
-  incl_num_calc = TRUE,
+  as_number = rubix::all_numeric_cols(data),
   names_to = "Variable",
   values_to = "Value",
   grouper
@@ -15,13 +15,13 @@ summarize_variables(
 \arguments{
 \item{data}{A dataframe or tibble.}
 
-\item{incl_num_calc}{If TRUE, includes an additional dataframe of summary statistics on the numeric columns in the dataframe.}
-
 \item{names_to}{Passed to `tidyr::pivot_longer()`.}
 
 \item{values_to}{Passed to `tidyr::pivot_longer()`.}
 
 \item{grouper}{(Optional) Group by column.}
+
+\item{incl_num_calc}{If TRUE, includes an additional dataframe of summary statistics on the numeric columns in the dataframe.}
 }
 \description{
 Summarize a Variable
