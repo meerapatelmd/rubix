@@ -1,6 +1,11 @@
 # rubix 0.4.3  
 
-* Fixed bug in `summarize_variables()`  
+* Fixed bug in `summarize_variables()` where statistical 
+summaries were not being made on double, integer, and numeric 
+data types.  
+* Add `summarize_cardinality()` function that gets the unique 
+count of one or more source columns to one or more target columns.  
+* Add `rename_fields()` function (Issue #3).  
 
 
 

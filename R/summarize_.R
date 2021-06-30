@@ -231,6 +231,38 @@ summarize_variables <-
                 
         }
 
+#' @title 
+#' Summarize One to Many Relationships
+#' @description 
+#' A wrapper around the `dplyr::count()` function that 
+#' includes the source values, which are eliminated 
+#' in using that function alone.  
+#' @seealso 
+#'  \code{\link[dplyr]{tidyeval-compat}},\code{\link[dplyr]{mutate-joins}},\code{\link[dplyr]{select_all}},\code{\link[dplyr]{distinct}},\code{\link[dplyr]{group_by_all}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{group_by}}
+#' @rdname summarize_cardinality
+#' @export 
+#' @importFrom dplyr enquo left_join select_at distinct group_by_at mutate ungroup as_label
+
+summarize_cardinality <-
+        function(data, 
+                 source_cols,
+                 target_cols) {
+                
+                source_cols <- dplyr::enquo(source_cols)
+                target_cols <- dplyr::enquo(target_cols)
+                
+                dplyr::left_join(
+                        data,
+                        data %>%
+                                dplyr::select_at(vars(!!source_cols, !!target_cols)) %>%
+                                dplyr::distinct() %>%
+                                dplyr::group_by_at(vars(!!source_cols)) %>%
+                                dplyr::mutate(cardinality = n()) %>% 
+                                dplyr::ungroup(),
+                        by = c(dplyr::as_label(source_cols), dplyr::as_label(target_cols))
+                )
+        }
+
 
 #' Summarizes each column with max value
 #' @inheritParams summarize_functions
