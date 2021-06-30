@@ -10,10 +10,10 @@ format_colnames(
 )
 }
 \description{
-Format is defined as 
-1) all letters converted to upper, 
-2) trailing or leading whitespace removed, 
-3) all punctuation or spaces of any length replaced with a single underscore, 
+Format is defined as
+1) all letters converted to upper,
+2) trailing or leading whitespace removed,
+3) all punctuation or spaces of any length replaced with a single underscore,
 4) any trailing underscores are removed, which represent terminal punctuation in the column name
 }
 \seealso{

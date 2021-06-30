@@ -7,8 +7,8 @@
 summarize_cardinality(data, source_cols, target_cols)
 }
 \description{
-A wrapper around the `dplyr::count()` function that 
-includes the source values, which are eliminated 
+A wrapper around the `dplyr::count()` function that
+includes the source values, which are eliminated
 in using that function alone.
 }
 \seealso{

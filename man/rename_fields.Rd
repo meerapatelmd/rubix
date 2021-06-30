@@ -10,7 +10,7 @@ rename_fields(data, new_colnames)
 \item{new_colnames}{Character vector of new names with same length as ncols of data argument.}
 }
 \description{
-Rename the fields of a dataframe with 
+Rename the fields of a dataframe with
 a vector of new field names.
 }
 \seealso{

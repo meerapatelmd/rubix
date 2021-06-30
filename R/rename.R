@@ -4,46 +4,44 @@
 #' @param .x PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
 #' }
-#' @seealso 
+#' }
+#' @seealso
 #'  \code{\link[dplyr]{select_all}},\code{\link[dplyr]{funs}}
 #' @rdname rename_as
-#' @export 
+#' @export
 
-rename_as <- 
-        function(data, new_colnames) {
-                
-                if (ncol(data) != length(new_colnames)) {
-                        stop("vector not the same length as columns")
-                }
-                
-                colnames(data) <- new_colnames
-                data
-                
-        }
+rename_as <-
+  function(data, new_colnames) {
+    if (ncol(data) != length(new_colnames)) {
+      stop("vector not the same length as columns")
+    }
+
+    colnames(data) <- new_colnames
+    data
+  }
 
 
 
 #' @title
 #' Rename all columns with a prefix
-#' @seealso 
+#' @seealso
 #'  \code{\link[dplyr]{select_all}}
 #' @rdname rename_all_prefix
-#' @export 
+#' @export
 #' @importFrom dplyr rename_all %>%
 
 
 rename_all_prefix <-
-        function(data,
-                 prefix) {
-                data %>%
-                        dplyr::rename_all(function(x) paste0(prefix, x))
-        }
+  function(data,
+           prefix) {
+    data %>%
+      dplyr::rename_all(function(x) paste0(prefix, x))
+  }
 
 
 
@@ -55,12 +53,15 @@ rename_all_prefix <-
 #' @export
 
 rename_all_remove <-
-        function(data,
-                 pattern) {
-                data %>%
-                        dplyr::rename_all(function(x) stringr::str_remove_all(x, 
-                                                                               pattern = pattern))
-        }
+  function(data,
+           pattern) {
+    data %>%
+      dplyr::rename_all(function(x) {
+        stringr::str_remove_all(x,
+          pattern = pattern
+        )
+      })
+  }
 
 
 
@@ -72,14 +73,17 @@ rename_all_remove <-
 #' @export
 
 rename_all_replace <-
-        function(data,
-                 pattern,
-                 replacement) {
-                data %>%
-                        dplyr::rename_all(function(x) stringr::str_replace_all(x, 
-                                                                               pattern = pattern,
-                                                                               replacement = replacement))
-        }
+  function(data,
+           pattern,
+           replacement) {
+    data %>%
+      dplyr::rename_all(function(x) {
+        stringr::str_replace_all(x,
+          pattern = pattern,
+          replacement = replacement
+        )
+      })
+  }
 
 
 
@@ -90,11 +94,11 @@ rename_all_replace <-
 #' @export
 
 rename_all_suffix <-
-        function(data,
-                 suffix) {
-                data %>%
-                        dplyr::rename_all(function(x) paste0(x, suffix))
-        }
+  function(data,
+           suffix) {
+    data %>%
+      dplyr::rename_all(function(x) paste0(x, suffix))
+  }
 
 
 
@@ -113,11 +117,11 @@ rename_all_suffix <-
 
 
 rename_all_with_prefix <-
-        function(data,
-                 prefix) {
-                data %>%
-                        dplyr::rename_all(function(x) paste0(prefix, x))
-        }
+  function(data,
+           prefix) {
+    data %>%
+      dplyr::rename_all(function(x) paste0(prefix, x))
+  }
 
 
 
@@ -129,14 +133,17 @@ rename_all_with_prefix <-
 #' @export
 
 rename_all_with_replace <-
-        function(data,
-                 pattern,
-                 replacement) {
-                data %>%
-                        dplyr::rename_all(function(x) stringr::str_replace_all(x, 
-                                                                               pattern = pattern,
-                                                                               replacement = replacement))
-        }
+  function(data,
+           pattern,
+           replacement) {
+    data %>%
+      dplyr::rename_all(function(x) {
+        stringr::str_replace_all(x,
+          pattern = pattern,
+          replacement = replacement
+        )
+      })
+  }
 
 
 
@@ -147,11 +154,11 @@ rename_all_with_replace <-
 #' @export
 
 rename_all_with_suffix <-
-        function(data,
-                 suffix) {
-                data %>%
-                        dplyr::rename_all(function(x) paste0(x, suffix))
-        }
+  function(data,
+           suffix) {
+    data %>%
+      dplyr::rename_all(function(x) paste0(x, suffix))
+  }
 
 
 
@@ -175,15 +182,14 @@ rename_all_with_suffix <-
 
 
 rename_at_prefix <-
-        function(data,
-                 ...,
-                 prefix) {
-                
-                cols <- dplyr::enquos(...)
-                
-                data %>%
-                        dplyr::rename_at(vars(!!!cols), function(x) paste0(prefix, x))
-        }
+  function(data,
+           ...,
+           prefix) {
+    cols <- dplyr::enquos(...)
+
+    data %>%
+      dplyr::rename_at(vars(!!!cols), function(x) paste0(prefix, x))
+  }
 
 
 
@@ -195,16 +201,18 @@ rename_at_prefix <-
 #' @export
 
 rename_at_remove <-
-        function(data,
-                 ...,
-                 pattern) {
-                
-                cols <- dplyr::enquos(cols)
-                
-                data %>%
-                        dplyr::rename_at(vars(!!!cols), function(x) stringr::str_remove_all(x, 
-                                                                               pattern = pattern))
-        }
+  function(data,
+           ...,
+           pattern) {
+    cols <- dplyr::enquos(cols)
+
+    data %>%
+      dplyr::rename_at(vars(!!!cols), function(x) {
+        stringr::str_remove_all(x,
+          pattern = pattern
+        )
+      })
+  }
 
 
 
@@ -216,18 +224,20 @@ rename_at_remove <-
 #' @export
 
 rename_at_replace <-
-        function(data,
-                 ...,
-                 pattern,
-                 replacement) {
-                
-                cols <- dplyr::enquos(cols)
-                
-                data %>%
-                        dplyr::rename_at(vars(!!!cols), function(x) stringr::str_replace_all(x, 
-                                                                               pattern = pattern,
-                                                                               replacement = replacement))
-        }
+  function(data,
+           ...,
+           pattern,
+           replacement) {
+    cols <- dplyr::enquos(cols)
+
+    data %>%
+      dplyr::rename_at(vars(!!!cols), function(x) {
+        stringr::str_replace_all(x,
+          pattern = pattern,
+          replacement = replacement
+        )
+      })
+  }
 
 
 
@@ -238,29 +248,11 @@ rename_at_replace <-
 #' @export
 
 rename_at_suffix <-
-        function(data,
-                 ...,
-                 suffix) {
-                
-                cols <- enquos(...)
-                
-                data %>%
-                        dplyr::rename_at(vars(!!!cols), function(x) paste0(x, suffix))
-        }
+  function(data,
+           ...,
+           suffix) {
+    cols <- enquos(...)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    data %>%
+      dplyr::rename_at(vars(!!!cols), function(x) paste0(x, suffix))
+  }

@@ -4,21 +4,21 @@
 #' @param vector PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
+#' }
 #' }
 #' @rdname grep_empty
-#' @export 
-grep_empty <- 
-        function(vector) {
-                
-                grep(pattern = "^$",
-                     x = vector)
-                
-        }
+#' @export
+grep_empty <-
+  function(vector) {
+    grep(
+      pattern = "^$",
+      x = vector
+    )
+  }
 
 
 #' @title FUNCTION_TITLE
@@ -26,21 +26,21 @@ grep_empty <-
 #' @param vector PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
+#' }
 #' }
 #' @rdname grep_blank
-#' @export 
-grep_blank <- 
-        function(vector) {
-                
-                grep(pattern = "^[ ]{1,}$",
-                     x = vector)
-                
-        }
+#' @export
+grep_blank <-
+  function(vector) {
+    grep(
+      pattern = "^[ ]{1,}$",
+      x = vector
+    )
+  }
 
 
 #' @title FUNCTION_TITLE
@@ -48,21 +48,21 @@ grep_blank <-
 #' @param vector PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
+#' }
 #' }
 #' @rdname grep_na_str
-#' @export 
-grep_na_str <- 
-        function(vector) {
-                
-                grep(pattern = "^NA$",
-                     x = vector)
-                
-        }
+#' @export
+grep_na_str <-
+  function(vector) {
+    grep(
+      pattern = "^NA$",
+      x = vector
+    )
+  }
 
 
 #' @title FUNCTION_TITLE
@@ -70,28 +70,22 @@ grep_na_str <-
 #' @param vector PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
+#' }
 #' }
 #' @rdname empty_to_na
-#' @export 
-empty_to_na <- 
-        function(vector) {
-                
-                
-                if (is.character(vector)) {
-                        
-                        vector[grep_empty(vector)] <- NA_character_
-                        
-                }
-                
-                vector
-                
-                
-        }
+#' @export
+empty_to_na <-
+  function(vector) {
+    if (is.character(vector)) {
+      vector[grep_empty(vector)] <- NA_character_
+    }
+
+    vector
+  }
 
 
 #' @title FUNCTION_TITLE
@@ -99,28 +93,22 @@ empty_to_na <-
 #' @param vector PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
+#' }
 #' }
 #' @rdname blank_to_na
-#' @export 
-blank_to_na <- 
-        function(vector) {
-                
-                
-                if (is.character(vector)) {
-                        
-                        vector[grep_blank(vector)] <- NA_character_
-                        
-                }
-                
-                vector
-                
-                
-        }
+#' @export
+blank_to_na <-
+  function(vector) {
+    if (is.character(vector)) {
+      vector[grep_blank(vector)] <- NA_character_
+    }
+
+    vector
+  }
 
 
 #' @title FUNCTION_TITLE
@@ -128,27 +116,22 @@ blank_to_na <-
 #' @param vector PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
+#' }
 #' }
 #' @rdname na_str_to_na
-#' @export 
-na_str_to_na <- 
-        function(vector) {
-                
-                
-                if (is.character(vector)) {
-                        
-                        vector[grep_na_str(vector)] <- NA_character_
-                        
-                }
-                
-                vector
-                
-        }
+#' @export
+na_str_to_na <-
+  function(vector) {
+    if (is.character(vector)) {
+      vector[grep_na_str(vector)] <- NA_character_
+    }
+
+    vector
+  }
 
 
 
@@ -162,21 +145,18 @@ na_str_to_na <-
 #' @param vector PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
+#' }
 #' }
 #' @rdname all_is_na
-#' @export 
-all_is_na <- 
-        function(vector) {
-                
-                
-                all(is.na(vector))
-                
-        }
+#' @export
+all_is_na <-
+  function(vector) {
+    all(is.na(vector))
+  }
 
 
 #' @title FUNCTION_TITLE
@@ -184,21 +164,18 @@ all_is_na <-
 #' @param vector PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
+#' }
 #' }
 #' @rdname all_not_na
-#' @export 
-all_not_na <- 
-        function(vector) {
-                
-                
-                !all_is_na(vector)
-                
-        }
+#' @export
+all_not_na <-
+  function(vector) {
+    !all_is_na(vector)
+  }
 
 
 #' @title FUNCTION_TITLE
@@ -206,21 +183,18 @@ all_not_na <-
 #' @param vector PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
+#' }
 #' }
 #' @rdname any_is_na
-#' @export 
-any_is_na <- 
-        function(vector) {
-                
-                
-                any(is.na(vector))
-                
-        }
+#' @export
+any_is_na <-
+  function(vector) {
+    any(is.na(vector))
+  }
 
 
 #' @title FUNCTION_TITLE
@@ -229,26 +203,20 @@ any_is_na <-
 #' @param na.rm PARAM_DESCRIPTION, Default: FALSE
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
+#' }
 #' }
 #' @rdname all_same_value
-#' @export 
-all_same_value <- 
-        function(vector, 
-                 na.rm = FALSE) {
-                
-                if (na.rm) {
-                        vector <- vector[!(is.na(vector))]
-                }
-                
-                length(unique(vector)) == 1
-        }
+#' @export
+all_same_value <-
+  function(vector,
+           na.rm = FALSE) {
+    if (na.rm) {
+      vector <- vector[!(is.na(vector))]
+    }
 
-
-
-
-
+    length(unique(vector)) == 1
+  }

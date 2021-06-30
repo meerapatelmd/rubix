@@ -1,48 +1,45 @@
-#' @title 
+#' @title
 #' Mutate All Columns to Character
-#' 
-#' @param data A dataframe or tibble. 
+#'
+#' @param data A dataframe or tibble.
 #' @example inst/examples/mutate_all_.R
-#' @seealso 
+#' @seealso
 #'  \code{\link[dplyr]{mutate_all}}
 #' @rdname mutate_all_char
-#' @export 
+#' @export
 #' @importFrom dplyr mutate_all
 
-mutate_all_char <- 
-        function(data) {
-                
-                data %>%
-                        dplyr::mutate_all(as.character)
-                
-        }
+mutate_all_char <-
+  function(data) {
+    data %>%
+      dplyr::mutate_all(as.character)
+  }
 
 
-#' @title 
+#' @title
 #' Trim Whitespace of all Character Columns
-#' 
-#' @param data A dataframe or tibble. 
+#'
+#' @param data A dataframe or tibble.
 #' @inheritParams base::trimws
-#' 
+#'
 #' @example inst/examples/mutate_all_.R
-#' @seealso 
+#' @seealso
 #'  \code{\link[dplyr]{mutate_at}}
 #' @rdname mutate_all_trimws
-#' @export 
+#' @export
 #' @importFrom dplyr mutate_at all_of
 
 
-mutate_all_trimws <- 
-        function(data,
-                 which = c("both", "left", "right"),
-                 whitespace = "[ \t\r\n]") {
-
-                data %>%
-                        dplyr::mutate_if(is.character,
-                                         ~ trimws(., 
-                                                  which = which,
-                                                  whitespace = whitespace))
-                
-                
-                
-        }
+mutate_all_trimws <-
+  function(data,
+           which = c("both", "left", "right"),
+           whitespace = "[ \t\r\n]") {
+    data %>%
+      dplyr::mutate_if(
+        is.character,
+        ~ trimws(.,
+          which = which,
+          whitespace = whitespace
+        )
+      )
+  }

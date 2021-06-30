@@ -8,14 +8,14 @@
 #' @export
 
 map_names_set <-
-        function(x, .f, ...) {
-                if (is.list(x)) {
-                        x %>%
-                                purrr::set_names(names(x)) %>%
-                                purrr::map(.f,...)
-                } else {
-                        x %>%
-                                purrr::set_names(as.character(x)) %>%
-                                purrr::map(.f,...)
-                }
-        }
+  function(x, .f, ...) {
+    if (is.list(x)) {
+      x %>%
+        purrr::set_names(names(x)) %>%
+        purrr::map(.f, ...)
+    } else {
+      x %>%
+        purrr::set_names(as.character(x)) %>%
+        purrr::map(.f, ...)
+    }
+  }

@@ -1,11 +1,12 @@
 #' @export
 
-rm_multibyte <- 
-        function(vector) {
-                
-                stringr::str_remove_all(string = vector,
-                                        pattern = "[^ -~]")
-        }
+rm_multibyte <-
+  function(vector) {
+    stringr::str_remove_all(
+      string = vector,
+      pattern = "[^ -~]"
+    )
+  }
 
 
 
@@ -15,10 +16,7 @@ rm_multibyte <-
 #' @export
 
 rm_multibyte_chars <-
-    function(data) {
-            
-            data %>%
-                    dplyr::mutate_if(is.character, ~ rm_multibyte(.))
-            
-        
-    }
+  function(data) {
+    data %>%
+      dplyr::mutate_if(is.character, ~ rm_multibyte(.))
+  }
